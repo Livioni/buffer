@@ -1,7 +1,8 @@
 import socket
 import struct,datetime
 import numpy as np
-import cv2,time
+import cv2
+from buffer import Buffer
 
 # 创建socket并绑定端口号
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -10,6 +11,7 @@ server_socket.listen()
 print('Server started and listening on port 8888...')
 # global count
 count = 0
+buffer1 = Buffer(10, 480, 640)
 
 while True:
     # 等待客户端连接
@@ -31,9 +33,10 @@ while True:
     # 将图像数据转换为OpenCV Mat变量
     img_array = np.frombuffer(img_data, dtype=np.uint8)
     img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-    image_name = 'images/' + datetime.datetime.now().strftime('%m-%d-%H-%M-%S') + str(count) +'.jpg'
+    image_name = datetime.datetime.now().strftime('%m-%d-%H-%M-%S') + str(count) +'.jpg'
     # 保存图像文件
-    cv2.imwrite(image_name, img)
+    # cv2.imwrite(image_name, img)
+    buffer1.add(img, image_name)
     count += 1
     # 关闭socket
     

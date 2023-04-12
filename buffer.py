@@ -3,7 +3,7 @@ import numpy as np
 from utils.invoker import invoke_debug
 
 #write a class to buffer the image
-class buffer:
+class Buffer:
     def __init__(self, size, height, width):
         self.size = size
         self.height = height
@@ -40,15 +40,4 @@ class buffer:
         self.image_name = []
         self.index = 0
 
-
-if __name__ == '__main__':
-    #create a buffer
-    buffer = buffer(1, 100, 100)
-    #read the image
-    image_name = '/Users/livion/Documents/test_videos/partitions/image2_0.jpg'
-    image = cv2.imread(image_name)
-    #add the image to the buffer
-    buffer.add(image,image_name)
-    #get the image from the buffer
-    print(buffer.buffer)
 
