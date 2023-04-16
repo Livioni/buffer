@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from utils.invoker import invoke_debug
+from utils.invoker import invoke_keypoint
 
 #write a class to buffer the image
 class Buffer:
@@ -16,7 +16,7 @@ class Buffer:
     def is_full(self):
         #invoke the function
         for image in self.buffer:
-            ret = invoke_debug(image)
+            ret = invoke_keypoint(image)
         return self.delete()
 
     def add(self, image,image_name):
