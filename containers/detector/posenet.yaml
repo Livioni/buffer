@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: load-balancer
+  name: keypointdetector
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: load-balancer
+  template:
+    metadata:
+      labels:
+        app: load-balancer
+    spec:
+      containers:
+      - image: livioni/posenet:docker
+        name: posenet
+        ports:
+        - containerPort: 5000

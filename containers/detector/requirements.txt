@@ -1,0 +1,5 @@
+flask==2.2.3
+pillow
+minio
+torch
+opencv-python==4.7.0.72
