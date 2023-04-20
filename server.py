@@ -40,7 +40,7 @@ while True:
     image_name = str(create_id()) + '.jpg'
     # 保存图像文件
     # cv2.imwrite(image_name, img)
-    buffer1.add(img, image_name)
+    buffer1.add(img, image_name, 5)
     # 关闭socket
     
 client_socket.close()

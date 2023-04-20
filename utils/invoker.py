@@ -1,5 +1,4 @@
 import requests,io,json
-from PIL import Image
 import numpy as np
 
 functions = {

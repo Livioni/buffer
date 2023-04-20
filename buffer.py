@@ -1,10 +1,12 @@
 import cv2
+import datetime as dt
 import numpy as np
+from apscheduler.schedulers.background import BackgroundScheduler
 from utils.invoker import invoke_keypoint
 
 #write a class to buffer the image
 class Buffer:
-    def __init__(self, size, height, width):
+    def __init__(self, size, height, width, time_out: int):
         self.size = size
         self.height = height
         self.width = width
@@ -12,7 +14,18 @@ class Buffer:
         self.buffer = np.zeros((self.size, self.height, self.width, 3), dtype=np.uint8)
         self.image_name = []
         self.index = 0
+        self.time_out = time_out
+        self.scheduler = BackgroundScheduler()
+        self.add_job(self.send_buffer, 'interval', seconds = self.time_out)
+        self.scheduler.start()
 
+    def send_buffer(self):
+        if self.index != 0:
+            self.is_full()
+        else:
+            print("Buffer",self.size, dt.datetime.now())
+        return
+        
     def is_full(self):
         #invoke the function
         ret = invoke_keypoint(self.buffer)
