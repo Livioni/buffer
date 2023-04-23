@@ -126,8 +126,8 @@ if __name__ == "__main__":
 
 
     # 指定要统计的文件夹路径  
-    folder_path = "/Users/livion/Documents/test_videos/partitions"
-    t, num = count_file_num(folder_path)
-    draw_curve(t, num, file_name='01_University_Canteen_partitions.png', title='Partition Num')
-
-
+    # folder_path = "/Users/livion/Documents/test_videos/partitions"
+    # t, num = count_file_num(folder_path)
+    # draw_curve(t, num, file_name='01_University_Canteen_partitions.png', title='Partition Num')
+    file_path = '/Users/livion/Documents/test_videos/partitions'
+    count_images_and_sizes(file_path)
