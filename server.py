@@ -2,7 +2,7 @@ import socket
 import struct
 import numpy as np
 import cv2
-from buffer import Buffer
+from buffer import Canvas
 import time, hashlib
 
 # 创建socket并绑定端口号
@@ -11,7 +11,7 @@ server_socket.bind(('10.1.81.24', 8888))
 server_socket.listen()
 print('Server started and listening on port 8888...')
 # global count
-buffer1 = Buffer(10, 640, 480)
+buffer1 = Canvas(3, 800, 800)
 
 def create_id():
     m = hashlib.md5(str(time.perf_counter()).encode("utf-8"))

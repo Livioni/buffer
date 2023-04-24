@@ -4,7 +4,7 @@ import time
 
 functions = {
     # 'keypoint' : 'http://10.1.81.24:32283',
-    'keypoint' : 'http://127.0.0.1:5000',
+    'keypoint' : 'http://10.1.81.183:6000',
 }
 
 def invoke_keypoint(np_data: np.ndarray):

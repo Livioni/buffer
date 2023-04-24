@@ -3,10 +3,19 @@ import datetime as dt
 import numpy as np
 from apscheduler.schedulers.background import BackgroundScheduler
 from utils.invoker import invoke_keypoint
+from utils.binpack import BinPack
+
+
+class Image:
+    def __init__(self, image : cv2.Mat) -> None:
+        self.image = image
+        self.width = image.shape[1]
+        self.height = image.shape[0]
+        self.shape = (self.width, self.height)
 
 #write a class to buffer the image
-class Buffer:
-    def __init__(self, size, height, width, time_out: int):
+class Canvas: #wait to be transfered to function
+    def __init__(self, size, height, width, time_out: int = 5):
         self.size = size
         self.height = height
         self.width = width
@@ -16,8 +25,8 @@ class Buffer:
         self.index = 0
         self.time_out = time_out
         self.scheduler = BackgroundScheduler()
-        self.add_job(self.send_buffer, 'interval', seconds = self.time_out)
-        self.scheduler.start()
+        self.scheduler.add_job(self.send_buffer, 'interval', seconds = self.time_out)
+        # self.scheduler.start()
 
     def send_buffer(self):
         if self.index != 0:
@@ -32,11 +41,10 @@ class Buffer:
         print("Function returned: ", ret.text)
         return self.delete()
 
-    def add(self, image,image_name):
-        if image.shape[0] != self.height or image.shape[1] != self.width:
-            image = self.__resize_img_keep_ratio(image,[self.height,self.width])
-        self.buffer[self.index] = image
-        self.image_name.append(image_name)
+    def add(self, image : Image):
+
+        self.buffer[self.index] = image.image
+        self.image_name.append(image.image_name)
         self.index += 1
         if self.index == self.size:
             self.is_full()
@@ -65,10 +73,76 @@ class Buffer:
         img_new = cv2.copyMakeBorder(img,top,bottom,left,right,cv2.BORDER_CONSTANT,None,(0,0,0))
         return img_new
 
+class Queue: #wait to be packing
+    def __init__(self, size) -> None:
+        self.size = size
+        self.queue = []
+        self.index = 0
+
+    def add(self, image : Image):
+        if self.index == self.size:
+            self.clear()
+        self.queue.append(image)
+        self.index += 1
+        return True
+    
+    def insert(self, *items: Image):
+        for item in items:
+            self.add(item)
+
+    def clear(self):
+        self.queue = []
+        self.index = 0
+
+    def solve(self, canvas : Canvas, heuristic : str = 'best_fit'):
+        BINPACK = BinPack(bin_size=(canvas.width,canvas.height))
+
+        for item in self.queue:
+            BINPACK.insert(item.shape, heuristic = heuristic)
+        result = BINPACK.print_stats()
+        # BINPACK.visualize_packing(result)
+        canvas_print = np.zeros((len(result)-1, canvas.height, canvas.width, 3), dtype=np.uint8)
+        for i in range(len(result)-1):
+            for item in result[i]['items']:
+                locationx = item[0].x
+                locationy = item[0].y
+                image_width = item[1].width
+                image_height = item[1].height
+                for img in self.queue:
+                    if img.width == image_width and img.height == image_height:
+                        canvas_print[i,locationy:locationy+image_height, locationx:locationx+image_width] = img.image
+                        break
+        # for i in range(len(result)-1):
+        #     cv2.imshow("Canvas", canvas_print[i])
+        #     cv2.waitKey()
+        self.clear()
+        return canvas_print
+
+
 if __name__ == "__main__":
-    buffer = Buffer(2, 640, 480)
-    img1 = cv2.imread('/Users/livion/Documents/test_videos/input/image3_4.jpg')
-    img2 = cv2.imread('/Users/livion/Documents/test_videos/input/image3_9.jpg')
-    buffer.add(img1,"image1")
-    buffer.add(img2,"image2")
-    print("here")
+    im1 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image43_10.jpg')
+    im2 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image43_11.jpg')
+    im3 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image43_12.jpg')
+    im4 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image44_0.jpg')
+    im5 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image44_1.jpg')
+    im6 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image44_2.jpg')
+    im7 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image44_3.jpg')
+    im8 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image44_4.jpg')
+    im9 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image44_5.jpg')
+    im10 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image44_6.jpg')
+    img1 = Image(im1)
+    img2 = Image(im2)
+    img3 = Image(im3)
+    img4 = Image(im4)
+    img5 = Image(im5)
+    img6 = Image(im6)
+    img7 = Image(im7)
+    img8 = Image(im8)
+    img9 = Image(im9)
+    img10 = Image(im10)
+    boxs = Queue(10)
+    boxs.insert(img1, img2, img3, img4, img5, img6, img7, img8, img9, img10)
+    canvas = Canvas(3, 300, 300)
+    boxs.solve(canvas)
+
+
