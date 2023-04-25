@@ -2,7 +2,7 @@ import socket
 import struct
 import numpy as np
 import cv2
-from buffer import Canvas
+from buffer import Canvas,Queue
 import time, hashlib
 
 # 创建socket并绑定端口号
@@ -12,6 +12,7 @@ server_socket.listen()
 print('Server started and listening on port 8888...')
 # global count
 buffer1 = Canvas(3, 800, 800)
+queue1  = Queue(8)
 
 def create_id():
     m = hashlib.md5(str(time.perf_counter()).encode("utf-8"))
@@ -40,7 +41,7 @@ while True:
     image_name = str(create_id()) + '.jpg'
     # 保存图像文件
     # cv2.imwrite(image_name, img)
-    buffer1.add(img, image_name, 5)
+    # buffer1.add(img, image_name, 5)
     # 关闭socket
     
 client_socket.close()

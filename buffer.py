@@ -2,8 +2,10 @@ import cv2
 import datetime as dt
 import numpy as np
 from apscheduler.schedulers.background import BackgroundScheduler
+import matplotlib.pyplot as plt
 from utils.invoker import invoke_keypoint
 from utils.binpack import BinPack
+import utils.greedypacker as greedypacker
 
 
 class Image:
@@ -94,13 +96,27 @@ class Queue: #wait to be packing
         self.queue = []
         self.index = 0
 
-    def solve(self, canvas : Canvas, heuristic : str = 'best_fit'):
-        BINPACK = BinPack(bin_size=(canvas.width,canvas.height))
+    def drop(self, index):
+        self.queue.pop(index)
 
+    def bin_pack_calculate_efficiency(self, canvas : Canvas, heuristic : str = 'best_fit') -> float:
+        BINPACK = BinPack(bin_size=(canvas.width,canvas.height))
         for item in self.queue:
             BINPACK.insert(item.shape, heuristic = heuristic)
         result = BINPACK.print_stats()
-        # BINPACK.visualize_packing(result)
+        efficiency_pool = []
+        for i in range(len(result)-1):
+            efficiency_pool.append(result[i]['efficiency'])
+            print("Bin", i, "efficiency: ", result[i]['efficiency'])
+        self.efficiency = np.mean(efficiency_pool)
+        return self.efficiency
+
+
+    def bin_pack_solve(self, canvas : Canvas, heuristic : str = 'next_fit',visualize : bool = False) -> np.ndarray:
+        BINPACK = BinPack(bin_size=(canvas.width,canvas.height),sorting=True)
+        for item in self.queue:
+            BINPACK.insert(item.shape, heuristic = heuristic)
+        result = BINPACK.print_stats()
         canvas_print = np.zeros((len(result)-1, canvas.height, canvas.width, 3), dtype=np.uint8)
         for i in range(len(result)-1):
             for item in result[i]['items']:
@@ -108,41 +124,72 @@ class Queue: #wait to be packing
                 locationy = item[0].y
                 image_width = item[1].width
                 image_height = item[1].height
-                for img in self.queue:
+                for index, img in enumerate(self.queue):
                     if img.width == image_width and img.height == image_height:
                         canvas_print[i,locationy:locationy+image_height, locationx:locationx+image_width] = img.image
+                        self.drop(index)
                         break
-        # for i in range(len(result)-1):
-        #     cv2.imshow("Canvas", canvas_print[i])
-        #     cv2.waitKey()
+        if visualize:
+            for i in range(len(result)-1):
+                cv2.imshow("Canvas", canvas_print[i])
+                cv2.waitKey()
         self.clear()
         return canvas_print
-
+    
+    def greedy_packer_solve(self,canvas : Canvas, visualize : bool = False, pack_algo : str ='guillotine', heuristic : str = 'best_shortside') -> np.ndarray:
+        GreedyPacker = greedypacker.BinManager(canvas.height, canvas.width, pack_algo=pack_algo, heuristic=heuristic, wastemap=False, rotation=False)
+        for item in self.queue:
+            image_item = greedypacker.Item(item.width, item.height)
+            GreedyPacker.add_items(image_item)
+        GreedyPacker.execute()
+        result = GreedyPacker.bins
+        canvas_print = np.zeros((len(result), canvas.height, canvas.width, 3), dtype=np.uint8)
+        self.visualize_packing(result,canvas)
+        for i in range(len(result)):
+            for item in result[i].items:
+                for index, img in enumerate(self.queue):
+                    if (img.width == item.width and img.height == item.height):
+                        canvas_print[i,item.y:item.y+item.height, item.x:item.x+item.width] = img.image
+                        self.drop(index)
+                        break
+                    # elif (img.width == item.height and img.height == item.width):
+                    #     canvas_print[i,item.y:item.y+item.width, item.x:item.x+item.height] = img.image
+                    #     self.drop(index)
+                    #     break
+        if visualize:
+            for i in range(len(result)):
+                cv2.imshow("Canvas", canvas_print[i])
+                cv2.waitKey()
+        return canvas_print
+    
+    def visualize_packing(self,result,canvas : Canvas) -> None:
+        colors = plt.cm.tab20.colors
+        colors_index = 0
+        for sheet in result:
+            fig, ax = plt.subplots()   
+            ax.set_title('Bin Packing Visualization')
+            for item in sheet.items:
+                rect = plt.Rectangle((item.x, item.y), item.width, item.height, color=colors[colors_index % len(colors)])
+                ax.add_patch(rect)
+                colors_index += 1
+            plt.xlim(0, canvas.width)
+            plt.ylim(0, canvas.height)
+            plt.gca().set_aspect('equal', adjustable='box')
+            plt.show()
+        return
+        
 
 if __name__ == "__main__":
-    im1 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image43_10.jpg')
-    im2 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image43_11.jpg')
-    im3 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image43_12.jpg')
-    im4 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image44_0.jpg')
-    im5 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image44_1.jpg')
-    im6 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image44_2.jpg')
-    im7 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image44_3.jpg')
-    im8 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image44_4.jpg')
-    im9 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image44_5.jpg')
-    im10 = cv2.imread('/Users/livionmbp/Documents/test_videos/partitions/image44_6.jpg')
-    img1 = Image(im1)
-    img2 = Image(im2)
-    img3 = Image(im3)
-    img4 = Image(im4)
-    img5 = Image(im5)
-    img6 = Image(im6)
-    img7 = Image(im7)
-    img8 = Image(im8)
-    img9 = Image(im9)
-    img10 = Image(im10)
+    image_list = np.linspace(0,9,10)
     boxs = Queue(10)
-    boxs.insert(img1, img2, img3, img4, img5, img6, img7, img8, img9, img10)
-    canvas = Canvas(3, 300, 300)
-    boxs.solve(canvas)
+    for i in image_list:
+        im_path = '/Users/livion/Documents/test_videos/partitions/image100_' + str(int(i)) + '.jpg'
+        img = Image(cv2.imread(im_path))
+        boxs.add(img)
+    canvas = Canvas(3, 500, 500)
+    # boxs.bin_pack_solve(canvas, visualize=True)
+    boxs.greedy_packer_solve(canvas, visualize=True)
+    # boxs.calculate_efficiency(canvas)
+    # boxs.solve(canvas,visualize=True)
 
 
