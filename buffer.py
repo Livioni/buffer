@@ -144,7 +144,6 @@ class Queue: #wait to be packing
         GreedyPacker.execute()
         result = GreedyPacker.bins
         canvas_print = np.zeros((len(result), canvas.height, canvas.width, 3), dtype=np.uint8)
-        self.visualize_packing(result,canvas)
         for i in range(len(result)):
             for item in result[i].items:
                 for index, img in enumerate(self.queue):
@@ -157,6 +156,7 @@ class Queue: #wait to be packing
                     #     self.drop(index)
                     #     break
         if visualize:
+            self.visualize_packing(result,canvas)
             for i in range(len(result)):
                 cv2.imshow("Canvas", canvas_print[i])
                 cv2.waitKey()
