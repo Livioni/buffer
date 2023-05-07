@@ -110,16 +110,18 @@ def bin_list_resize(bins : list):
 
 if __name__ == "__main__":
     videos_path = '/Users/livion/Documents/test_videos/Panda/4k'
-    videos_list = os.listdir(videos_path)
+    # videos_list = os.listdir(videos_path)
+    videos_list = ['/Users/livion/Documents/test_videos/Panda/4k/10_Huaqiangbei.mp4']
     for video in videos_list:
         if video == '.DS_Store':
             continue
-        prefix = video[0:2]
+        # prefix = video[0:2]
+        prefix = '10'
         video_path = os.path.join(videos_path,video)
         cap = cv2.VideoCapture(video_path)
         fgbg = cv2.createBackgroundSubtractorMOG2()
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(3,3))
-        save_path = '/Users/livion/Documents/test_videos/partitionsPY'
+        save_path = '/Users/livion/Documents/test_videos/partitions2x2'
         index = 1
         while(True):
             ret, frame = cap.read()
