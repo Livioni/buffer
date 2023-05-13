@@ -1,0 +1,3 @@
+[submodule "containers/yolov8-fastapi"]
+	path = containers/yolov8-fastapi
+	url = https://github.com/Livioni/yolov8-fastapi.git

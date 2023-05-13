@@ -1,7 +1,17 @@
 import numpy as np
 import cv2,os
 from scipy.stats import kstest
-
+import yaml
+ 
+def read_yaml_all(yaml_path):
+    try:
+        # 打开文件
+        with open(yaml_path,"r",encoding="utf-8") as f:
+            data=yaml.load(f,Loader=yaml.FullLoader)
+            return data
+    except:
+        return None
+    
 class Box: 
     def __init__(self,x,y,w,h) -> None:
         self.top_left = (x,y)
@@ -109,39 +119,51 @@ def bin_list_resize(bins : list):
     return new_bin_list
 
 if __name__ == "__main__":
-    videos_path = '/Users/livion/Documents/test_videos/Panda/4k'
-    videos_list = os.listdir(videos_path)
-    for video in videos_list:
-        if video == '.DS_Store':
-            continue
-        prefix = video[0:2]
-        video_path = os.path.join(videos_path,video)
-        cap = cv2.VideoCapture(video_path)
+    configuration_path = '/Users/livion/Documents/GitHub/Sources/buffer/utils/background/configuration.yaml'
+    configration = read_yaml_all(configuration_path)
+    videos_list = []
+    for num,value in configration.items():
+        cap = cv2.VideoCapture(value['path'])
         fgbg = cv2.createBackgroundSubtractorMOG2()
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(3,3))
-        save_path = '/Users/livion/Documents/test_videos/partitionsPY'
+        ##########configuration##########
+        bin_lay_out = tuple((int(value['lay_out'][0]),int(value['lay_out'][2])))
+        threshold = value['threshold']
+        save_path = value['save_path']
+        partitions_save_path = value['partitions_save_path']
+        prefix = value['prefix']
+        #############filter##############
+        hand_mask = np.zeros((value['y_data'][2], value['x_data'][2]), dtype=np.uint8)
+        x_data = np.array(value['x_data'])
+        y_data = np.array(value['y_data'])
+        pts = np.vstack((x_data, y_data)).astype(np.int32).T
+        cv2.fillPoly(hand_mask, [pts], (255), 8, 0)
+        if not os.path.exists(save_path):
+            os.mkdir(save_path)
         index = 1
+        ################run##############
         while(True):
             ret, frame = cap.read()
+            if ret == False:
+                break
+            frame = cv2.bitwise_and(frame, frame, mask=hand_mask)
             fgmask = fgbg.apply(frame)
             if index <= 100:
                 index += 1
                 continue
-            if ret == False:
-                break
             fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, kernel)
             contours, hierarchy = cv2.findContours(fgmask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
             mask = np.zeros_like(frame)
-            bin_list = bin_list_create(canvas_size=(2160,3840),lay_out=(2,2))
-            #draw bin on the frame
-            for bin in bin_list:
-                cv2.rectangle(frame,bin.top_left,bin.bottom_right,(0,0,255),2)
+            bin_list = bin_list_create(canvas_size=(2160,3840),lay_out=bin_lay_out)
+            # draw bin on the frame
+            # for bin in bin_list:
+                # cv2.rectangle(frame,bin.top_left,bin.bottom_right,(0,0,255),2)
             for con in contours:
                 perimeter = cv2.arcLength(con,True)
-                if perimeter > 100:
+                if perimeter > threshold:
                     #找到一个直矩形（不会旋转）
                     x,y,w,h = cv2.boundingRect(con)
-                    cv2.rectangle(frame,(x,y),(x+w,y+h),(207,33,20),2)
+                    # cv2.rectangle(frame,(x,y),(x+w,y+h),(207,33,20),2) 
                     item = Box(x,y,w,h)
                     result = belongs_to_which_bin(item, bin_list)
                     if result != False:
@@ -149,12 +171,11 @@ if __name__ == "__main__":
                     else:
                         ares = overlap_ares(item, bin_list)
                         bin_list[np.where(ares == np.max(ares))[0][0]].insert(item)
-                        # bin_list[np.where(ares == np.max(ares))[0][0]].resize_margin()
 
             new_bin_list = bin_list_resize(bin_list)
             for bin in new_bin_list:
                 mask[bin.top_left[1]:bin.bottom_right[1],bin.top_left[0]:bin.bottom_right[0]] = frame[bin.top_left[1]:bin.bottom_right[1],bin.top_left[0]:bin.bottom_right[0]]
-                cv2.rectangle(frame,bin.top_left,bin.bottom_right,(0,255,0),3)
+                # cv2.rectangle(frame,bin.top_left,bin.bottom_right,(0,255,0),3)
             print("frame " + str(index) + " done")
             if index < 10:
                 save_name = 'SEQ_'+ prefix + '_00' + str(index)  + '.jpg'
@@ -165,11 +186,11 @@ if __name__ == "__main__":
                 path_name = save_path + '/' + save_name
                 # cv2.imwrite(path_name,mask)
                 print('save image ' + save_name)
-                # for id,bin_area in enumerate(new_bin_list):
-                #     cv2.imwrite(save_path + '/' + str(index) + '_' + str(id) + '.jpg', mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]])
+                for id,bin_area in enumerate(new_bin_list):
+                    cv2.imwrite(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg', mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]])
 
-            cv2.imshow('mask',mask)
-            cv2.imshow('frame',frame)
+            # cv2.imshow('mask',mask)
+            # cv2.imshow('frame',frame)
             index += 1
             k = cv2.waitKey(150) & 0xff
             if k == 27:
