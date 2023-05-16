@@ -1,9 +1,10 @@
-import requests,io,json
+import requests,io,json,time
 import numpy as np
 
 functions = {
     # 'keypoint' : 'http://10.1.81.24:32283',
     'keypoint' : 'http://10.1.81.24:5000',
+    'yolo' : 'http://10.1.81.183:8001/'
 }
 
 def invoke_keypoint(np_data: np.ndarray):
@@ -25,4 +26,18 @@ def invoke_keypoint(np_data: np.ndarray):
     headers = {'Content-Type': 'application/json'}
     response = requests.post(endpoint_url, headers=headers, data=payload_str,timeout=30)
     return response
+
+def invoke_yolo(np_data: np.ndarray):
+    endpoint_url = functions['yolo']
+    type_rq = 'batch_inference/'
+    shape = np_data.shape
+    data = {
+    "data": np_data.tolist(),
+    "shape": shape
+    }   
+    start = time.time()
+    response = requests.post(endpoint_url+type_rq, json=data)
+    end = time.time()
+    print("Time taken: ", end-start)
+    return response.json()
 
