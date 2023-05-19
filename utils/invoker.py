@@ -1,4 +1,4 @@
-import requests,io,json,time,cv2,torch
+import requests,json,time,cv2,torch
 import numpy as np
 from PIL import Image
 from io import BytesIO
@@ -58,7 +58,6 @@ def invoke_yolo_single(image_path: str):
 def invoke_yolo_batch_v1(np_data : np.ndarray):
     endpoint_url = functions['yolo']
     type_rq = 'uploadfiles/'
-    shape = np_data.shape
     files = []
     for index, img in enumerate(np_data):
         ret, img_encode = cv2.imencode('.jpg', img)
