@@ -1,6 +1,8 @@
-import cv2,os,json,time
+import cv2,os,json,time,sys
+from invoker import invoke_yolo_batch_v1
+sys.path.append('/Users/livion/Documents/GitHub/Sources/buffer')
 from buffer import Image, Queue
-from utils.invoker import invoke_yolo,invoke_yolo_batch_v1
+
 
 if __name__ == "__main__":
     # 创建一个2000x2000的画布，图片容量100

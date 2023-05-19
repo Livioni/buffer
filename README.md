@@ -9,3 +9,7 @@
 Determine the SLO of each frame.
 
 ## usage
+
+1. Deploy the Yolov8 Docker function by [readme](containers/yolov8-fastapi/README.md).
+2. Modify the settings in *utils/background/configuration.yaml*
+3. Run utils/background/partitions.py
