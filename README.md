@@ -4,6 +4,8 @@
 
 **server --> buffer  --> bin packing --> invoke function**
 
-## usage
+2023.5.16
 
-python server.py
+Determine the SLO of each frame.
+
+## usage

@@ -1,8 +1,12 @@
 import numpy as np
-import cv2,os
+import cv2,os,time
 from scipy.stats import kstest
-import yaml
- 
+import yaml,sys
+sys.path.append('/Users/livion/Documents/GitHub/Sources/buffer')
+from buffer import Table, Image
+network_bandwidth = 1000 #kbps
+
+
 def read_yaml_all(yaml_path):
     try:
         # 打开文件
@@ -122,6 +126,7 @@ if __name__ == "__main__":
     configuration_path = '/Users/livion/Documents/GitHub/Sources/buffer/utils/background/configuration.yaml'
     configration = read_yaml_all(configuration_path)
     videos_list = []
+    table = Table(1017,1017,0.15)
     for num,value in configration.items():
         cap = cv2.VideoCapture(value['path'])
         fgbg = cv2.createBackgroundSubtractorMOG2()
@@ -186,9 +191,17 @@ if __name__ == "__main__":
                 path_name = save_path + '/' + save_name
                 # cv2.imwrite(path_name,mask)
                 print('save image ' + save_name)
+                if not os.path.exists(partitions_save_path):
+                    os.mkdir(partitions_save_path)
                 for id,bin_area in enumerate(new_bin_list):
-                    cv2.imwrite(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg', mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]])
-
+                    # cv2.imwrite(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg', mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]])
+                    mat_format = mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]]
+                    cv2.imwrite('/Users/livion/Documents/GitHub/Sources/buffer/test/images/temp.jpg',mat_format)
+                    file_size = os.path.getsize('/Users/livion/Documents/GitHub/Sources/buffer/test/images/temp.jpg')
+                    delay_time = file_size / (network_bandwidth * 1000)
+                    image = Image(mat_format,time.time(),1)
+                    time.sleep(delay_time)
+                    table.add(image)
             # cv2.imshow('mask',mask)
             # cv2.imshow('frame',frame)
             index += 1

@@ -1,17 +1,37 @@
-import cv2
+import cv2,time,json,logging,threading
 import numpy as np
 import matplotlib.pyplot as plt
 from utils.binpack import BinPack
 import utils.greedypacker as greedypacker
+from utils.invoker import invoke_yolo_batch_v1
+
+# 设置 logging 模块的配置
+logging.basicConfig(level=logging.INFO)
+lock = threading.Lock()
 
 class Image:
-    def __init__(self, image : cv2.Mat) -> None:
+    '''
+    The unit of image partition, which includes 
+    1. image: the image itself, 
+    2. created_time: the created time and, 
+    3. SLO: the SLO (s)
+    '''
+    def __init__(self, image : cv2.Mat, created_time : float, SLO : float = 0.4) -> None:
         self.image = image
         self.width = image.shape[1]
         self.height = image.shape[0]
         self.shape = (self.width, self.height)
+        self.created_time = created_time
+        self.SLO = SLO
 
 class Queue: #wait to be packing
+    '''
+    The queue of images, which is the input of the buffer. We bin pack the images and POST them in a batch to the server.
+    1. size: the size of the queue
+    2. queue: list of Image
+    3. index: the number of Image
+    4. height, width: size of canvas
+    '''
     def __init__(self, size, height, width) -> None:
         self.size = size
         self.height = height
@@ -38,9 +58,9 @@ class Queue: #wait to be packing
 
     def drop(self, index):
         self.queue.pop(index)
+        self.index -= 1
 
-    def calculate_efficiency(self, result : np.ndarray) -> float:
-
+    def __calculate_efficiency(self, result : np.ndarray) -> float:
         efficiency_pool = []
         for i in range(len(result)-1):
             efficiency_pool.append(result[i]['efficiency'])
@@ -122,6 +142,106 @@ class Queue: #wait to be packing
             plt.show()
         return
         
+
+class Table:
+    '''
+    A look up table recording the SLO and DDL of each Image
+    1. slack_time : the time the batch must be posted.
+    2. create_time: the earliest file's create_time
+    '''
+    def __init__(self, queue_height : int = 1000, queue_width : int = 1000, Qos_per_batch : float = 0.28) -> None:
+        self.canvas = Queue(size=100, height=queue_height, width=queue_width)
+        self.table = []
+        self.Qos_per_batch = Qos_per_batch
+        self.slack_time = None
+        self.create_time = None
+        self.DDL = None
+        self.timer = None
+        self.current_result = None
+        self.remaining_time = None
+
+    def add(self, image : Image):
+        if self.timer is not None:
+            self.timer.cancel()
+        self.table.append(image)
+        if self.create_time is None:
+            self.create_time = image.created_time
+        else:
+            self.create_time = min(self.create_time,image.created_time)
+        self.DDL = self.create_time + image.SLO
+        self.slack_time = self.__calculate_slack_time(image)
+        self.remaining_time = self.slack_time - time.time()
+        if self.remaining_time > 0:
+            self.timer = threading.Timer(self.remaining_time, self.__trigger)
+            self.timer.start()
+        else:
+            t = threading.Thread(target=self.__trigger)
+            t.start()
+        return 
+
+    def __calculate_slack_time(self,image : Image):
+        estimate_QoS = self.__estimate_Qos(image)
+        return self.DDL - estimate_QoS
+
+    def __estimate_Qos(self, image : Image):
+        self.canvas.add(image)
+        self.current_result = self.canvas.greedy_packer_solve(visualize=False)
+        self.estimate_QoS = len(self.current_result) * self.Qos_per_batch
+        return self.estimate_QoS
+
+    def clean_up(self):
+        self.canvas.clear()
+        self.table = []
+        self.slack_time = None
+        self.create_time = None
+        self.DDL = None
+        self.timer = None
+        self.current_result = None
+        self.remaining_time = None
+        return 
+    
+    def record_first(self):
+        current_result = self.current_result
+        ddl = self.DDL
+        table = self.table
+        efficiency = self.canvas.efficiency
+        remaining_time = self.remaining_time
+        self.clean_up()
+        return current_result, ddl, table, efficiency,remaining_time
+    
+    def __trigger(self):
+        current_result, ddl, table, efficiency, remaining_time = self.record_first()
+        start_time = time.time()
+        response,time_taken = invoke_yolo_batch_v1(current_result)
+        finish_time = time.time()
+        self.__logs(finish_time,time_taken,current_result,ddl,table,efficiency,remaining_time,start_time)
+        return
+
+    def __logs(self,finish_time : float, time_taken : float, current_result : np.ndarray, ddl : float, table : list, efficiency : float, remaining_time : float, start_time : float):
+        logging.info("The DDL of this canvas: {}, The function is executed at {} ,{} ahead".format(ddl,start_time,remaining_time))
+        logging.info("Canvas Batch Size: {}, Image number: {}, Canvas Avg. Efficiency: {}, Qos. {}".format(len(current_result), len(table), efficiency,time_taken))
+        logging.info("The finish time is %f",finish_time)
+        if finish_time >= ddl:
+            logging.warning("This canvas has violated the SLO!")
+            logging.warning("Overtime:%f",finish_time-ddl)
+        else:
+            logging.info("Remaining time: %f",ddl-finish_time)
+        return
+
+
+
+
+
+
+
+
+
+
+        
+
+
+    
+
 
 
 

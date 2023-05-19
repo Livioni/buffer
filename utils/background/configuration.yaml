@@ -1,90 +1,90 @@
 1:
-  lay_out: 2,2
+  lay_out: 4,4
   threshold: 100
   path : /Users/livion/Documents/Panda/4k/01_University_Canteen.mp4
   save_path: /Users/livion/Documents/test_videos/scene_01_part
-  partitions_save_path : /Users/livion/Documents/test_videos/partitions_01
+  partitions_save_path : /Users/livion/Documents/GitHub/Sources/buffer/test/images
   prefix : '01'
   x_data : [0,3840,3840,0]
   y_data : [660, 660, 2160, 2160]
-2:
-  lay_out: 2,2
-  threshold: 100
-  path : /Users/livion/Documents/Panda/4k/02_OCT_Habour.mp4
-  save_path: /Users/livion/Documents/test_videos/scene_02_part
-  partitions_save_path : /Users/livion/Documents/test_videos/partitions_02
-  prefix : '02'
-  x_data : [0,3840,3840,0]
-  y_data : [0, 0, 2160,2160]
-3:
-  lay_out: 2,2
-  threshold: 100
-  path : /Users/livion/Documents/Panda/4k/03_Xili_Crossroad.mp4
-  save_path: /Users/livion/Documents/test_videos/scene_03_part
-  partitions_save_path : /Users/livion/Documents/test_videos/partitions_03
-  prefix : '03'  
-  x_data : [0,3840,3840,0]
-  y_data : [0, 0, 2160,2160]
-4:
-  lay_out: 2,2
-  threshold: 100
-  path: /Users/livion/Documents/Panda/4k/04_Primary_School.mp4
-  save_path: /Users/livion/Documents/test_videos/scene_04_part
-  partitions_save_path : /Users/livion/Documents/test_videos/partitions_04
-  prefix : '04'
-  x_data : [0,3840,3840,0]
-  y_data : [0, 0, 2880,2880]
-5:
-  lay_out: 2,2
-  threshold: 100
-  path : /Users/livion/Documents/Panda/4k/05_Basketball_Court.mp4
-  save_path: /Users/livion/Documents/test_videos/scene_05_part
-  partitions_save_path : /Users/livion/Documents/test_videos/partitions_05
-  prefix : '05'
-  x_data : [0,3840,3840,0]
-  y_data : [0, 0, 2880,2880]
-6:
-  lay_out: 2,2
-  threshold: 100
-  path : /Users/livion/Documents/Panda/4k/06_Xinzhongguan.mp4
-  save_path: /Users/livion/Documents/test_videos/scene_06_part
-  partitions_save_path : /Users/livion/Documents/test_videos/partitions_06
-  prefix : '06'
-  x_data : [0,3840,3840,0]
-  y_data : [0, 0, 2160,2160]
-7:
-  lay_out: 2,2
-  threshold: 100
-  path : /Users/livion/Documents/Panda/4k/07_University_Campus.mp4
-  save_path: /Users/livion/Documents/test_videos/scene_07_part
-  partitions_save_path : /Users/livion/Documents/test_videos/partitions_07
-  prefix : '07'
-  x_data : [0,3840,3840,0]
-  y_data : [0, 0, 2160,2160]
-8:
-  lay_out: 2,2
-  threshold: 100
-  path : /Users/livion/Documents/Panda/4k/08_Xili_Street_1.mp4
-  save_path: /Users/livion/Documents/test_videos/scene_08_part
-  partitions_save_path : /Users/livion/Documents/test_videos/partitions_08
-  prefix : '08'
-  x_data : [0,3840,3840,0]
-  y_data : [0, 0, 2160,2160]
-9:
-  lay_out: 2,2
-  threshold: 100
-  path : /Users/livion/Documents/Panda/4k/09_Xili_Street_2.mp4
-  save_path: /Users/livion/Documents/test_videos/scene_09_part
-  partitions_save_path : /Users/livion/Documents/test_videos/partitions_09
-  prefix : '09'
-  x_data : [0,3840,3840,0]
-  y_data : [0, 0, 2160,2160]
-10:
-  lay_out: 4,4
-  threshold: 100
-  path : /Users/livion/Documents/Panda/4k/10_Huaqiangbei.mp4
-  save_path: /Users/livion/Documents/test_videos/scene_10_part
-  partitions_save_path : /Users/livion/Documents/test_videos/partitions_10
-  prefix : '10'
-  x_data : [0,3840,3840,0]
-  y_data : [0, 0, 2160,2160]
+# 2:
+#   lay_out: 4,4
+#   threshold: 100
+#   path : /Users/livion/Documents/Panda/4k/02_OCT_Habour.mp4
+#   save_path: /Users/livion/Documents/test_videos/scene_02_part
+#   partitions_save_path : /Users/livion/Documents/test_videos/partitions_02
+#   prefix : '02'
+#   x_data : [0,3840,3840,0]
+#   y_data : [0, 0, 2160,2160]
+# 3:
+#   lay_out: 4,4
+#   threshold: 100
+#   path : /Users/livion/Documents/Panda/4k/03_Xili_Crossroad.mp4
+#   save_path: /Users/livion/Documents/test_videos/scene_03_part
+#   partitions_save_path : /Users/livion/Documents/test_videos/partitions_03
+#   prefix : '03'  
+#   x_data : [0,3840,3840,0]
+#   y_data : [0, 0, 2160,2160]
+# 4:
+#   lay_out: 4,4
+#   threshold: 100
+#   path: /Users/livion/Documents/Panda/4k/04_Primary_School.mp4
+#   save_path: /Users/livion/Documents/test_videos/scene_04_part
+#   partitions_save_path : /Users/livion/Documents/test_videos/partitions_04
+#   prefix : '04'
+#   x_data : [0,3840,3840,0]
+#   y_data : [0, 0, 2880,2880]
+# 5:
+#   lay_out: 4,4
+#   threshold: 100
+#   path : /Users/livion/Documents/Panda/4k/05_Basketball_Court.mp4
+#   save_path: /Users/livion/Documents/test_videos/scene_05_part
+#   partitions_save_path : /Users/livion/Documents/test_videos/partitions_05
+#   prefix : '05'
+#   x_data : [0,3840,3840,0]
+#   y_data : [0, 0, 2880,2880]
+# 6:
+#   lay_out: 4,4
+#   threshold: 100
+#   path : /Users/livion/Documents/Panda/4k/06_Xinzhongguan.mp4
+#   save_path: /Users/livion/Documents/test_videos/scene_06_part
+#   partitions_save_path : /Users/livion/Documents/test_videos/partitions_06
+#   prefix : '06'
+#   x_data : [0,3840,3840,0]
+#   y_data : [0, 0, 2160,2160]
+# 7:
+#   lay_out: 4,4
+#   threshold: 100
+#   path : /Users/livion/Documents/Panda/4k/07_University_Campus.mp4
+#   save_path: /Users/livion/Documents/test_videos/scene_07_part
+#   partitions_save_path : /Users/livion/Documents/test_videos/partitions_07
+#   prefix : '07'
+#   x_data : [0,3840,3840,0]
+#   y_data : [0, 0, 2160,2160]
+# 8:
+#   lay_out: 4,4
+#   threshold: 100
+#   path : /Users/livion/Documents/Panda/4k/08_Xili_Street_1.mp4
+#   save_path: /Users/livion/Documents/test_videos/scene_08_part
+#   partitions_save_path : /Users/livion/Documents/test_videos/partitions_08
+#   prefix : '08'
+#   x_data : [0,3840,3840,0]
+#   y_data : [0, 0, 2160,2160]
+# 9:
+#   lay_out: 4,4
+#   threshold: 100
+#   path : /Users/livion/Documents/Panda/4k/09_Xili_Street_2.mp4
+#   save_path: /Users/livion/Documents/test_videos/scene_09_part
+#   partitions_save_path : /Users/livion/Documents/test_videos/partitions_09
+#   prefix : '09'
+#   x_data : [0,3840,3840,0]
+#   y_data : [0, 0, 2160,2160]
+# 10:
+#   lay_out: 4,4
+#   threshold: 100
+#   path : /Users/livion/Documents/Panda/4k/10_Huaqiangbei.mp4
+#   save_path: /Users/livion/Documents/test_videos/scene_10_part
+#   partitions_save_path : /Users/livion/Documents/test_videos/partitions_10
+#   prefix : '10'
+#   x_data : [0,3840,3840,0]
+#   y_data : [0, 0, 2160,2160]

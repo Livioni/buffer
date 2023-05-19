@@ -1,5 +1,7 @@
-import requests,io,json,time
+import requests,io,json,time,cv2,torch
 import numpy as np
+from PIL import Image
+from io import BytesIO
 
 functions = {
     # 'keypoint' : 'http://10.1.81.24:32283',
@@ -41,3 +43,45 @@ def invoke_yolo(np_data: np.ndarray):
     print("Time taken: ", end-start)
     return response.json()
 
+
+def invoke_yolo_single(image_path: str):
+    endpoint_url = functions['yolo']
+    type_rq = 'img_object_detection_to_img/'
+    files = {'file': open(image_path, 'rb')}
+    start = time.time()
+    response = requests.post(endpoint_url+type_rq, files=files)
+    end = time.time()
+    print("Time taken: ", end-start)
+    img = Image.open(BytesIO(response.content)) 
+    return 
+
+def invoke_yolo_batch_v1(np_data : np.ndarray):
+    endpoint_url = functions['yolo']
+    type_rq = 'uploadfiles/'
+    shape = np_data.shape
+    files = []
+    for index, img in enumerate(np_data):
+        ret, img_encode = cv2.imencode('.jpg', img)
+        f4 = BytesIO(img_encode ) # 这样可以直接转换，无需再转 img_encode.tostring()
+        files.append(('files', ('image'+str(index)+'.jpg', f4.getvalue(), 'image/jpeg')))
+    start = time.time()
+    response = requests.post(endpoint_url+type_rq, files=files)
+    end = time.time()
+    time_taken = end-start
+    return response.json(),time_taken
+
+def invoke_yolo_batch(images_list : list):
+    endpoint_url = functions['yolo']
+    type_rq = 'uploadfiles/'
+    files = [('files', (open(file, 'rb'))) for file in images_list]
+    start = time.time()
+    response = requests.post(endpoint_url+type_rq, files=files)
+    end = time.time()
+    print("Time taken: ", end-start)
+    return response.json()
+
+if __name__ == "__main__":
+    batch = torch.rand(5,2000,2000,3)
+    batch = batch.numpy()
+    response = invoke_yolo_batch_v1(batch)
+    print(response)
