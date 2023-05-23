@@ -6,7 +6,8 @@ from io import BytesIO
 functions = {
     # 'keypoint' : 'http://10.1.81.24:32283',
     'keypoint' : 'http://10.1.81.24:5000',
-    'yolo' : 'http://10.1.81.183:8001/'
+    'yolo' : 'http://10.1.81.183:8001/',
+    'table' : 'http://127.0.0.1:8002/'
 }
 
 def invoke_keypoint(np_data: np.ndarray):
@@ -43,7 +44,6 @@ def invoke_yolo(np_data: np.ndarray):
     print("Time taken: ", end-start)
     return response.json()
 
-
 def invoke_yolo_single(image_path: str):
     endpoint_url = functions['yolo']
     type_rq = 'img_object_detection_to_img/'
@@ -77,6 +77,21 @@ def invoke_yolo_batch(images_list : list):
     response = requests.post(endpoint_url+type_rq, files=files)
     end = time.time()
     print("Time taken: ", end-start)
+    return response.json()
+
+def push_to_table(np_data: np.ndarray, delay_time :float, SLO: float=1.0):
+    endpoint_url = functions['table']
+    type_rq = 'uploadimage/'
+    ret, img_encode = cv2.imencode('.jpg', np_data)
+    f4 = BytesIO(img_encode) 
+    created_time = time.time()
+    time.sleep(delay_time)
+    multipart_form_data = {
+        'file': (f4.getvalue()),
+        'created_time': (None, str(created_time)),
+        'slo': (None, str(SLO)),
+    }
+    response = requests.post(endpoint_url+type_rq, files=multipart_form_data)
     return response.json()
 
 if __name__ == "__main__":

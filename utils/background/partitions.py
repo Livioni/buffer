@@ -1,10 +1,12 @@
 import numpy as np
-import cv2,os,time
+import cv2,os,time,threading
 from scipy.stats import kstest
-import yaml,sys
+import yaml,sys,requests
 sys.path.append('/Users/livion/Documents/GitHub/Sources/buffer')
-from buffer import Table, Image
-network_bandwidth = 1000 #kbps
+from utils.invoker import push_to_table
+
+switch = False
+network_bandwidth = 500
 
 def read_yaml_all(yaml_path):
     try:
@@ -120,14 +122,11 @@ def bin_list_resize(bins : list):
         else:
             new_bin_list.append(bin)
     return new_bin_list
-
+    
 if __name__ == "__main__":
     configuration_path = '/Users/livion/Documents/GitHub/Sources/buffer/utils/background/configuration.yaml'
     configration = read_yaml_all(configuration_path)
     videos_list = []
-    table1 = Table(1017,1017,0.155)
-    table2 = Table(1017,1017,0.155)
-    switch = False
     for num,value in configration.items():
         cap = cv2.VideoCapture(value['path'])
         fgbg = cv2.createBackgroundSubtractorMOG2()
@@ -199,23 +198,16 @@ if __name__ == "__main__":
                     mat_format = mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]]
                     file_size = os.path.getsize(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg')
                     delay_time = file_size / (network_bandwidth * 1000)
-                    image = Image(mat_format,time.time(),1)
-                    time.sleep(delay_time)
-                    if switch == False:
-                        if table1.push(image) == False:
-                            table2.push(image)
-                            switch = True
-                    else:
-                        if table2.push(image) == False:
-                            table1.push(image)
-                            switch = False
+                    timer = threading.Thread(target=push_to_table,args=(mat_format,delay_time,1))
+                    timer.start()
             # cv2.imshow('mask',mask)
             # cv2.imshow('frame',frame)
             index += 1
             k = cv2.waitKey(150) & 0xff
             if k == 27:
                 break
-        table1.show_info()
-        table2.show_info()
+         
         cap.release()
         cv2.destroyAllWindows()
+        time.sleep(20)
+        requests.get('http://localhost:8002/gettable/')

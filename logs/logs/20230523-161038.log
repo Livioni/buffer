@@ -1,0 +1,849 @@
+2023-05-23 16:11:33,400 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:33,608 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:33,744 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829493.900457, The function is executed at 1684829493.401233 ,-0.1002 ahead
+2023-05-23 16:11:33,744 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 13, Canvas Avg. Efficiency: 0.5110, Qos. 0.3321
+2023-05-23 16:11:33,744 - buffer.py[line:329] - INFO: The finish time is 1684829493.744343
+2023-05-23 16:11:33,744 - buffer.py[line:335] - INFO: Remaining time: 0.1561
+2023-05-23 16:11:33,840 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:34,012 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829494.126922, The function is executed at 1684829493.609056 ,-0.0818 ahead
+2023-05-23 16:11:34,012 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.5702, Qos. 0.3925
+2023-05-23 16:11:34,012 - buffer.py[line:329] - INFO: The finish time is 1684829494.012308
+2023-05-23 16:11:34,012 - buffer.py[line:335] - INFO: Remaining time: 0.1146
+2023-05-23 16:11:34,020 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:34,267 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829494.3396559, The function is executed at 1684829493.840929 ,-0.1009 ahead
+2023-05-23 16:11:34,267 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 7, Canvas Avg. Efficiency: 0.4835, Qos. 0.4151
+2023-05-23 16:11:34,268 - buffer.py[line:329] - INFO: The finish time is 1684829494.267747
+2023-05-23 16:11:34,268 - buffer.py[line:335] - INFO: Remaining time: 0.0719
+2023-05-23 16:11:34,300 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:34,510 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:34,520 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829494.5475042, The function is executed at 1684829494.02092 ,-0.0729 ahead
+2023-05-23 16:11:34,520 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 7, Canvas Avg. Efficiency: 0.5544, Qos. 0.4876
+2023-05-23 16:11:34,520 - buffer.py[line:329] - INFO: The finish time is 1684829494.520435
+2023-05-23 16:11:34,520 - buffer.py[line:335] - INFO: Remaining time: 0.0271
+2023-05-23 16:11:34,658 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:34,798 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829494.752724, The function is executed at 1684829494.300999 ,-0.1479 ahead
+2023-05-23 16:11:34,798 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.6324, Qos. 0.4852
+2023-05-23 16:11:34,798 - buffer.py[line:329] - INFO: The finish time is 1684829494.798158
+2023-05-23 16:11:34,798 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:34,798 - buffer.py[line:332] - WARNING: Overtime:0.0454
+2023-05-23 16:11:34,820 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:34,948 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:35,068 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829494.963532, The function is executed at 1684829494.511012 ,-0.1471 ahead
+2023-05-23 16:11:35,068 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 6, Canvas Avg. Efficiency: 0.5552, Qos. 0.5443
+2023-05-23 16:11:35,068 - buffer.py[line:329] - INFO: The finish time is 1684829495.068010
+2023-05-23 16:11:35,068 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:35,068 - buffer.py[line:332] - WARNING: Overtime:0.1045
+2023-05-23 16:11:35,100 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:35,270 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829495.1771672, The function is executed at 1684829494.6583738 ,-0.0809 ahead
+2023-05-23 16:11:35,270 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 5, Canvas Avg. Efficiency: 0.5577, Qos. 0.6014
+2023-05-23 16:11:35,270 - buffer.py[line:329] - INFO: The finish time is 1684829495.270205
+2023-05-23 16:11:35,270 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:35,270 - buffer.py[line:332] - WARNING: Overtime:0.0930
+2023-05-23 16:11:35,400 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:35,601 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829495.388468, The function is executed at 1684829494.948683 ,-0.1599 ahead
+2023-05-23 16:11:35,601 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 6, Canvas Avg. Efficiency: 0.6019, Qos. 0.6423
+2023-05-23 16:11:35,601 - buffer.py[line:329] - INFO: The finish time is 1684829495.601701
+2023-05-23 16:11:35,601 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:35,601 - buffer.py[line:332] - WARNING: Overtime:0.2132
+2023-05-23 16:11:36,014 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829495.3829088, The function is executed at 1684829494.8211331 ,-0.0378 ahead
+2023-05-23 16:11:36,015 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829495.609545, The function is executed at 1684829495.100588 ,-0.0907 ahead
+2023-05-23 16:11:36,015 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 5, Canvas Avg. Efficiency: 0.6212, Qos. 1.1836
+2023-05-23 16:11:36,015 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 5, Canvas Avg. Efficiency: 0.6479, Qos. 0.9043
+2023-05-23 16:11:36,015 - buffer.py[line:329] - INFO: The finish time is 1684829496.014360
+2023-05-23 16:11:36,015 - buffer.py[line:329] - INFO: The finish time is 1684829496.015105
+2023-05-23 16:11:36,015 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:36,015 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:36,015 - buffer.py[line:332] - WARNING: Overtime:0.6315
+2023-05-23 16:11:36,016 - buffer.py[line:332] - WARNING: Overtime:0.4056
+2023-05-23 16:11:36,112 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:36,320 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829495.825648, The function is executed at 1684829495.230919 ,0.0195 ahead
+2023-05-23 16:11:36,320 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 7, Canvas Avg. Efficiency: 0.6971, Qos. 1.0747
+2023-05-23 16:11:36,320 - buffer.py[line:329] - INFO: The finish time is 1684829496.320702
+2023-05-23 16:11:36,320 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:36,321 - buffer.py[line:332] - WARNING: Overtime:0.4951
+2023-05-23 16:11:36,615 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829496.035069, The function is executed at 1684829495.400355 ,-0.1650 ahead
+2023-05-23 16:11:36,616 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 8, Canvas Avg. Efficiency: 0.5517, Qos. 1.2011
+2023-05-23 16:11:36,616 - buffer.py[line:329] - INFO: The finish time is 1684829496.615881
+2023-05-23 16:11:36,616 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:36,616 - buffer.py[line:332] - WARNING: Overtime:0.5808
+2023-05-23 16:11:36,932 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829496.4539242, The function is executed at 1684829495.863876 ,0.0257 ahead
+2023-05-23 16:11:36,932 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.5470, Qos. 1.0538
+2023-05-23 16:11:36,932 - buffer.py[line:329] - INFO: The finish time is 1684829496.932407
+2023-05-23 16:11:36,932 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:36,932 - buffer.py[line:332] - WARNING: Overtime:0.4785
+2023-05-23 16:11:37,251 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829496.240371, The function is executed at 1684829495.647146 ,0.0071 ahead
+2023-05-23 16:11:37,251 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 11, Canvas Avg. Efficiency: 0.7082, Qos. 1.5870
+2023-05-23 16:11:37,252 - buffer.py[line:329] - INFO: The finish time is 1684829497.251369
+2023-05-23 16:11:37,252 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:37,252 - buffer.py[line:332] - WARNING: Overtime:1.0110
+2023-05-23 16:11:37,366 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:37,771 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829496.881097, The function is executed at 1684829496.294579 ,0.0218 ahead
+2023-05-23 16:11:37,771 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829496.6712298, The function is executed at 1684829496.112957 ,-0.0414 ahead
+2023-05-23 16:11:37,771 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 10, Canvas Avg. Efficiency: 0.4938, Qos. 1.6485
+2023-05-23 16:11:37,771 - buffer.py[line:329] - INFO: The finish time is 1684829497.771227
+2023-05-23 16:11:37,771 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:37,771 - buffer.py[line:332] - WARNING: Overtime:1.1000
+2023-05-23 16:11:37,771 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.5403, Qos. 1.4605
+2023-05-23 16:11:37,773 - buffer.py[line:329] - INFO: The finish time is 1684829497.770987
+2023-05-23 16:11:37,773 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:37,773 - buffer.py[line:332] - WARNING: Overtime:0.8899
+2023-05-23 16:11:37,803 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:38,076 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829497.098987, The function is executed at 1684829496.502162 ,0.0333 ahead
+2023-05-23 16:11:38,076 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 10, Canvas Avg. Efficiency: 0.4847, Qos. 1.5593
+2023-05-23 16:11:38,076 - buffer.py[line:329] - INFO: The finish time is 1684829498.076337
+2023-05-23 16:11:38,076 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:38,076 - buffer.py[line:332] - WARNING: Overtime:0.9773
+2023-05-23 16:11:38,385 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829497.3122199, The function is executed at 1684829496.718156 ,0.0433 ahead
+2023-05-23 16:11:38,385 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 10, Canvas Avg. Efficiency: 0.4981, Qos. 1.6528
+2023-05-23 16:11:38,385 - buffer.py[line:329] - INFO: The finish time is 1684829498.384994
+2023-05-23 16:11:38,385 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:38,385 - buffer.py[line:332] - WARNING: Overtime:1.0728
+2023-05-23 16:11:38,697 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829497.525911, The function is executed at 1684829496.9312398 ,0.0486 ahead
+2023-05-23 16:11:38,698 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 11, Canvas Avg. Efficiency: 0.5663, Qos. 1.7525
+2023-05-23 16:11:38,698 - buffer.py[line:329] - INFO: The finish time is 1684829498.697932
+2023-05-23 16:11:38,698 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:38,698 - buffer.py[line:332] - WARNING: Overtime:1.1720
+2023-05-23 16:11:39,017 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829497.7309482, The function is executed at 1684829497.14131 ,0.0119 ahead
+2023-05-23 16:11:39,017 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.6160, Qos. 1.8618
+2023-05-23 16:11:39,017 - buffer.py[line:329] - INFO: The finish time is 1684829499.017745
+2023-05-23 16:11:39,017 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:39,018 - buffer.py[line:332] - WARNING: Overtime:1.2868
+2023-05-23 16:11:39,224 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:39,446 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:39,574 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:39,714 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:39,763 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829498.35996, The function is executed at 1684829497.803945 ,-0.0436 ahead
+2023-05-23 16:11:39,763 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829497.9419022, The function is executed at 1684829497.367201 ,-0.0249 ahead
+2023-05-23 16:11:39,763 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 9, Canvas Avg. Efficiency: 0.5163, Qos. 1.9500
+2023-05-23 16:11:39,764 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829498.1519942, The function is executed at 1684829497.558708 ,0.0221 ahead
+2023-05-23 16:11:39,764 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 7, Canvas Avg. Efficiency: 0.5714, Qos. 2.3865
+2023-05-23 16:11:39,764 - buffer.py[line:329] - INFO: The finish time is 1684829499.763599
+2023-05-23 16:11:39,764 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 8, Canvas Avg. Efficiency: 0.4113, Qos. 2.1887
+2023-05-23 16:11:39,764 - buffer.py[line:329] - INFO: The finish time is 1684829499.763900
+2023-05-23 16:11:39,764 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:39,764 - buffer.py[line:329] - INFO: The finish time is 1684829499.764057
+2023-05-23 16:11:39,764 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:39,764 - buffer.py[line:332] - WARNING: Overtime:1.4036
+2023-05-23 16:11:39,764 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:39,764 - buffer.py[line:332] - WARNING: Overtime:1.8220
+2023-05-23 16:11:39,766 - buffer.py[line:332] - WARNING: Overtime:1.6121
+2023-05-23 16:11:40,330 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:40,373 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829498.5754619, The function is executed at 1684829497.9846778 ,0.0544 ahead
+2023-05-23 16:11:40,373 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829498.783275, The function is executed at 1684829498.184882 ,0.0581 ahead
+2023-05-23 16:11:40,373 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 8, Canvas Avg. Efficiency: 0.5590, Qos. 2.1718
+2023-05-23 16:11:40,373 - buffer.py[line:329] - INFO: The finish time is 1684829500.373718
+2023-05-23 16:11:40,373 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:40,373 - buffer.py[line:332] - WARNING: Overtime:1.5904
+2023-05-23 16:11:40,373 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 8, Canvas Avg. Efficiency: 0.5711, Qos. 2.3743
+2023-05-23 16:11:40,375 - buffer.py[line:329] - INFO: The finish time is 1684829500.373507
+2023-05-23 16:11:40,376 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:40,376 - buffer.py[line:332] - WARNING: Overtime:1.7980
+2023-05-23 16:11:40,449 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:40,615 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:40,760 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:40,992 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829498.998267, The function is executed at 1684829498.403743 ,0.0579 ahead
+2023-05-23 16:11:40,992 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829499.212588, The function is executed at 1684829498.617858 ,0.0586 ahead
+2023-05-23 16:11:40,992 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.6312, Qos. 2.5724
+2023-05-23 16:11:40,992 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 8, Canvas Avg. Efficiency: 0.6865, Qos. 2.3598
+2023-05-23 16:11:40,992 - buffer.py[line:329] - INFO: The finish time is 1684829500.992448
+2023-05-23 16:11:40,992 - buffer.py[line:329] - INFO: The finish time is 1684829500.992648
+2023-05-23 16:11:40,992 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:40,992 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:40,992 - buffer.py[line:332] - WARNING: Overtime:1.9942
+2023-05-23 16:11:40,993 - buffer.py[line:332] - WARNING: Overtime:1.7801
+2023-05-23 16:11:41,309 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829499.418921, The function is executed at 1684829498.8254972 ,0.0412 ahead
+2023-05-23 16:11:41,309 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 7, Canvas Avg. Efficiency: 0.6415, Qos. 2.4649
+2023-05-23 16:11:41,309 - buffer.py[line:329] - INFO: The finish time is 1684829501.309144
+2023-05-23 16:11:41,309 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:41,309 - buffer.py[line:332] - WARNING: Overtime:1.8902
+2023-05-23 16:11:41,360 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:41,563 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:41,755 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:41,827 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829500.289998, The function is executed at 1684829499.7145011 ,-0.0242 ahead
+2023-05-23 16:11:41,827 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 4, Canvas Avg. Efficiency: 0.3844, Qos. 2.1033
+2023-05-23 16:11:41,827 - buffer.py[line:329] - INFO: The finish time is 1684829501.827117
+2023-05-23 16:11:41,827 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:41,827 - buffer.py[line:332] - WARNING: Overtime:1.5371
+2023-05-23 16:11:41,830 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829499.630629, The function is executed at 1684829499.0327868 ,0.0031 ahead
+2023-05-23 16:11:41,830 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 11, Canvas Avg. Efficiency: 0.8012, Qos. 2.7635
+2023-05-23 16:11:41,830 - buffer.py[line:329] - INFO: The finish time is 1684829501.830675
+2023-05-23 16:11:41,830 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:41,830 - buffer.py[line:332] - WARNING: Overtime:2.2000
+2023-05-23 16:11:41,931 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:42,570 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829500.079874, The function is executed at 1684829499.5745869 ,-0.0944 ahead
+2023-05-23 16:11:42,570 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829500.908743, The function is executed at 1684829500.330383 ,-0.0212 ahead
+2023-05-23 16:11:42,570 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 9, Canvas Avg. Efficiency: 0.5236, Qos. 2.9859
+2023-05-23 16:11:42,570 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829500.494082, The function is executed at 1684829499.8961642 ,0.0488 ahead
+2023-05-23 16:11:42,571 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.5363, Qos. 2.6591
+2023-05-23 16:11:42,571 - buffer.py[line:329] - INFO: The finish time is 1684829502.570492
+2023-05-23 16:11:42,571 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 10, Canvas Avg. Efficiency: 0.5708, Qos. 2.2301
+2023-05-23 16:11:42,571 - buffer.py[line:329] - INFO: The finish time is 1684829502.570939
+2023-05-23 16:11:42,571 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:42,571 - buffer.py[line:329] - INFO: The finish time is 1684829502.570710
+2023-05-23 16:11:42,571 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:42,571 - buffer.py[line:332] - WARNING: Overtime:2.4906
+2023-05-23 16:11:42,571 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:42,571 - buffer.py[line:332] - WARNING: Overtime:2.0769
+2023-05-23 16:11:42,573 - buffer.py[line:332] - WARNING: Overtime:1.6620
+2023-05-23 16:11:42,679 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:43,564 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:43,913 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829501.3503711, The function is executed at 1684829500.761138 ,-0.0104 ahead
+2023-05-23 16:11:43,914 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829501.133132, The function is executed at 1684829500.6159732 ,-0.0825 ahead
+2023-05-23 16:11:43,914 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829500.699723, The function is executed at 1684829500.110822 ,0.0025 ahead
+2023-05-23 16:11:43,914 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 6, Canvas Avg. Efficiency: 0.6774, Qos. 3.1419
+2023-05-23 16:11:43,915 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829499.8510652, The function is executed at 1684829499.224704 ,-0.1733 ahead
+2023-05-23 16:11:43,915 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.5774, Qos. 4.6753
+2023-05-23 16:11:43,915 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 4, Canvas Avg. Efficiency: 0.5869, Qos. 3.2883
+2023-05-23 16:11:43,915 - buffer.py[line:329] - INFO: The finish time is 1684829503.914193
+2023-05-23 16:11:43,915 - buffer.py[line:329] - INFO: The finish time is 1684829503.913740
+2023-05-23 16:11:43,915 - buffer.py[line:329] - INFO: The finish time is 1684829503.915011
+2023-05-23 16:11:43,915 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829500.065191, The function is executed at 1684829499.4465659 ,-0.1809 ahead
+2023-05-23 16:11:43,915 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:43,915 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 10, Canvas Avg. Efficiency: 0.6013, Qos. 3.7882
+2023-05-23 16:11:43,915 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:43,915 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:43,915 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 11, Canvas Avg. Efficiency: 0.5875, Qos. 4.4310
+2023-05-23 16:11:43,915 - buffer.py[line:332] - WARNING: Overtime:2.7811
+2023-05-23 16:11:43,915 - buffer.py[line:329] - INFO: The finish time is 1684829503.914446
+2023-05-23 16:11:43,915 - buffer.py[line:332] - WARNING: Overtime:2.5634
+2023-05-23 16:11:43,915 - buffer.py[line:332] - WARNING: Overtime:4.0639
+2023-05-23 16:11:43,915 - buffer.py[line:329] - INFO: The finish time is 1684829503.915099
+2023-05-23 16:11:43,917 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:43,923 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:43,924 - buffer.py[line:332] - WARNING: Overtime:3.2147
+2023-05-23 16:11:43,924 - buffer.py[line:332] - WARNING: Overtime:3.8499
+2023-05-23 16:11:44,056 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:44,220 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829501.5560489, The function is executed at 1684829500.962585 ,0.0386 ahead
+2023-05-23 16:11:44,220 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 6, Canvas Avg. Efficiency: 0.5871, Qos. 3.2425
+2023-05-23 16:11:44,220 - buffer.py[line:329] - INFO: The finish time is 1684829504.220340
+2023-05-23 16:11:44,220 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:44,220 - buffer.py[line:332] - WARNING: Overtime:2.6643
+2023-05-23 16:11:44,270 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:44,442 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829500.923667, The function is executed at 1684829500.449547 ,-0.1255 ahead
+2023-05-23 16:11:44,442 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 6, Canvas Avg. Efficiency: 0.6191, Qos. 3.9820
+2023-05-23 16:11:44,442 - buffer.py[line:329] - INFO: The finish time is 1684829504.442475
+2023-05-23 16:11:44,442 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:44,442 - buffer.py[line:332] - WARNING: Overtime:3.5188
+2023-05-23 16:11:44,489 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:44,701 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:44,758 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:44,762 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829501.768048, The function is executed at 1684829501.173527 ,0.0287 ahead
+2023-05-23 16:11:44,762 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 7, Canvas Avg. Efficiency: 0.6472, Qos. 3.5726
+2023-05-23 16:11:44,762 - buffer.py[line:329] - INFO: The finish time is 1684829504.762496
+2023-05-23 16:11:44,762 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:44,762 - buffer.py[line:332] - WARNING: Overtime:2.9944
+2023-05-23 16:11:44,916 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:45,079 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:45,145 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:45,380 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:45,518 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:45,877 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:45,960 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:46,004 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829502.199491, The function is executed at 1684829501.564227 ,-0.1644 ahead
+2023-05-23 16:11:46,005 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 10, Canvas Avg. Efficiency: 0.5477, Qos. 4.4241
+2023-05-23 16:11:46,005 - buffer.py[line:329] - INFO: The finish time is 1684829506.004883
+2023-05-23 16:11:46,006 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:46,006 - buffer.py[line:332] - WARNING: Overtime:3.8054
+2023-05-23 16:11:46,006 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829501.979389, The function is executed at 1684829501.3610072 ,-0.1813 ahead
+2023-05-23 16:11:46,006 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829502.6253922, The function is executed at 1684829501.931795 ,-0.1061 ahead
+2023-05-23 16:11:46,006 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829502.415661, The function is executed at 1684829501.755859 ,-0.1397 ahead
+2023-05-23 16:11:46,008 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.4979, Qos. 4.2352
+2023-05-23 16:11:46,008 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 8, Canvas Avg. Efficiency: 0.4273, Qos. 4.0603
+2023-05-23 16:11:46,009 - buffer.py[line:329] - INFO: The finish time is 1684829506.006577
+2023-05-23 16:11:46,008 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 7, Canvas Avg. Efficiency: 0.5085, Qos. 4.6309
+2023-05-23 16:11:46,009 - buffer.py[line:329] - INFO: The finish time is 1684829506.005988
+2023-05-23 16:11:46,009 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:46,009 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:46,009 - buffer.py[line:332] - WARNING: Overtime:3.5909
+2023-05-23 16:11:46,009 - buffer.py[line:332] - WARNING: Overtime:3.3806
+2023-05-23 16:11:46,009 - buffer.py[line:329] - INFO: The finish time is 1684829506.006672
+2023-05-23 16:11:46,013 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:46,014 - buffer.py[line:332] - WARNING: Overtime:4.0273
+2023-05-23 16:11:46,128 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:46,294 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:46,395 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:46,699 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:46,956 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:47,075 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829504.130997, The function is executed at 1684829503.564482 ,-0.0332 ahead
+2023-05-23 16:11:47,076 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 7, Canvas Avg. Efficiency: 0.5696, Qos. 3.5006
+2023-05-23 16:11:47,076 - buffer.py[line:329] - INFO: The finish time is 1684829507.075649
+2023-05-23 16:11:47,076 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829502.84658, The function is executed at 1684829502.2487621 ,0.0071 ahead
+2023-05-23 16:11:47,077 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:47,077 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829503.277897, The function is executed at 1684829502.6795578 ,-0.0012 ahead
+2023-05-23 16:11:47,077 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829503.060529, The function is executed at 1684829502.4798121 ,0.0202 ahead
+2023-05-23 16:11:47,077 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 11, Canvas Avg. Efficiency: 0.6711, Qos. 4.7997
+2023-05-23 16:11:47,078 - buffer.py[line:329] - INFO: The finish time is 1684829507.076870
+2023-05-23 16:11:47,078 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 7, Canvas Avg. Efficiency: 0.5315, Qos. 4.3778
+2023-05-23 16:11:47,078 - buffer.py[line:329] - INFO: The finish time is 1684829507.077134
+2023-05-23 16:11:47,077 - buffer.py[line:332] - WARNING: Overtime:2.9447
+2023-05-23 16:11:47,078 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:47,078 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:47,078 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.5608, Qos. 4.5817
+2023-05-23 16:11:47,079 - buffer.py[line:332] - WARNING: Overtime:4.2303
+2023-05-23 16:11:47,080 - buffer.py[line:332] - WARNING: Overtime:3.7992
+2023-05-23 16:11:47,080 - buffer.py[line:329] - INFO: The finish time is 1684829507.077237
+2023-05-23 16:11:47,083 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:47,084 - buffer.py[line:332] - WARNING: Overtime:4.0167
+2023-05-23 16:11:47,161 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:47,291 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:47,512 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:47,570 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:47,725 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:47,899 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:47,996 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:48,110 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:48,234 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:48,332 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:48,398 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:48,566 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829503.7073312, The function is executed at 1684829503.10891 ,0.0545 ahead
+2023-05-23 16:11:48,568 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.5373, Qos. 5.4384
+2023-05-23 16:11:48,568 - buffer.py[line:329] - INFO: The finish time is 1684829508.566044
+2023-05-23 16:11:48,568 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:48,569 - buffer.py[line:332] - WARNING: Overtime:4.8587
+2023-05-23 16:11:48,566 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829504.34914, The function is executed at 1684829503.7605078 ,0.0316 ahead
+2023-05-23 16:11:48,567 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829504.568958, The function is executed at 1684829504.0571258 ,-0.0878 ahead
+2023-05-23 16:11:48,570 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.5803, Qos. 4.7885
+2023-05-23 16:11:48,568 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829503.92199, The function is executed at 1684829503.325474 ,0.0110 ahead
+2023-05-23 16:11:48,568 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829503.49504, The function is executed at 1684829502.9003808 ,0.0550 ahead
+2023-05-23 16:11:48,572 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 14, Canvas Avg. Efficiency: 0.6658, Qos. 4.5002
+2023-05-23 16:11:48,572 - buffer.py[line:329] - INFO: The finish time is 1684829508.566723
+2023-05-23 16:11:48,574 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:48,573 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.6289, Qos. 5.2245
+2023-05-23 16:11:48,574 - buffer.py[line:329] - INFO: The finish time is 1684829508.567689
+2023-05-23 16:11:48,574 - buffer.py[line:332] - WARNING: Overtime:4.2176
+2023-05-23 16:11:48,574 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 8, Canvas Avg. Efficiency: 0.5316, Qos. 5.6470
+2023-05-23 16:11:48,574 - buffer.py[line:329] - INFO: The finish time is 1684829508.568683
+2023-05-23 16:11:48,574 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:48,577 - buffer.py[line:329] - INFO: The finish time is 1684829508.568139
+2023-05-23 16:11:48,578 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:48,578 - buffer.py[line:332] - WARNING: Overtime:3.9987
+2023-05-23 16:11:48,578 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:48,578 - buffer.py[line:332] - WARNING: Overtime:4.6467
+2023-05-23 16:11:48,580 - buffer.py[line:332] - WARNING: Overtime:5.0731
+2023-05-23 16:11:48,995 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829504.576888, The function is executed at 1684829504.178167 ,0.0027 ahead
+2023-05-23 16:11:48,995 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 5, Canvas Avg. Efficiency: 0.7867, Qos. 4.7925
+2023-05-23 16:11:48,995 - buffer.py[line:329] - INFO: The finish time is 1684829508.995254
+2023-05-23 16:11:48,995 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:48,995 - buffer.py[line:332] - WARNING: Overtime:4.4184
+2023-05-23 16:11:48,999 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829504.789234, The function is executed at 1684829504.270585 ,-0.0810 ahead
+2023-05-23 16:11:48,999 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 6, Canvas Avg. Efficiency: 0.4389, Qos. 4.7190
+2023-05-23 16:11:48,999 - buffer.py[line:329] - INFO: The finish time is 1684829508.999366
+2023-05-23 16:11:48,999 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:48,999 - buffer.py[line:332] - WARNING: Overtime:4.2101
+2023-05-23 16:11:49,903 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:49,958 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:50,280 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:50,345 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:50,455 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829505.655808, The function is executed at 1684829505.079921 ,-0.0238 ahead
+2023-05-23 16:11:50,455 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829505.8779242, The function is executed at 1684829505.47948 ,0.0052 ahead
+2023-05-23 16:11:50,455 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829505.0070488, The function is executed at 1684829504.489894 ,-0.0825 ahead
+2023-05-23 16:11:50,455 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 6, Canvas Avg. Efficiency: 0.5319, Qos. 5.3653
+2023-05-23 16:11:50,456 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829505.655808, The function is executed at 1684829505.146174 ,-0.0898 ahead
+2023-05-23 16:11:50,456 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 3, Canvas Avg. Efficiency: 0.4945, Qos. 4.9656
+2023-05-23 16:11:50,457 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829506.098753, The function is executed at 1684829505.518852 ,-0.0196 ahead
+2023-05-23 16:11:50,457 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829505.2249012, The function is executed at 1684829504.7013671 ,-0.0761 ahead
+2023-05-23 16:11:50,457 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829506.318948, The function is executed at 1684829505.878311 ,-0.1588 ahead
+2023-05-23 16:11:50,457 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.5366, Qos. 5.9556
+2023-05-23 16:11:50,457 - buffer.py[line:329] - INFO: The finish time is 1684829510.455002
+2023-05-23 16:11:50,457 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 5, Canvas Avg. Efficiency: 0.4289, Qos. 5.3006
+2023-05-23 16:11:50,457 - buffer.py[line:329] - INFO: The finish time is 1684829510.455550
+2023-05-23 16:11:50,457 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 2, Canvas Avg. Efficiency: 0.4434, Qos. 4.9285
+2023-05-23 16:11:50,457 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.6202, Qos. 5.7463
+2023-05-23 16:11:50,457 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 5, Canvas Avg. Efficiency: 0.4781, Qos. 4.5685
+2023-05-23 16:11:50,457 - buffer.py[line:329] - INFO: The finish time is 1684829510.455643
+2023-05-23 16:11:50,457 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:50,457 - buffer.py[line:329] - INFO: The finish time is 1684829510.456294
+2023-05-23 16:11:50,457 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:50,457 - buffer.py[line:329] - INFO: The finish time is 1684829510.457038
+2023-05-23 16:11:50,457 - buffer.py[line:329] - INFO: The finish time is 1684829510.457117
+2023-05-23 16:11:50,457 - buffer.py[line:329] - INFO: The finish time is 1684829510.457176
+2023-05-23 16:11:50,457 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:50,457 - buffer.py[line:332] - WARNING: Overtime:4.7992
+2023-05-23 16:11:50,457 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:50,457 - buffer.py[line:332] - WARNING: Overtime:4.5776
+2023-05-23 16:11:50,457 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:50,457 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:50,457 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:50,457 - buffer.py[line:332] - WARNING: Overtime:5.4486
+2023-05-23 16:11:50,459 - buffer.py[line:332] - WARNING: Overtime:4.8005
+2023-05-23 16:11:50,460 - buffer.py[line:332] - WARNING: Overtime:4.3583
+2023-05-23 16:11:50,461 - buffer.py[line:332] - WARNING: Overtime:5.2322
+2023-05-23 16:11:50,461 - buffer.py[line:332] - WARNING: Overtime:4.1382
+2023-05-23 16:11:50,530 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:50,966 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:51,143 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:51,386 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:51,601 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829505.866592, The function is executed at 1684829505.3805041 ,-0.1136 ahead
+2023-05-23 16:11:51,602 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829506.311956, The function is executed at 1684829505.7147882 ,0.0024 ahead
+2023-05-23 16:11:51,602 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 10, Canvas Avg. Efficiency: 0.7386, Qos. 6.2104
+2023-05-23 16:11:51,602 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829505.2249012, The function is executed at 1684829504.7590342 ,-0.1338 ahead
+2023-05-23 16:11:51,602 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829505.4404879, The function is executed at 1684829504.91677 ,-0.0759 ahead
+2023-05-23 16:11:51,602 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829506.532662, The function is executed at 1684829505.9603572 ,-0.0274 ahead
+2023-05-23 16:11:51,602 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 10, Canvas Avg. Efficiency: 0.6524, Qos. 5.8588
+2023-05-23 16:11:51,603 - buffer.py[line:329] - INFO: The finish time is 1684829511.601368
+2023-05-23 16:11:51,603 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 4, Canvas Avg. Efficiency: 0.4955, Qos. 6.8336
+2023-05-23 16:11:51,603 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 7, Canvas Avg. Efficiency: 0.5184, Qos. 6.6759
+2023-05-23 16:11:51,603 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 4, Canvas Avg. Efficiency: 0.5277, Qos. 5.6315
+2023-05-23 16:11:51,603 - buffer.py[line:329] - INFO: The finish time is 1684829511.602121
+2023-05-23 16:11:51,603 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:51,603 - buffer.py[line:329] - INFO: The finish time is 1684829511.602557
+2023-05-23 16:11:51,603 - buffer.py[line:329] - INFO: The finish time is 1684829511.602666
+2023-05-23 16:11:51,603 - buffer.py[line:329] - INFO: The finish time is 1684829511.602887
+2023-05-23 16:11:51,603 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:51,603 - buffer.py[line:332] - WARNING: Overtime:5.7348
+2023-05-23 16:11:51,603 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:51,603 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:51,603 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:51,603 - buffer.py[line:332] - WARNING: Overtime:5.2902
+2023-05-23 16:11:51,605 - buffer.py[line:332] - WARNING: Overtime:6.3777
+2023-05-23 16:11:51,606 - buffer.py[line:332] - WARNING: Overtime:6.1622
+2023-05-23 16:11:51,606 - buffer.py[line:332] - WARNING: Overtime:5.0702
+2023-05-23 16:11:51,618 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:52,287 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:53,181 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:53,393 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:53,621 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:53,673 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829506.964691, The function is executed at 1684829506.2952561 ,-0.1302 ahead
+2023-05-23 16:11:53,674 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829507.406446, The function is executed at 1684829506.80932 ,0.0082 ahead
+2023-05-23 16:11:53,674 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 8, Canvas Avg. Efficiency: 0.5305, Qos. 7.3641
+2023-05-23 16:11:53,674 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829506.976385, The function is executed at 1684829506.395987 ,-0.0192 ahead
+2023-05-23 16:11:53,675 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829508.943551, The function is executed at 1684829508.39851 ,-0.0546 ahead
+2023-05-23 16:11:53,675 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 6, Canvas Avg. Efficiency: 0.4753, Qos. 6.8413
+2023-05-23 16:11:53,675 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829508.056384, The function is executed at 1684829507.512435 ,-0.0557 ahead
+2023-05-23 16:11:53,675 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829507.203437, The function is executed at 1684829506.699947 ,-0.0962 ahead
+2023-05-23 16:11:53,676 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829507.619585, The function is executed at 1684829506.956458 ,-0.1365 ahead
+2023-05-23 16:11:53,676 - buffer.py[line:329] - INFO: The finish time is 1684829513.673487
+2023-05-23 16:11:53,676 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829507.190447, The function is executed at 1684829506.602926 ,0.0180 ahead
+2023-05-23 16:11:53,676 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 5, Canvas Avg. Efficiency: 0.5099, Qos. 7.2695
+2023-05-23 16:11:53,676 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 3, Canvas Avg. Efficiency: 0.3992, Qos. 5.2673
+2023-05-23 16:11:53,676 - buffer.py[line:329] - INFO: The finish time is 1684829513.674292
+2023-05-23 16:11:53,676 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 7, Canvas Avg. Efficiency: 0.5157, Qos. 6.1542
+2023-05-23 16:11:53,676 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 5, Canvas Avg. Efficiency: 0.4615, Qos. 6.9654
+2023-05-23 16:11:53,676 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 7, Canvas Avg. Efficiency: 0.4235, Qos. 6.7057
+2023-05-23 16:11:53,676 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:53,676 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.6292, Qos. 7.0592
+2023-05-23 16:11:53,676 - buffer.py[line:329] - INFO: The finish time is 1684829513.674985
+2023-05-23 16:11:53,676 - buffer.py[line:329] - INFO: The finish time is 1684829513.675344
+2023-05-23 16:11:53,676 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:53,676 - buffer.py[line:329] - INFO: The finish time is 1684829513.675768
+2023-05-23 16:11:53,676 - buffer.py[line:329] - INFO: The finish time is 1684829513.675945
+2023-05-23 16:11:53,676 - buffer.py[line:329] - INFO: The finish time is 1684829513.676071
+2023-05-23 16:11:53,676 - buffer.py[line:332] - WARNING: Overtime:6.7088
+2023-05-23 16:11:53,676 - buffer.py[line:329] - INFO: The finish time is 1684829513.676179
+2023-05-23 16:11:53,676 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:53,676 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:53,677 - buffer.py[line:332] - WARNING: Overtime:6.2678
+2023-05-23 16:11:53,677 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:53,677 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:53,677 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:53,679 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:53,679 - buffer.py[line:332] - WARNING: Overtime:6.6986
+2023-05-23 16:11:53,679 - buffer.py[line:332] - WARNING: Overtime:4.7318
+2023-05-23 16:11:53,681 - buffer.py[line:332] - WARNING: Overtime:5.6194
+2023-05-23 16:11:53,682 - buffer.py[line:332] - WARNING: Overtime:6.4725
+2023-05-23 16:11:53,683 - buffer.py[line:332] - WARNING: Overtime:6.0565
+2023-05-23 16:11:53,683 - buffer.py[line:332] - WARNING: Overtime:6.4857
+2023-05-23 16:11:54,026 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:54,228 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:54,450 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:54,649 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:55,048 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:55,504 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:55,700 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:55,744 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829508.486725, The function is executed at 1684829507.899905 ,-0.0127 ahead
+2023-05-23 16:11:55,744 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 7, Canvas Avg. Efficiency: 0.6113, Qos. 7.8264
+2023-05-23 16:11:55,744 - buffer.py[line:329] - INFO: The finish time is 1684829515.744052
+2023-05-23 16:11:55,744 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:55,744 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829508.705709, The function is executed at 1684829508.1110451 ,-0.0049 ahead
+2023-05-23 16:11:55,746 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 6, Canvas Avg. Efficiency: 0.5917, Qos. 7.6054
+2023-05-23 16:11:55,744 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829508.0618482, The function is executed at 1684829507.570632 ,-0.1084 ahead
+2023-05-23 16:11:55,745 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829507.842991, The function is executed at 1684829507.291479 ,-0.0482 ahead
+2023-05-23 16:11:55,746 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 5, Canvas Avg. Efficiency: 0.4914, Qos. 8.4446
+2023-05-23 16:11:55,746 - buffer.py[line:329] - INFO: The finish time is 1684829515.745482
+2023-05-23 16:11:55,746 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829508.4963121, The function is executed at 1684829507.9964778 ,-0.0998 ahead
+2023-05-23 16:11:55,746 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 3, Canvas Avg. Efficiency: 0.5358, Qos. 7.7394
+2023-05-23 16:11:55,746 - buffer.py[line:329] - INFO: The finish time is 1684829515.746226
+2023-05-23 16:11:55,746 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:55,746 - buffer.py[line:329] - INFO: The finish time is 1684829515.744642
+2023-05-23 16:11:55,747 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:55,745 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829508.716047, The function is executed at 1684829508.2352378 ,-0.1188 ahead
+2023-05-23 16:11:55,745 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829508.933461, The function is executed at 1684829508.332745 ,-0.1985 ahead
+2023-05-23 16:11:55,747 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 5, Canvas Avg. Efficiency: 0.4132, Qos. 7.3905
+2023-05-23 16:11:55,747 - buffer.py[line:329] - INFO: The finish time is 1684829515.745990
+2023-05-23 16:11:55,746 - buffer.py[line:332] - WARNING: Overtime:7.2573
+2023-05-23 16:11:55,746 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 6, Canvas Avg. Efficiency: 0.5693, Qos. 8.1633
+2023-05-23 16:11:55,746 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829506.745662, The function is executed at 1684829506.128612 ,-0.1826 ahead
+2023-05-23 16:11:55,747 - buffer.py[line:332] - WARNING: Overtime:7.0389
+2023-05-23 16:11:55,747 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 4, Canvas Avg. Efficiency: 0.5687, Qos. 7.5001
+2023-05-23 16:11:55,745 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829508.267478, The function is executed at 1684829507.7255402 ,-0.0577 ahead
+2023-05-23 16:11:55,747 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:55,755 - buffer.py[line:332] - WARNING: Overtime:6.8125
+2023-05-23 16:11:55,746 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:55,750 - buffer.py[line:329] - INFO: The finish time is 1684829515.744946
+2023-05-23 16:11:55,750 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 7, Canvas Avg. Efficiency: 0.5593, Qos. 9.6031
+2023-05-23 16:11:55,754 - buffer.py[line:329] - INFO: The finish time is 1684829515.745220
+2023-05-23 16:11:55,755 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 5, Canvas Avg. Efficiency: 0.4685, Qos. 8.0105
+2023-05-23 16:11:55,758 - buffer.py[line:329] - INFO: The finish time is 1684829515.745746
+2023-05-23 16:11:55,757 - buffer.py[line:332] - WARNING: Overtime:7.9025
+2023-05-23 16:11:55,757 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:55,757 - buffer.py[line:329] - INFO: The finish time is 1684829515.746575
+2023-05-23 16:11:55,757 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:55,746 - buffer.py[line:332] - WARNING: Overtime:7.2499
+2023-05-23 16:11:55,758 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:55,759 - buffer.py[line:332] - WARNING: Overtime:7.6831
+2023-05-23 16:11:55,760 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:55,760 - buffer.py[line:332] - WARNING: Overtime:7.0292
+2023-05-23 16:11:55,762 - buffer.py[line:332] - WARNING: Overtime:7.4783
+2023-05-23 16:11:55,763 - buffer.py[line:332] - WARNING: Overtime:9.0009
+2023-05-23 16:11:55,800 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:55,982 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:56,082 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829507.8328161, The function is executed at 1684829507.162194 ,-0.1291 ahead
+2023-05-23 16:11:56,082 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 10, Canvas Avg. Efficiency: 0.5017, Qos. 8.9053
+2023-05-23 16:11:56,082 - buffer.py[line:329] - INFO: The finish time is 1684829516.081954
+2023-05-23 16:11:56,082 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:56,082 - buffer.py[line:332] - WARNING: Overtime:8.2491
+2023-05-23 16:11:56,213 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:56,386 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:56,947 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:57,158 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:57,398 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:57,937 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:57,940 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829510.480715, The function is executed at 1684829509.959133 ,-0.0780 ahead
+2023-05-23 16:11:57,941 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829509.373285, The function is executed at 1684829508.778667 ,0.0681 ahead
+2023-05-23 16:11:57,941 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829510.920622, The function is executed at 1684829510.345676 ,-0.0247 ahead
+2023-05-23 16:11:57,941 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829510.693019, The function is executed at 1684829510.111001 ,0.0121 ahead
+2023-05-23 16:11:57,942 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829509.151871, The function is executed at 1684829508.570803 ,0.0249 ahead
+2023-05-23 16:11:57,942 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829510.9135191, The function is executed at 1684829510.280532 ,-0.1667 ahead
+2023-05-23 16:11:57,942 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 5, Canvas Avg. Efficiency: 0.5630, Qos. 7.9717
+2023-05-23 16:11:57,942 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829510.4719949, The function is executed at 1684829509.9043572 ,-0.0319 ahead
+2023-05-23 16:11:57,942 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.6866, Qos. 9.1438
+2023-05-23 16:11:57,942 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 5, Canvas Avg. Efficiency: 0.5708, Qos. 7.5858
+2023-05-23 16:11:57,942 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 5, Canvas Avg. Efficiency: 0.5711, Qos. 7.8164
+2023-05-23 16:11:57,942 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 7, Canvas Avg. Efficiency: 0.6300, Qos. 9.3537
+2023-05-23 16:11:57,942 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 7, Canvas Avg. Efficiency: 0.5478, Qos. 7.6471
+2023-05-23 16:11:57,943 - buffer.py[line:329] - INFO: The finish time is 1684829517.942417
+2023-05-23 16:11:57,942 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.5846, Qos. 8.0275
+2023-05-23 16:11:57,942 - buffer.py[line:329] - INFO: The finish time is 1684829517.941193
+2023-05-23 16:11:57,943 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:57,943 - buffer.py[line:332] - WARNING: Overtime:8.5679
+2023-05-23 16:11:57,943 - buffer.py[line:329] - INFO: The finish time is 1684829517.942030
+2023-05-23 16:11:57,943 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:57,942 - buffer.py[line:329] - INFO: The finish time is 1684829517.940458
+2023-05-23 16:11:57,943 - buffer.py[line:329] - INFO: The finish time is 1684829517.942562
+2023-05-23 16:11:57,943 - buffer.py[line:329] - INFO: The finish time is 1684829517.941539
+2023-05-23 16:11:57,943 - buffer.py[line:329] - INFO: The finish time is 1684829517.941678
+2023-05-23 16:11:57,945 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:57,945 - buffer.py[line:332] - WARNING: Overtime:7.0289
+2023-05-23 16:11:57,945 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:57,945 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:57,946 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:57,946 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:57,946 - buffer.py[line:332] - WARNING: Overtime:8.7902
+2023-05-23 16:11:57,948 - buffer.py[line:332] - WARNING: Overtime:7.4597
+2023-05-23 16:11:57,948 - buffer.py[line:332] - WARNING: Overtime:7.4706
+2023-05-23 16:11:57,949 - buffer.py[line:332] - WARNING: Overtime:7.0209
+2023-05-23 16:11:57,949 - buffer.py[line:332] - WARNING: Overtime:7.2487
+2023-05-23 16:11:58,168 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:58,305 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:58,482 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:59,340 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:59,595 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:59,785 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:11:59,794 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829509.586966, The function is executed at 1684829508.989391 ,0.0085 ahead
+2023-05-23 16:11:59,794 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829510.255567, The function is executed at 1684829509.661045 ,0.0617 ahead
+2023-05-23 16:11:59,794 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 10, Canvas Avg. Efficiency: 0.7619, Qos. 10.7827
+2023-05-23 16:11:59,794 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829511.1280131, The function is executed at 1684829510.530692 ,-0.2023 ahead
+2023-05-23 16:11:59,795 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 8, Canvas Avg. Efficiency: 0.5458, Qos. 9.2477
+2023-05-23 16:11:59,795 - buffer.py[line:329] - INFO: The finish time is 1684829519.794832
+2023-05-23 16:11:59,795 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:59,795 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829509.8184152, The function is executed at 1684829509.234229 ,0.0231 ahead
+2023-05-23 16:11:59,795 - buffer.py[line:329] - INFO: The finish time is 1684829519.794075
+2023-05-23 16:11:59,795 - buffer.py[line:332] - WARNING: Overtime:8.6668
+2023-05-23 16:11:59,794 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.6745, Qos. 10.1174
+2023-05-23 16:11:59,795 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829511.7709901, The function is executed at 1684829511.144106 ,-0.1728 ahead
+2023-05-23 16:11:59,795 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829510.037784, The function is executed at 1684829509.4433239 ,0.0362 ahead
+2023-05-23 16:11:59,795 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 8, Canvas Avg. Efficiency: 0.6455, Qos. 10.5459
+2023-05-23 16:11:59,795 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:59,797 - buffer.py[line:329] - INFO: The finish time is 1684829519.794229
+2023-05-23 16:11:59,797 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 7, Canvas Avg. Efficiency: 0.4989, Qos. 8.6347
+2023-05-23 16:11:59,797 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 10, Canvas Avg. Efficiency: 0.6810, Qos. 10.3313
+2023-05-23 16:11:59,797 - buffer.py[line:329] - INFO: The finish time is 1684829519.795537
+2023-05-23 16:11:59,798 - buffer.py[line:332] - WARNING: Overtime:10.2071
+2023-05-23 16:11:59,798 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:59,798 - buffer.py[line:329] - INFO: The finish time is 1684829519.795185
+2023-05-23 16:11:59,798 - buffer.py[line:329] - INFO: The finish time is 1684829519.795465
+2023-05-23 16:11:59,798 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:59,801 - buffer.py[line:332] - WARNING: Overtime:9.5387
+2023-05-23 16:11:59,801 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:59,801 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:11:59,802 - buffer.py[line:332] - WARNING: Overtime:9.9771
+2023-05-23 16:11:59,804 - buffer.py[line:332] - WARNING: Overtime:8.0242
+2023-05-23 16:11:59,806 - buffer.py[line:332] - WARNING: Overtime:9.7577
+2023-05-23 16:12:01,091 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:12:01,320 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:12:01,497 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:12:01,676 - buffer.py[line:252] - WARNING: Drop a image due to the DDL is not satisfied
+2023-05-23 16:12:02,164 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829513.9607291, The function is executed at 1684829513.3935602 ,-0.0325 ahead
+2023-05-23 16:12:02,168 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829512.88199, The function is executed at 1684829512.287946 ,-0.0053 ahead
+2023-05-23 16:12:02,175 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.5069, Qos. 8.7605
+2023-05-23 16:12:02,178 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829514.177032, The function is executed at 1684829513.621498 ,-0.0441 ahead
+2023-05-23 16:12:02,187 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.5550, Qos. 8.5451
+2023-05-23 16:12:02,184 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829511.997377, The function is executed at 1684829511.387362 ,-0.1895 ahead
+2023-05-23 16:12:02,186 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829511.339701, The function is executed at 1684829510.7421172 ,0.0082 ahead
+2023-05-23 16:12:02,186 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829511.553874, The function is executed at 1684829510.968172 ,-0.2129 ahead
+2023-05-23 16:12:02,187 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829512.67421, The function is executed at 1684829512.078472 ,0.0420 ahead
+2023-05-23 16:12:02,187 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829513.753852, The function is executed at 1684829513.181598 ,-0.0274 ahead
+2023-05-23 16:12:02,187 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 7, Canvas Avg. Efficiency: 0.4932, Qos. 9.8635
+2023-05-23 16:12:02,187 - buffer.py[line:329] - INFO: The finish time is 1684829522.164298
+2023-05-23 16:12:02,187 - buffer.py[line:329] - INFO: The finish time is 1684829522.177969
+2023-05-23 16:12:02,180 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829513.3113549, The function is executed at 1684829512.716196 ,0.0305 ahead
+2023-05-23 16:12:02,187 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 11, Canvas Avg. Efficiency: 0.5629, Qos. 10.7790
+2023-05-23 16:12:02,188 - buffer.py[line:329] - INFO: The finish time is 1684829522.184046
+2023-05-23 16:12:02,188 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:02,187 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.5138, Qos. 10.0943
+2023-05-23 16:12:02,187 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.4624, Qos. 8.9945
+2023-05-23 16:12:02,187 - buffer.py[line:329] - INFO: The finish time is 1684829522.168354
+2023-05-23 16:12:02,187 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:02,188 - buffer.py[line:332] - WARNING: Overtime:8.2036
+2023-05-23 16:12:02,188 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 10, Canvas Avg. Efficiency: 0.5039, Qos. 9.4449
+2023-05-23 16:12:02,188 - buffer.py[line:332] - WARNING: Overtime:10.1867
+2023-05-23 16:12:02,187 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 11, Canvas Avg. Efficiency: 0.6863, Qos. 11.4267
+2023-05-23 16:12:02,187 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.5491, Qos. 11.1916
+2023-05-23 16:12:02,188 - buffer.py[line:329] - INFO: The finish time is 1684829522.187023
+2023-05-23 16:12:02,188 - buffer.py[line:329] - INFO: The finish time is 1684829522.187271
+2023-05-23 16:12:02,188 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:02,188 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:02,190 - buffer.py[line:329] - INFO: The finish time is 1684829522.180337
+2023-05-23 16:12:02,194 - buffer.py[line:329] - INFO: The finish time is 1684829522.186106
+2023-05-23 16:12:02,194 - buffer.py[line:329] - INFO: The finish time is 1684829522.186459
+2023-05-23 16:12:02,194 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:02,195 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:02,195 - buffer.py[line:332] - WARNING: Overtime:9.2864
+2023-05-23 16:12:02,195 - buffer.py[line:332] - WARNING: Overtime:8.0009
+2023-05-23 16:12:02,195 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:02,196 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:02,196 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:02,196 - buffer.py[line:332] - WARNING: Overtime:9.5128
+2023-05-23 16:12:02,196 - buffer.py[line:332] - WARNING: Overtime:8.4334
+2023-05-23 16:12:02,200 - buffer.py[line:332] - WARNING: Overtime:8.8690
+2023-05-23 16:12:02,200 - buffer.py[line:332] - WARNING: Overtime:10.8464
+2023-05-23 16:12:02,201 - buffer.py[line:332] - WARNING: Overtime:10.6326
+2023-05-23 16:12:05,160 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829514.381536, The function is executed at 1684829513.7835379 ,0.0324 ahead
+2023-05-23 16:12:05,161 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829513.5259268, The function is executed at 1684829512.930454 ,0.0135 ahead
+2023-05-23 16:12:05,162 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829516.06058, The function is executed at 1684829515.5050938 ,-0.0441 ahead
+2023-05-23 16:12:05,162 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829513.089715, The function is executed at 1684829512.510378 ,0.0075 ahead
+2023-05-23 16:12:05,165 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 12, Canvas Avg. Efficiency: 0.7167, Qos. 12.6360
+2023-05-23 16:12:05,163 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829516.264745, The function is executed at 1684829515.70052 ,-0.0354 ahead
+2023-05-23 16:12:05,165 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.5439, Qos. 9.4529
+2023-05-23 16:12:05,164 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829512.225953, The function is executed at 1684829511.618756 ,-0.1923 ahead
+2023-05-23 16:12:05,164 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829514.595572, The function is executed at 1684829514.0270011 ,-0.0311 ahead
+2023-05-23 16:12:05,164 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829512.450523, The function is executed at 1684829511.8515189 ,0.0209 ahead
+2023-05-23 16:12:05,164 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 8, Canvas Avg. Efficiency: 0.4807, Qos. 11.3627
+2023-05-23 16:12:05,165 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829515.017091, The function is executed at 1684829514.450408 ,-0.0329 ahead
+2023-05-23 16:12:05,165 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829515.646341, The function is executed at 1684829515.048918 ,-0.0022 ahead
+2023-05-23 16:12:05,165 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 12, Canvas Avg. Efficiency: 0.6512, Qos. 12.2105
+2023-05-23 16:12:05,166 - buffer.py[line:329] - INFO: The finish time is 1684829525.161576
+2023-05-23 16:12:05,163 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829514.809844, The function is executed at 1684829514.2293901 ,-0.0190 ahead
+2023-05-23 16:12:05,165 - buffer.py[line:329] - INFO: The finish time is 1684829525.162799
+2023-05-23 16:12:05,167 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:05,166 - buffer.py[line:329] - INFO: The finish time is 1684829525.163382
+2023-05-23 16:12:05,166 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 11, Canvas Avg. Efficiency: 0.5684, Qos. 13.5180
+2023-05-23 16:12:05,166 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 9, Canvas Avg. Efficiency: 0.5501, Qos. 11.1274
+2023-05-23 16:12:05,166 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 13, Canvas Avg. Efficiency: 0.7314, Qos. 13.2862
+2023-05-23 16:12:05,166 - buffer.py[line:329] - INFO: The finish time is 1684829525.160799
+2023-05-23 16:12:05,166 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.5158, Qos. 10.7032
+2023-05-23 16:12:05,166 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.4969, Qos. 10.1063
+2023-05-23 16:12:05,165 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 7, Canvas Avg. Efficiency: 0.5004, Qos. 9.6477
+2023-05-23 16:12:05,166 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:05,166 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.4709, Qos. 10.9242
+2023-05-23 16:12:05,167 - buffer.py[line:332] - WARNING: Overtime:12.0731
+2023-05-23 16:12:05,163 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829515.2242298, The function is executed at 1684829514.6495738 ,-0.0250 ahead
+2023-05-23 16:12:05,167 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:05,167 - buffer.py[line:329] - INFO: The finish time is 1684829525.164275
+2023-05-23 16:12:05,167 - buffer.py[line:329] - INFO: The finish time is 1684829525.164779
+2023-05-23 16:12:05,167 - buffer.py[line:329] - INFO: The finish time is 1684829525.164904
+2023-05-23 16:12:05,167 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:05,167 - buffer.py[line:329] - INFO: The finish time is 1684829525.165055
+2023-05-23 16:12:05,167 - buffer.py[line:329] - INFO: The finish time is 1684829525.165485
+2023-05-23 16:12:05,171 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:05,167 - buffer.py[line:332] - WARNING: Overtime:11.6356
+2023-05-23 16:12:05,167 - buffer.py[line:329] - INFO: The finish time is 1684829525.163257
+2023-05-23 16:12:05,170 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 7, Canvas Avg. Efficiency: 0.5014, Qos. 10.5040
+2023-05-23 16:12:05,170 - buffer.py[line:332] - WARNING: Overtime:8.8986
+2023-05-23 16:12:05,170 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:05,171 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:05,171 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:05,171 - buffer.py[line:332] - WARNING: Overtime:10.7793
+2023-05-23 16:12:05,171 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:05,167 - buffer.py[line:329] - INFO: The finish time is 1684829525.162356
+2023-05-23 16:12:05,171 - buffer.py[line:332] - WARNING: Overtime:9.5191
+2023-05-23 16:12:05,173 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:05,173 - buffer.py[line:329] - INFO: The finish time is 1684829525.163837
+2023-05-23 16:12:05,177 - buffer.py[line:332] - WARNING: Overtime:12.9383
+2023-05-23 16:12:05,177 - buffer.py[line:332] - WARNING: Overtime:10.5692
+2023-05-23 16:12:05,178 - buffer.py[line:332] - WARNING: Overtime:12.7144
+2023-05-23 16:12:05,180 - buffer.py[line:332] - WARNING: Overtime:10.1480
+2023-05-23 16:12:05,180 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:05,183 - buffer.py[line:332] - WARNING: Overtime:10.3534
+2023-05-23 16:12:05,183 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:05,196 - buffer.py[line:332] - WARNING: Overtime:9.1018
+2023-05-23 16:12:05,201 - buffer.py[line:332] - WARNING: Overtime:9.9396
+2023-05-23 16:12:06,200 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829516.2738812, The function is executed at 1684829515.8011289 ,-0.1269 ahead
+2023-05-23 16:12:06,201 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 7, Canvas Avg. Efficiency: 0.6147, Qos. 10.3877
+2023-05-23 16:12:06,201 - buffer.py[line:329] - INFO: The finish time is 1684829526.200257
+2023-05-23 16:12:06,201 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:06,202 - buffer.py[line:332] - WARNING: Overtime:9.9264
+2023-05-23 16:12:06,214 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829515.433123, The function is executed at 1684829514.841417 ,0.0091 ahead
+2023-05-23 16:12:06,215 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 9, Canvas Avg. Efficiency: 0.6043, Qos. 11.3584
+2023-05-23 16:12:06,215 - buffer.py[line:329] - INFO: The finish time is 1684829526.214678
+2023-05-23 16:12:06,215 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:06,216 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829516.482435, The function is executed at 1684829515.98301 ,-0.1001 ahead
+2023-05-23 16:12:06,216 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829515.851357, The function is executed at 1684829515.256634 ,0.0698 ahead
+2023-05-23 16:12:06,219 - buffer.py[line:332] - WARNING: Overtime:10.7816
+2023-05-23 16:12:06,219 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 6, Canvas Avg. Efficiency: 0.4435, Qos. 10.2225
+2023-05-23 16:12:06,219 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 10, Canvas Avg. Efficiency: 0.6138, Qos. 10.9454
+2023-05-23 16:12:06,223 - buffer.py[line:329] - INFO: The finish time is 1684829526.216408
+2023-05-23 16:12:06,224 - buffer.py[line:329] - INFO: The finish time is 1684829526.216930
+2023-05-23 16:12:06,224 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:06,224 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:06,226 - buffer.py[line:332] - WARNING: Overtime:9.7340
+2023-05-23 16:12:06,226 - buffer.py[line:332] - WARNING: Overtime:10.3656
+2023-05-23 16:12:07,336 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829517.747684, The function is executed at 1684829517.161419 ,-0.0104 ahead
+2023-05-23 16:12:07,336 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 9, Canvas Avg. Efficiency: 0.5130, Qos. 10.1613
+2023-05-23 16:12:07,336 - buffer.py[line:329] - INFO: The finish time is 1684829527.336268
+2023-05-23 16:12:07,337 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:07,337 - buffer.py[line:332] - WARNING: Overtime:9.5886
+2023-05-23 16:12:07,344 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829516.698439, The function is executed at 1684829516.214216 ,-0.1154 ahead
+2023-05-23 16:12:07,347 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 9, Canvas Avg. Efficiency: 0.5214, Qos. 11.1196
+2023-05-23 16:12:07,347 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829516.907598, The function is executed at 1684829516.387342 ,-0.0793 ahead
+2023-05-23 16:12:07,348 - buffer.py[line:329] - INFO: The finish time is 1684829527.344044
+2023-05-23 16:12:07,345 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829517.9618402, The function is executed at 1684829517.3993049 ,-0.0371 ahead
+2023-05-23 16:12:07,355 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829518.183381, The function is executed at 1684829517.599338 ,-0.0158 ahead
+2023-05-23 16:12:07,355 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 9, Canvas Avg. Efficiency: 0.5498, Qos. 10.9497
+2023-05-23 16:12:07,355 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:07,355 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.5290, Qos. 9.9366
+2023-05-23 16:12:07,355 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 10, Canvas Avg. Efficiency: 0.6459, Qos. 9.7412
+2023-05-23 16:12:07,356 - buffer.py[line:329] - INFO: The finish time is 1684829527.347486
+2023-05-23 16:12:07,356 - buffer.py[line:332] - WARNING: Overtime:10.6456
+2023-05-23 16:12:07,356 - buffer.py[line:329] - INFO: The finish time is 1684829527.345898
+2023-05-23 16:12:07,356 - buffer.py[line:329] - INFO: The finish time is 1684829527.354948
+2023-05-23 16:12:07,356 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:07,360 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:07,360 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:07,360 - buffer.py[line:332] - WARNING: Overtime:10.4399
+2023-05-23 16:12:07,360 - buffer.py[line:332] - WARNING: Overtime:9.3841
+2023-05-23 16:12:07,363 - buffer.py[line:332] - WARNING: Overtime:9.1716
+2023-05-23 16:12:10,113 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829519.9049191, The function is executed at 1684829519.340799 ,-0.0356 ahead
+2023-05-23 16:12:10,120 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 11, Canvas Avg. Efficiency: 0.5787, Qos. 10.7614
+2023-05-23 16:12:10,114 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829518.6122181, The function is executed at 1684829518.169306 ,-0.1567 ahead
+2023-05-23 16:12:10,117 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829517.1157918, The function is executed at 1684829516.520446 ,0.0062 ahead
+2023-05-23 16:12:10,120 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829519.264821, The function is executed at 1684829518.6704562 ,0.0178 ahead
+2023-05-23 16:12:10,114 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829520.115375, The function is executed at 1684829519.595847 ,-0.0802 ahead
+2023-05-23 16:12:10,120 - buffer.py[line:329] - INFO: The finish time is 1684829530.113060
+2023-05-23 16:12:10,121 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829518.82564, The function is executed at 1684829518.306077 ,-0.0801 ahead
+2023-05-23 16:12:10,121 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829517.53323, The function is executed at 1684829516.947924 ,-0.2143 ahead
+2023-05-23 16:12:10,123 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829519.043941, The function is executed at 1684829518.482621 ,-0.0384 ahead
+2023-05-23 16:12:10,125 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829518.408813, The function is executed at 1684829517.938133 ,-0.1289 ahead
+2023-05-23 16:12:10,125 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829519.689687, The function is executed at 1684829519.095277 ,0.0234 ahead
+2023-05-23 16:12:10,126 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829519.47262, The function is executed at 1684829518.879843 ,0.0036 ahead
+2023-05-23 16:12:10,126 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.5633, Qos. 11.9335
+2023-05-23 16:12:10,127 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 8, Canvas Avg. Efficiency: 0.6462, Qos. 13.5805
+2023-05-23 16:12:10,127 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 7, Canvas Avg. Efficiency: 0.3692, Qos. 11.4348
+2023-05-23 16:12:10,127 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 14, Canvas Avg. Efficiency: 0.5088, Qos. 10.5063
+2023-05-23 16:12:10,127 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:10,127 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.5441, Qos. 11.8055
+2023-05-23 16:12:10,128 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 14, Canvas Avg. Efficiency: 0.5726, Qos. 13.1576
+2023-05-23 16:12:10,128 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 5, Canvas Avg. Efficiency: 0.5450, Qos. 11.6313
+2023-05-23 16:12:10,128 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 13, Canvas Avg. Efficiency: 0.4783, Qos. 12.1730
+2023-05-23 16:12:10,128 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 11, Canvas Avg. Efficiency: 0.5334, Qos. 11.0160
+2023-05-23 16:12:10,128 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 10, Canvas Avg. Efficiency: 0.4983, Qos. 11.2277
+2023-05-23 16:12:10,128 - buffer.py[line:329] - INFO: The finish time is 1684829530.114691
+2023-05-23 16:12:10,128 - buffer.py[line:329] - INFO: The finish time is 1684829530.117004
+2023-05-23 16:12:10,128 - buffer.py[line:329] - INFO: The finish time is 1684829530.120060
+2023-05-23 16:12:10,128 - buffer.py[line:329] - INFO: The finish time is 1684829530.114340
+2023-05-23 16:12:10,128 - buffer.py[line:332] - WARNING: Overtime:10.2081
+2023-05-23 16:12:10,128 - buffer.py[line:329] - INFO: The finish time is 1684829530.121059
+2023-05-23 16:12:10,129 - buffer.py[line:329] - INFO: The finish time is 1684829530.121371
+2023-05-23 16:12:10,129 - buffer.py[line:329] - INFO: The finish time is 1684829530.123766
+2023-05-23 16:12:10,129 - buffer.py[line:329] - INFO: The finish time is 1684829530.125326
+2023-05-23 16:12:10,129 - buffer.py[line:329] - INFO: The finish time is 1684829530.125713
+2023-05-23 16:12:10,129 - buffer.py[line:329] - INFO: The finish time is 1684829530.126007
+2023-05-23 16:12:10,129 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:10,129 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:10,129 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:10,130 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:10,135 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:10,135 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:10,135 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:10,137 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:10,137 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:10,137 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:10,137 - buffer.py[line:332] - WARNING: Overtime:11.5025
+2023-05-23 16:12:10,137 - buffer.py[line:332] - WARNING: Overtime:13.0012
+2023-05-23 16:12:10,137 - buffer.py[line:332] - WARNING: Overtime:10.8552
+2023-05-23 16:12:10,138 - buffer.py[line:332] - WARNING: Overtime:9.9990
+2023-05-23 16:12:10,138 - buffer.py[line:332] - WARNING: Overtime:11.2954
+2023-05-23 16:12:10,138 - buffer.py[line:332] - WARNING: Overtime:12.5881
+2023-05-23 16:12:10,138 - buffer.py[line:332] - WARNING: Overtime:11.0798
+2023-05-23 16:12:10,138 - buffer.py[line:332] - WARNING: Overtime:11.7165
+2023-05-23 16:12:10,138 - buffer.py[line:332] - WARNING: Overtime:10.4360
+2023-05-23 16:12:10,138 - buffer.py[line:332] - WARNING: Overtime:10.6534
+2023-05-23 16:12:12,182 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829520.3285902, The function is executed at 1684829519.785812 ,-0.0568 ahead
+2023-05-23 16:12:12,182 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 6, Canvas Avg. Efficiency: 0.4924, Qos. 12.3807
+2023-05-23 16:12:12,182 - buffer.py[line:329] - INFO: The finish time is 1684829532.182055
+2023-05-23 16:12:12,182 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:12,182 - buffer.py[line:332] - WARNING: Overtime:11.8535
+2023-05-23 16:12:12,189 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829522.46191, The function is executed at 1684829522.265716 ,0.3673 ahead
+2023-05-23 16:12:12,191 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829520.973363, The function is executed at 1684829520.378907 ,0.0463 ahead
+2023-05-23 16:12:12,197 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 10, Canvas Avg. Efficiency: 0.4510, Qos. 11.7981
+2023-05-23 16:12:12,191 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829521.393638, The function is executed at 1684829520.798965 ,0.0310 ahead
+2023-05-23 16:12:12,192 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829521.814692, The function is executed at 1684829521.321308 ,-0.1063 ahead
+2023-05-23 16:12:12,193 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829521.608182, The function is executed at 1684829521.092159 ,-0.0836 ahead
+2023-05-23 16:12:12,194 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829522.244854, The function is executed at 1684829521.677016 ,-0.0317 ahead
+2023-05-23 16:12:12,194 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829522.028239, The function is executed at 1684829521.497758 ,-0.0692 ahead
+2023-05-23 16:12:12,197 - buffer.py[line:328] - INFO: Canvas Batch Size: 1, Image number: 2, Canvas Avg. Efficiency: 0.7013, Qos. 9.9161
+2023-05-23 16:12:12,198 - buffer.py[line:329] - INFO: The finish time is 1684829532.189639
+2023-05-23 16:12:12,198 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:12,198 - buffer.py[line:332] - WARNING: Overtime:9.7277
+2023-05-23 16:12:12,197 - buffer.py[line:329] - INFO: The finish time is 1684829532.191233
+2023-05-23 16:12:12,198 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 15, Canvas Avg. Efficiency: 0.5394, Qos. 11.0888
+2023-05-23 16:12:12,198 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 7, Canvas Avg. Efficiency: 0.5251, Qos. 10.5024
+2023-05-23 16:12:12,198 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 8, Canvas Avg. Efficiency: 0.4786, Qos. 10.6874
+2023-05-23 16:12:12,197 - buffer.py[line:328] - INFO: Canvas Batch Size: 2, Image number: 10, Canvas Avg. Efficiency: 0.4846, Qos. 10.8594
+2023-05-23 16:12:12,191 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829520.5501199, The function is executed at 1684829519.9569259 ,0.0430 ahead
+2023-05-23 16:12:12,197 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 12, Canvas Avg. Efficiency: 0.4671, Qos. 11.3785
+2023-05-23 16:12:12,201 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:12,202 - buffer.py[line:332] - WARNING: Overtime:11.2179
+2023-05-23 16:12:12,201 - buffer.py[line:329] - INFO: The finish time is 1684829532.194523
+2023-05-23 16:12:12,202 - buffer.py[line:329] - INFO: The finish time is 1684829532.194750
+2023-05-23 16:12:12,202 - buffer.py[line:329] - INFO: The finish time is 1684829532.192898
+2023-05-23 16:12:12,202 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 8, Canvas Avg. Efficiency: 0.4841, Qos. 12.2212
+2023-05-23 16:12:12,202 - buffer.py[line:329] - INFO: The finish time is 1684829532.191594
+2023-05-23 16:12:12,201 - buffer.py[line:329] - INFO: The finish time is 1684829532.193134
+2023-05-23 16:12:12,203 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:12,203 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:12,204 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:12,204 - buffer.py[line:329] - INFO: The finish time is 1684829532.191831
+2023-05-23 16:12:12,204 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:12,204 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:12,204 - buffer.py[line:332] - WARNING: Overtime:9.9497
+2023-05-23 16:12:12,204 - buffer.py[line:332] - WARNING: Overtime:10.1665
+2023-05-23 16:12:12,204 - buffer.py[line:332] - WARNING: Overtime:10.3782
+2023-05-23 16:12:12,204 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:12,204 - buffer.py[line:332] - WARNING: Overtime:10.7980
+2023-05-23 16:12:12,204 - buffer.py[line:332] - WARNING: Overtime:10.5850
+2023-05-23 16:12:12,209 - buffer.py[line:332] - WARNING: Overtime:11.6417
+2023-05-23 16:12:12,800 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829520.760492, The function is executed at 1684829520.165805 ,0.0387 ahead
+2023-05-23 16:12:12,802 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 12, Canvas Avg. Efficiency: 0.6762, Qos. 12.6186
+2023-05-23 16:12:12,802 - buffer.py[line:329] - INFO: The finish time is 1684829532.800685
+2023-05-23 16:12:12,802 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:12,803 - buffer.py[line:332] - WARNING: Overtime:12.0402
+2023-05-23 16:12:12,815 - buffer.py[line:327] - INFO: The DDL of this canvas: 1684829521.1766698, The function is executed at 1684829520.587351 ,0.0501 ahead
+2023-05-23 16:12:12,816 - buffer.py[line:328] - INFO: Canvas Batch Size: 3, Image number: 12, Canvas Avg. Efficiency: 0.5674, Qos. 12.2139
+2023-05-23 16:12:12,816 - buffer.py[line:329] - INFO: The finish time is 1684829532.815878
+2023-05-23 16:12:12,816 - buffer.py[line:331] - WARNING: This canvas has violated the SLO!
+2023-05-23 16:12:12,816 - buffer.py[line:332] - WARNING: Overtime:11.6392
+2023-05-23 16:12:21,641 - buffer.py[line:339] - INFO: The total image number is 721, inference round is 86
+2023-05-23 16:12:21,642 - buffer.py[line:340] - INFO: The violated round is 84, Violate rate = 0.98
+2023-05-23 16:12:21,642 - buffer.py[line:339] - INFO: The total image number is 495, inference round is 65
+2023-05-23 16:12:21,642 - buffer.py[line:340] - INFO: The violated round is 63, Violate rate = 0.97

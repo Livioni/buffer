@@ -1,4 +1,4 @@
-import cv2,time,logging,threading
+import cv2,time,logging,threading,pandas,os
 import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime
@@ -44,6 +44,8 @@ class Queue: #wait to be packing
         if self.index == self.size:
             print("Warning! : Queue is full")
             self.clear()
+        if image.shape[0] > self.width or image.shape[1] > self.height:
+            image = self.resize_image(image, self.width, self.height)
         self.queue.append(image)
         self.index += 1
         return 
@@ -73,6 +75,23 @@ class Queue: #wait to be packing
         self.index -= 1
         return
 
+    def resize_image(self, image: Image, target_width : int, target_height : int) -> Image:
+        '''
+        resize the image to the target size if the image is larger than the canvas size.
+        1. image: the image to be resized.
+        2. target_width: the target width of the image.
+        3. target_height: the target height of the image.
+        '''
+        original_width, original_height = image.shape
+
+        scale = min(target_height/original_height, target_width/original_width)
+
+        new_width = int(original_width * scale)
+        new_height = int(original_height * scale)
+        resized_img = cv2.resize(image.image, (new_width, new_height), interpolation = cv2.INTER_AREA)
+
+        return Image(resized_img,image.created_time,image.SLO)
+    
     def bin_pack_solve(self, heuristic : str = 'next_fit',visualize : bool = False) -> np.ndarray:
         '''
         bin pack the images in the queue using binpack library () and return the canvas.
@@ -162,7 +181,6 @@ class Queue: #wait to be packing
             plt.show()
         return
         
-
 class Table:
     '''
     A table to store the information of the batch, which determines when to post the batch and drop a Image to a new table.
@@ -178,7 +196,7 @@ class Table:
     4. Qos_per_batch: a conservative estimate of the inference of a canvas.
     5. DDL: the earliest image's deadline
     '''
-    def __init__(self, queue_height : int = 1000, queue_width : int = 1000, Qos_per_batch : float = 0.28) -> None:
+    def __init__(self, queue_height : int = 1000, queue_width : int = 1000, Qos_per_batch : float = 0.28, logs: bool=True, csv_record: bool = True) -> None:
         self.canvas = Queue(size=100, height=queue_height, width=queue_width)
         self.table = []
         self.Qos_per_batch = Qos_per_batch
@@ -193,9 +211,18 @@ class Table:
         self.total_image = 0
         self.inference_round = 0
         self.violated_round = 0
-        # init log
-        log_file_name = datetime.now().strftime("%Y%m%d-%H%M%S") + '.log'
-        logging.basicConfig(filename='/Users/livion/Documents/GitHub/Sources/buffer/logs/'+log_file_name,level=logging.INFO,format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
+        record_file_name = datetime.now().strftime("%Y%m%d-%H%M%S")
+        self.logs = logs
+        self.csv_record = csv_record
+        # init log 
+        if self.logs:
+            logging.basicConfig(filename='/Users/livion/Documents/GitHub/Sources/buffer/logs/logs/'+record_file_name + '.log',level=logging.INFO,format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
+        # init csv
+        if self.csv_record:
+            fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Canvas efficiency', 'Remaining/Over time', 'QoS','QoS per frame','QoS per image']
+            self.data_frame = pandas.DataFrame(columns=fields)
+            self.csv_file_path = '/Users/livion/Documents/GitHub/Sources/buffer/logs/csv/'+record_file_name+'.csv'
+            self.data_frame.to_csv(self.csv_file_path, index=False)
 
     def __repr__(self) -> str:
         return "Table: {}".format(self.table)
@@ -282,42 +309,40 @@ class Table:
         start_time = time.time()
         response,time_taken = invoke_yolo_batch_v1(current_result)
         finish_time = time.time()
-        self.__logs(finish_time,time_taken,current_result,ddl,table,efficiency,remaining_time,start_time)
+        if self.logs:
+            self.__logs(finish_time,time_taken,current_result,ddl,table,efficiency,remaining_time,start_time)
+        if self.csv_record:
+            self.__csv_record(finish_time, time_taken,current_result,ddl,table,efficiency,remaining_time,start_time)
+        return
+
+    def __csv_record(self, finish_time : float, time_taken : float, current_result : np.ndarray, ddl : float, table : list, efficiency : float, remaining_time : float, start_time : float):
+        #fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Canvas efficiency', 'Remaining/Over time', 'QoS','QoS per frame','QoS per image']
+        whether_violated = 'No' if finish_time > ddl else 'Yes'
+        logs = [start_time, whether_violated, len(current_result), len(table), round(efficiency,4), round(remaining_time,4), round(time_taken,4),round(time_taken/len(current_result),4),round(time_taken/len(table),4)]
+        self.data_frame.loc[len(self.data_frame)]= logs 
+        self.data_frame.to_csv(self.csv_file_path, index=False)
         return
 
     def __logs(self,finish_time : float, time_taken : float, current_result : np.ndarray, ddl : float, table : list, efficiency : float, remaining_time : float, start_time : float):
-        logging.info("The DDL of this canvas: {}, The function is executed at {} ,{} ahead".format(ddl,start_time,remaining_time))
-        logging.info("Canvas Batch Size: {}, Image number: {}, Canvas Avg. Efficiency: {}, Qos. {}".format(len(current_result), len(table), efficiency,time_taken))
+        logging.info("The DDL of this canvas: {}, The function is executed at {} ,{:.4f} ahead".format(ddl,start_time,remaining_time))
+        logging.info("Canvas Batch Size: {}, Image number: {}, Canvas Avg. Efficiency: {:.4f}, Qos. {:.4f}".format(len(current_result), len(table), efficiency,time_taken))
         logging.info("The finish time is %f",finish_time)
         if finish_time >= ddl:
             logging.warning("This canvas has violated the SLO!")
-            logging.warning("Overtime:%f",finish_time-ddl)
+            logging.warning("Overtime:{:.4f}".format(finish_time-ddl))
             self.violated_round += 1
         else:
-            logging.info("Remaining time: %f",ddl-finish_time)
+            logging.info("Remaining time: {:.4f}".format(ddl-finish_time))
         return
     
     def show_info(self):
         logging.info("The total image number is {}, inference round is {}".format(self.total_image,self.inference_round))
-        logging.info("The violated round is {}, Violate rate = {}".format(self.violated_round,self.violated_round/self.inference_round))
+        logging.info("The violated round is {}, Violate rate = {:.2f}".format(self.violated_round,self.violated_round/self.inference_round))
         return
 
-    
-
-
-
-
-
-
-
-
-
-
-        
-
-
-    
-
-
-
-
+if __name__ == "__main__":
+    queue = Queue(10,1000,1000)
+    image = '/Users/livion/Documents/2x2/partitions_01/107_3.jpg'
+    img = Image(cv2.imread(image),time.time(),1)
+    queue.add(img)
+    queue.greedy_packer_solve(visualize=True)
