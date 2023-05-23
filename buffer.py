@@ -318,7 +318,8 @@ class Table:
     def __csv_record(self, finish_time : float, time_taken : float, current_result : np.ndarray, ddl : float, table : list, efficiency : float, remaining_time : float, start_time : float):
         #fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Canvas efficiency', 'Remaining/Over time', 'QoS','QoS per frame','QoS per image']
         whether_violated = 'No' if finish_time > ddl else 'Yes'
-        logs = [start_time, whether_violated, len(current_result), len(table), round(efficiency,4), round(remaining_time,4), round(time_taken,4),round(time_taken/len(current_result),4),round(time_taken/len(table),4)]
+        remaining_over_time = ddl-finish_time
+        logs = [start_time, whether_violated, len(current_result), len(table), round(efficiency,4), round(remaining_over_time,4), round(time_taken,4),round(time_taken/len(current_result),4),round(time_taken/len(table),4)]
         self.data_frame.loc[len(self.data_frame)]= logs 
         self.data_frame.to_csv(self.csv_file_path, index=False)
         return
