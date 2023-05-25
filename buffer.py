@@ -1,4 +1,4 @@
-import cv2,time,logging,threading,pandas,os
+import cv2,time,logging,threading,pandas
 import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime
@@ -6,7 +6,7 @@ from utils.binpack import BinPack
 import utils.greedypacker as greedypacker
 from utils.invoker import invoke_yolo_batch_v1
 
-class Image:
+class Image(object):
     '''
     The unit of image partition, which includes 
     1. image: the image itself, 
@@ -21,9 +21,9 @@ class Image:
         self.created_time = created_time
         self.SLO = SLO
 
-class Queue: #wait to be packing
+class Pool(object):
     '''
-    The queue of images, which is the input of the buffer. We bin pack the images and POST them in a batch to the server.
+    The queue of images, which is the input of the buffer.
     1. size: the size of the queue. (We set it to a large number to avoid the overflow)
     2. queue: list of Image
     3. index: the number of Image
@@ -91,7 +91,15 @@ class Queue: #wait to be packing
         resized_img = cv2.resize(image.image, (new_width, new_height), interpolation = cv2.INTER_AREA)
 
         return Image(resized_img,image.created_time,image.SLO)
-    
+        
+
+class Queue(Pool): 
+    '''
+    The pool of images which are waiting to be packed.
+    '''
+    def __init__(self, size, height, width) -> None:
+        super().__init__(size, height, width)
+
     def bin_pack_solve(self, heuristic : str = 'next_fit',visualize : bool = False) -> np.ndarray:
         '''
         bin pack the images in the queue using binpack library () and return the canvas.
@@ -181,7 +189,7 @@ class Queue: #wait to be packing
             plt.show()
         return
         
-class Table:
+class Table(object):
     '''
     A table to store the information of the batch, which determines when to post the batch and drop a Image to a new table.
     Algorithm:
@@ -341,9 +349,7 @@ class Table:
         logging.info("The violated round is {}, Violate rate = {:.2f}".format(self.violated_round,self.violated_round/self.inference_round))
         return
 
+
+
 if __name__ == "__main__":
-    queue = Queue(10,1000,1000)
-    image = '/Users/livion/Documents/2x2/partitions_01/107_3.jpg'
-    img = Image(cv2.imread(image),time.time(),1)
-    queue.add(img)
-    queue.greedy_packer_solve(visualize=True)
+    queue = Queue(size=100, height=1000, width=1000)

@@ -189,17 +189,17 @@ if __name__ == "__main__":
             else:
                 save_name = 'SEQ_'+ prefix +'_' + str(index)  + '.jpg'
                 path_name = save_path + '/' + save_name
-                # cv2.imwrite(path_name,mask)
+                cv2.imwrite(path_name,mask)
                 print('save image ' + save_name)
-                if not os.path.exists(partitions_save_path):
-                    os.mkdir(partitions_save_path)
-                for id,bin_area in enumerate(new_bin_list):
-                    cv2.imwrite(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg', mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]])
-                    mat_format = mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]]
-                    file_size = os.path.getsize(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg')
-                    delay_time = file_size / (network_bandwidth * 1000)
-                    timer = threading.Thread(target=push_to_table,args=(mat_format,delay_time,1))
-                    timer.start()
+                # if not os.path.exists(partitions_save_path):
+                #     os.mkdir(partitions_save_path)
+                # for id,bin_area in enumerate(new_bin_list):
+                #     cv2.imwrite(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg', mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]])
+                #     mat_format = mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]]
+                #     file_size = os.path.getsize(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg')
+                #     delay_time = file_size / (network_bandwidth * 1000)
+                #     timer = threading.Thread(target=push_to_table,args=(mat_format,delay_time,1))
+                #     timer.start()
             # cv2.imshow('mask',mask)
             # cv2.imshow('frame',frame)
             index += 1
@@ -210,4 +210,4 @@ if __name__ == "__main__":
         cap.release()
         cv2.destroyAllWindows()
         time.sleep(20)
-        requests.get('http://localhost:8002/gettable/')
+        # requests.get('http://localhost:8002/gettable/')

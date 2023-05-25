@@ -31,6 +31,9 @@ def invoke_keypoint(np_data: np.ndarray):
     return response
 
 def invoke_yolo(np_data: np.ndarray):
+    '''
+    invoke yolo function through json data
+    '''
     endpoint_url = functions['yolo']
     type_rq = 'batch_inference/'
     shape = np_data.shape
@@ -45,17 +48,23 @@ def invoke_yolo(np_data: np.ndarray):
     return response.json()
 
 def invoke_yolo_single(image_path: str):
+    '''
+    invoke yolo function through image path
+    '''
     endpoint_url = functions['yolo']
     type_rq = 'img_object_detection_to_img/'
     files = {'file': open(image_path, 'rb')}
     start = time.time()
     response = requests.post(endpoint_url+type_rq, files=files)
     end = time.time()
-    print("Time taken: ", end-start)
+    time_taken = end-start
     img = Image.open(BytesIO(response.content)) 
-    return 
+    return time_taken
 
 def invoke_yolo_batch_v1(np_data : np.ndarray):
+    '''
+    invoke yolo function through a batch of images with np.ndarray format
+    '''
     endpoint_url = functions['yolo']
     type_rq = 'uploadfiles/'
     files = []
@@ -70,6 +79,9 @@ def invoke_yolo_batch_v1(np_data : np.ndarray):
     return response.json(),time_taken
 
 def invoke_yolo_batch(images_list : list):
+    '''
+    invoke yolo function through a list of images with image path
+    '''    
     endpoint_url = functions['yolo']
     type_rq = 'uploadfiles/'
     files = [('files', (open(file, 'rb'))) for file in images_list]
@@ -95,7 +107,6 @@ def push_to_table(np_data: np.ndarray, delay_time :float, SLO: float=1.0):
     return response.json()
 
 if __name__ == "__main__":
-    batch = torch.rand(5,2000,2000,3)
-    batch = batch.numpy()
-    response = invoke_yolo_batch_v1(batch)
-    print(response)
+    image = '/Users/livion/Documents/test_videos/partitions_01/101_1.jpg'
+    time_taken = invoke_yolo_single(image)
+    print(time_taken)
