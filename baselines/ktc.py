@@ -15,7 +15,7 @@ save_csv_file_path = '/Users/livion/Documents/GitHub/Sources/buffer/data/ktc/'
 fields = ['Timestamp', 'File Name', 'File Size(Byte)','Canvas Size', 'Batch Size', 'Image Number', 'Canvas Efficiency', 'transmission Time (ms)', 'Latency(ms)', 'Idle Cost (CNY)', 'Trigger Cost(CNY)']
 data_frame = pd.DataFrame(columns=fields)
 csv_file_path = save_csv_file_path + record_file_name +'.csv'
-data_frame.to_csv(csv_file_path, index=False)
+# data_frame.to_csv(csv_file_path, index=False)
 ## trigger and infer
 files = os.listdir(source_file_path)
 files.sort()
@@ -27,7 +27,7 @@ for file in files:
     minibatch[int(prefix)].append(file)
 
 
-queue = Queue(100,2016,2016)
+queue = Queue(100,1024,1024)
 canva_size = str(queue.width) + 'x' + str(queue.height)
 total_cost = 0
 for key,value in minibatch.items():

@@ -19,7 +19,7 @@ def Ali_function_cost(Time: np.float64, Mem: float, CPU: float, GPU: float,\
     
     return cost
 
-def Ali_idle_cost(Time: np.float64,Mem: float, Pmem : np.float64 = 0.0000127) -> np.float64:
+def Ali_idle_cost(Time: np.float64, Mem: float, Pmem : np.float64 = 0.0000127) -> np.float64:
     '''
     This function calculates the cost of idle instance for Aliyun, note that when the function is idle
     (keep alive), we only charge the memory cost.

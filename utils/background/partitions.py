@@ -6,7 +6,7 @@ sys.path.append('/Users/livion/Documents/GitHub/Sources/buffer')
 from utils.invoker import push_to_table
 
 switch = False
-network_bandwidth = 500
+network_bandwidth = 1000
 
 def read_yaml_all(yaml_path):
     try:
@@ -191,15 +191,14 @@ if __name__ == "__main__":
                 path_name = save_path + '/' + save_name
                 cv2.imwrite(path_name,mask)
                 print('save image ' + save_name)
-                # if not os.path.exists(partitions_save_path):
-                #     os.mkdir(partitions_save_path)
-                # for id,bin_area in enumerate(new_bin_list):
-                #     cv2.imwrite(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg', mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]])
-                #     mat_format = mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]]
-                #     file_size = os.path.getsize(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg')
-                #     delay_time = file_size / (network_bandwidth * 1000)
-                #     timer = threading.Thread(target=push_to_table,args=(mat_format,delay_time,1))
-                #     timer.start()
+                if not os.path.exists(partitions_save_path):
+                    os.mkdir(partitions_save_path)
+                for id,bin_area in enumerate(new_bin_list):
+                    cv2.imwrite(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg', mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]])
+                    mat_format = mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]]
+                    file_size = os.path.getsize(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg')
+                    delay_time = file_size / (network_bandwidth * 1000)
+                    push_to_table(mat_format,delay_time,1.4)
             # cv2.imshow('mask',mask)
             # cv2.imshow('frame',frame)
             index += 1
