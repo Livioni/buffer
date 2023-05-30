@@ -1,7 +1,7 @@
 import numpy as np
-import cv2,os,time,threading
+import cv2,os,time
 from scipy.stats import kstest
-import yaml,sys,requests
+import yaml,sys
 sys.path.append('/Users/livion/Documents/GitHub/Sources/buffer')
 from utils.invoker import push_to_table
 

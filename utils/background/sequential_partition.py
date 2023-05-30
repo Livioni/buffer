@@ -125,10 +125,10 @@ if __name__ == "__main__":
     configuration_path = '/Users/livion/Documents/GitHub/Sources/buffer/utils/background/configuration.yaml'
     configration = read_yaml_all(configuration_path)
     videos_list = []
-    table1 = Table(1000,1000,0.165)
-    time.sleep(1)
-    table2 = Table(1000,1000,0.165)
-    switch = False
+    # table1 = Table(1000,1000,0.165)
+    # time.sleep(1)
+    # table2 = Table(1000,1000,0.165)
+    # switch = False
     for num,value in configration.items():
         cap = cv2.VideoCapture(value['path'])
         fgbg = cv2.createBackgroundSubtractorMOG2()
@@ -140,7 +140,7 @@ if __name__ == "__main__":
         partitions_save_path = value['partitions_save_path']
         prefix = value['prefix']
         #############filter##############
-        hand_mask = np.zeros((value['y_data'][2], value['x_data'][2]), dtype=np.uint8)
+        hand_mask = np.zeros((value['img_size'][1], value['img_size'][0]), dtype=np.uint8)
         x_data = np.array(value['x_data'])
         y_data = np.array(value['y_data'])
         pts = np.vstack((x_data, y_data)).astype(np.int32).T
@@ -191,32 +191,32 @@ if __name__ == "__main__":
             else:
                 save_name = 'SEQ_'+ prefix +'_' + str(index)  + '.jpg'
                 path_name = save_path + '/' + save_name
-                # cv2.imwrite(path_name,mask)
+                cv2.imwrite(path_name,mask)
                 print('save image ' + save_name)
                 if not os.path.exists(partitions_save_path):
                     os.mkdir(partitions_save_path)
                 for id,bin_area in enumerate(new_bin_list):
                     cv2.imwrite(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg', mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]])
-                    mat_format = mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]]
-                    file_size = os.path.getsize(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg')
-                    delay_time = file_size / (network_bandwidth * 1000)
-                    image = Image(mat_format,time.time(),1)
-                    time.sleep(delay_time)
-                    if switch == False:
-                        if table1.push(image) == False:
-                            table2.push(image)
-                            switch = True
-                    else:
-                        if table2.push(image) == False:
-                            table1.push(image)
-                            switch = False
+                    # mat_format = mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]]
+                    # file_size = os.path.getsize(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg')
+                    # delay_time = file_size / (network_bandwidth * 1000)
+                    # image = Image(mat_format,time.time(),1)
+                    # time.sleep(delay_time)
+                    # if switch == False:
+                    #     if table1.push(image) == False:
+                    #         table2.push(image)
+                    #         switch = True
+                    # else:
+                    #     if table2.push(image) == False:
+                    #         table1.push(image)
+                    #         switch = False
             # cv2.imshow('mask',mask)
             # cv2.imshow('frame',frame)
             index += 1
             k = cv2.waitKey(150) & 0xff
             if k == 27:
                 break
-        table1.show_info()
-        table2.show_info()
+        # table1.show_info()
+        # table2.show_info()
         cap.release()
         cv2.destroyAllWindows()

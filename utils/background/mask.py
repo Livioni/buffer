@@ -10,7 +10,7 @@ class GetRoiMouse():
         self.lsPointsChoose = [] 
         self.tpPointsChoose = [] 
         self.pointsCount = 0 	# 顶点计数
-        self.pointsMax = 8 		# 最大顶点个数
+        self.pointsMax = 20		# 最大顶点个数
         self.mouseWindowName = 'click ROI'
 
     def mouseclick(self):	# 显示一个窗口
@@ -76,7 +76,7 @@ class GetRoiMouse():
             cv2.imshow(self.mouseWindowName, img)
 
 if __name__ == '__main__':
-    img = cv2.imread('/Volumes/Livion/Pandadataset/panda/images/scene_01_full/SEQ_01_101.jpg')
+    img = cv2.imread('/Volumes/Livion/Pandadataset/panda/images/scene_03_full/SEQ_03_101.jpg')
     mouse_roi = GetRoiMouse()
     mouse_roi.mouseclick()
     mouse_roi.getRoi()
