@@ -1,4 +1,4 @@
-import requests,json,time,cv2,torch
+import requests,json,time,cv2
 import numpy as np
 from PIL import Image
 from io import BytesIO
@@ -6,7 +6,8 @@ from io import BytesIO
 functions = {
     # 'keypoint' : 'http://10.1.81.24:32283',
     'keypoint' : 'http://10.1.81.24:5000',
-    'yolo' : 'http://10.1.81.183:8001/',
+    # 'yolo' : 'http://10.1.81.183:8001/',
+    'yolo' : 'http://10.106.5.35:8001/',
     'table' : 'http://127.0.0.1:8002/'
 }
 
@@ -41,9 +42,9 @@ def invoke_yolo(np_data: np.ndarray):
     "data": np_data.tolist(),
     "shape": shape
     }   
-    start = time.time()
+    start = time.perf_counter()
     response = requests.post(endpoint_url+type_rq, json=data)
-    end = time.time()
+    end = time.perf_counter()
     print("Time taken: ", end-start)
     return response.json()
 
@@ -54,9 +55,9 @@ def invoke_yolo_single(image_path: str):
     endpoint_url = functions['yolo']
     type_rq = 'img_object_detection_to_img/'
     files = {'file': open(image_path, 'rb')}
-    start = time.time()
+    start = time.perf_counter()
     response = requests.post(endpoint_url+type_rq, files=files)
-    end = time.time()
+    end = time.perf_counter()
     time_taken = end-start
     img = Image.open(BytesIO(response.content)) 
     return time_taken
@@ -72,9 +73,9 @@ def invoke_yolo_batch_v1(np_data : np.ndarray):
         ret, img_encode = cv2.imencode('.jpg', img)
         f4 = BytesIO(img_encode ) # 这样可以直接转换，无需再转 img_encode.tostring()
         files.append(('files', ('image'+str(index)+'.jpg', f4.getvalue(), 'image/jpeg')))
-    start = time.time()
+    start = time.perf_counter()
     response = requests.post(endpoint_url+type_rq, files=files)
-    end = time.time()
+    end = time.perf_counter()
     time_taken = end-start
     return response.json(),time_taken
 
@@ -85,9 +86,9 @@ def invoke_yolo_batch(images_list : list):
     endpoint_url = functions['yolo']
     type_rq = 'uploadfiles/'
     files = [('files', (open(file, 'rb'))) for file in images_list]
-    start = time.time()
+    start = time.perf_counter()
     response = requests.post(endpoint_url+type_rq, files=files)
-    end = time.time()
+    end = time.perf_counter()
     print("Time taken: ", end-start)
     return response.json()
 
@@ -107,6 +108,16 @@ def push_to_table(np_data: np.ndarray, delay_time :float, SLO: float=1.0):
     return response.json()
 
 if __name__ == "__main__":
-    image = '/Users/livion/Documents/test_videos/partitions_01/101_1.jpg'
-    time_taken = invoke_yolo_single(image)
-    print(time_taken)
+    import os
+    image = '/Volumes/Livion/Pandadataset/图片/4k/SEQ_01_001.jpg'
+    file_size = os.path.getsize(image)
+    transmission_time = file_size/(10000 * 1000) # 假设带宽为10Mbps
+    image = cv2.imread(image)
+    image_numpy = np.array(image)
+    new_image = np.expand_dims(image_numpy, axis=0)
+    response,time_taken = invoke_yolo_batch_v1(new_image)
+    print('Inference time',float(response[19:27]))
+    print("Transmission time",transmission_time)
+    print("Total time by calculation:",float(response[19:27])+transmission_time)
+    # _,time_taken = invoke_yolo_batch_v1(image)
+    print('Total time:',time_taken)

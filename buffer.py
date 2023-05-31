@@ -317,8 +317,9 @@ class Table(object):
     def __trigger(self):
         current_result, ddl, table, efficiency, remaining_time = self.record_first()
         start_time = time.time()
-        response,time_taken = invoke_yolo_batch_v1(current_result)
-        finish_time = time.time()
+        response,_ = invoke_yolo_batch_v1(current_result)
+        time_taken = float(response[19:27])
+        finish_time = start_time + time_taken
         if self.logs:
             self.__logs(finish_time,time_taken,current_result,ddl,table,efficiency,remaining_time,start_time)
         if self.csv_record:
@@ -330,7 +331,7 @@ class Table(object):
         #fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Canvas efficiency', 'Remaining/Over time', 'QoS','QoS per frame','QoS per image','Cost(CNY)']
         whether_violated = 'No' if finish_time > ddl else 'Yes'
         remaining_over_time = ddl-finish_time
-        cost = Ali_function_cost(time_taken,Mem=4,CPU=2,GPU=3)
+        cost = Ali_function_cost(time_taken,Mem=4,CPU=2,GPU=4)
         logs = [start_time, whether_violated, len(current_result), len(table), round(efficiency,4), round(remaining_over_time,4), \
                 round(time_taken,4),round(time_taken/len(current_result),4),round(time_taken/len(table),4),cost]
         self.data_frame.loc[len(self.data_frame)]= logs 
@@ -357,4 +358,29 @@ class Table(object):
 
 
 if __name__ == "__main__":
-    queue = Queue(size=100, height=1000, width=1000)
+    import os
+    SLO = 0.55
+    queue = Queue(size=100, height=1024, width=1024)
+    image_path = '/Users/livion/Documents/test_videos/partitions_01/101_0.jpg'
+    file_size = os.path.getsize(image_path)
+    image = cv2.imread(image_path)
+    image_numpy = np.array(image)
+    table = Table(1024,1024,0.12,logs=True,csv_record=False)
+    delay_time = file_size / (10000 * 1000)
+    new_image = Image(image_numpy,time.time(),SLO)
+    time.sleep(delay_time)
+    SLO -= delay_time
+    new_image = Image(image_numpy,time.time(),SLO)
+    table.push(new_image)
+    time.sleep(delay_time)
+    SLO -= delay_time
+    new_image = Image(image_numpy,time.time(),SLO)
+    table.push(new_image)    
+    time.sleep(delay_time)
+    SLO -= delay_time
+    new_image = Image(image_numpy,time.time(),SLO)
+    table.push(new_image)
+    time.sleep(delay_time)
+    SLO -= delay_time
+    new_image = Image(image_numpy,time.time(),SLO)
+    table.push(new_image)
