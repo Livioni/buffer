@@ -23,9 +23,9 @@ for file in files:
         file_per_frame_size[int(file[:3])] += os.path.getsize(source_file_path + file)
 
 # SLO-aware algorithm
-table1 = Table(1024,1024,0.12)
+table1 = Table(1024,1024,0.08,logs=False)
 time.sleep(1)
-table2 = Table(1024,1024,0.12)
+table2 = Table(1024,1024,0.08,logs=False)
 start_time = time.perf_counter()
 
 for index, files in file_per_frame.items():
@@ -37,8 +37,8 @@ for index, files in file_per_frame.items():
         file_size = os.path.getsize(source_file_path + image)
         delay_time = file_size / (network_bandwidth * 1000)             
         image = Image(img,time.time(),SLO)
-        # time.sleep(delay_time)
-        # SLO -= delay_time
+        time.sleep(delay_time)
+        SLO -= delay_time
         if switch == False:
             if table1.push(image) == False:
                 table2.push(image)
@@ -52,8 +52,9 @@ for index, files in file_per_frame.items():
     time.sleep(wait_time)
 
 end_time = time.perf_counter()
+print('Total time: ',end_time-start_time)
 time.sleep(5)
 table1.show_info()
 table2.show_info()
-print('Total time: ',end_time-start_time)
+
 

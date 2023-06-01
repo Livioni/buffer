@@ -93,13 +93,36 @@ class Pool(object):
 
         return Image(resized_img,image.created_time,image.SLO)
         
-
 class Queue(Pool): 
     '''
     The pool of images which are waiting to be packed.
     '''
     def __init__(self, size, height, width) -> None:
         super().__init__(size, height, width)
+        self.DDL = None
+        self.create_time = None
+        self.efficiency = None
+        self.current_result = None
+
+    def add(self, image: Image) -> None:
+        created_time = image.created_time
+        ddl = created_time + image.SLO
+        if self.create_time == None:
+            self.create_time = created_time
+        else:
+            self.create_time = min(self.create_time, created_time)
+        if self.DDL == None:
+            self.DDL = ddl
+        else:
+            self.DDL = min(self.DDL, ddl)
+        return super().add(image)
+
+    def clear(self) -> None:
+        self.DDL = None
+        self.create_time = None
+        self.current_result = None
+        self.efficiency = None
+        return super().clear()
 
     def bin_pack_solve(self, heuristic : str = 'next_fit',visualize : bool = False) -> np.ndarray:
         '''
@@ -131,6 +154,7 @@ class Queue(Pool):
                 cv2.imshow("Canvas", canvas_print[i])
                 cv2.waitKey()
         self.clear()
+        self.current_result = canvas_print
         return canvas_print
     
     def greedy_packer_solve(self, visualize : bool = False, pack_algo : str ='guillotine', heuristic : str = 'best_shortside') -> np.ndarray:
@@ -168,6 +192,7 @@ class Queue(Pool):
             for i in range(len(result)):
                 cv2.imshow("Canvas", canvas_print[i])
                 cv2.waitKey()
+        self.current_result = canvas_print
         return canvas_print
     
     def visualize_packing(self,result) -> None:
@@ -216,7 +241,6 @@ class Table(object):
         self.old_result = None
         self.current_result = None
         self.remaining_time = None
-        self.step_flag = False
         self.total_image = 0
         self.inference_round = 0
         self.violated_round = 0
@@ -256,18 +280,13 @@ class Table(object):
             self.timer.start()
             return True
         else:
-            if self.step_flag:
-                self.table.pop()
-                self.canvas.drop(self.canvas.index-1)
-                logging.warning("Drop a image due to the DDL is not satisfied")
-                self.current_result = self.old_result
-                t = threading.Thread(target=self.__trigger)
-                t.start()
-                return False
-            else:
-                t = threading.Thread(target=self.__trigger)
-                t.start()
-                return True
+            self.table.pop()
+            self.canvas.drop(self.canvas.index-1)
+            logging.warning("Early infer due to the DDL is not satisfied")
+            self.current_result = self.old_result
+            t = threading.Thread(target=self.__trigger)
+            t.start()
+            return False
 
 
     def __calculate_slack_time(self,image : Image):
@@ -279,15 +298,8 @@ class Table(object):
         self.canvas.add(image)
         self.current_result = self.canvas.greedy_packer_solve(visualize=False)
         self.estimate_QoS = len(self.current_result) * self.Qos_per_batch
-        self.__more_than_one()
         return self.estimate_QoS
 
-    def __more_than_one(self):
-        if self.old_result is not None:
-            self.step_flag = True if (len(self.current_result)-len(self.old_result)) > 0 else False
-        else:
-            self.step_flag = False
-        return 
 
     def clean_up(self):
         self.canvas.clear()
@@ -331,7 +343,7 @@ class Table(object):
         #fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Canvas efficiency', 'Remaining/Over time', 'QoS','QoS per frame','QoS per image','Cost(CNY)']
         whether_violated = 'No' if finish_time > ddl else 'Yes'
         remaining_over_time = ddl-finish_time
-        cost = Ali_function_cost(time_taken,Mem=4,CPU=2,GPU=4)
+        cost = Ali_function_cost(time_taken,Mem=4,CPU=2,GPU=5)
         logs = [start_time, whether_violated, len(current_result), len(table), round(efficiency,4), round(remaining_over_time,4), \
                 round(time_taken,4),round(time_taken/len(current_result),4),round(time_taken/len(table),4),cost]
         self.data_frame.loc[len(self.data_frame)]= logs 
@@ -355,8 +367,6 @@ class Table(object):
         logging.info("The violated round is {}, Violate rate = {:.2f}".format(self.violated_round,self.violated_round/self.inference_round))
         return
 
-
-
 if __name__ == "__main__":
     import os
     SLO = 0.55
@@ -376,6 +386,10 @@ if __name__ == "__main__":
     SLO -= delay_time
     new_image = Image(image_numpy,time.time(),SLO)
     table.push(new_image)    
+    time.sleep(delay_time)
+    SLO -= delay_time
+    new_image = Image(image_numpy,time.time(),SLO)
+    table.push(new_image)
     time.sleep(delay_time)
     SLO -= delay_time
     new_image = Image(image_numpy,time.time(),SLO)
