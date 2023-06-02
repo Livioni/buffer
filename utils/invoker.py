@@ -6,8 +6,8 @@ from io import BytesIO
 functions = {
     # 'keypoint' : 'http://10.1.81.24:32283',
     'keypoint' : 'http://10.1.81.24:5000',
-    # 'yolo' : 'http://10.1.81.183:8001/',
-    'yolo' : 'http://10.106.5.35:8001/',
+    # 'yolo' : 'http://10.1.81.183:8001/', #ray
+    'yolo' : 'http://10.106.5.35:8001/',   #asd
     'table' : 'http://127.0.0.1:8002/'
 }
 
@@ -79,6 +79,23 @@ def invoke_yolo_batch_v1(np_data : np.ndarray):
     time_taken = end-start
     return response.json(),time_taken
 
+def invoke_yolo_batch_v2(np_data : np.ndarray):
+    '''
+    invoke yolo function through a batch of images with np.ndarray format
+    '''
+    endpoint_url = functions['yolo']
+    type_rq = 'full/'
+    files = []
+    for index, img in enumerate(np_data):
+        ret, img_encode = cv2.imencode('.jpg', img)
+        f4 = BytesIO(img_encode ) # 这样可以直接转换，无需再转 img_encode.tostring()
+        files.append(('files', ('image'+str(index)+'.jpg', f4.getvalue(), 'image/jpeg')))
+    start = time.perf_counter()
+    response = requests.post(endpoint_url+type_rq, files=files)
+    end = time.perf_counter()
+    time_taken = end-start
+    return response.json(),time_taken
+
 def invoke_yolo_batch(images_list : list):
     '''
     invoke yolo function through a list of images with image path
@@ -110,14 +127,22 @@ def push_to_table(np_data: np.ndarray, delay_time :float, SLO: float=1.0):
 if __name__ == "__main__":
     import os
     image = '/Volumes/Livion/Pandadataset/图片/4k/SEQ_01_001.jpg'
+    network_bandwidth = 100 # 10Mbps
+    upload_byte_per_second = network_bandwidth * 1000 * 1000 / 8
     file_size = os.path.getsize(image)
-    transmission_time = file_size/(10000 * 1000) # 假设带宽为10Mbps
+    transmission_time = file_size/upload_byte_per_second # 假设带宽为10Mbps
     image = cv2.imread(image)
     image_numpy = np.array(image)
     new_image = np.expand_dims(image_numpy, axis=0)
-    response,time_taken = invoke_yolo_batch_v1(new_image)
-    print('Inference time',float(response[19:27]))
+    response,time_taken = invoke_yolo_batch_v2(new_image)
+    response_list = response.split(' ')
+    service_time = float(response_list[1][:-1])
+    inference_time = float(response_list[3][:-1])
+    prepocess_time = float(response_list[5][:-1])
+    print('Service time',service_time)
+    print('Inference time',inference_time)
+    print('Preprocess time',prepocess_time)
     print("Transmission time",transmission_time)
-    print("Total time by calculation:",float(response[19:27])+transmission_time)
+    print("Total time by calculation:",service_time+transmission_time)
     # _,time_taken = invoke_yolo_batch_v1(image)
     print('Total time:',time_taken)
