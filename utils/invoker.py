@@ -1,6 +1,5 @@
 import requests,json,time,cv2
 import numpy as np
-from PIL import Image
 from io import BytesIO
 
 functions = {
@@ -31,36 +30,22 @@ def invoke_keypoint(np_data: np.ndarray):
     response = requests.post(endpoint_url, headers=headers, data=payload_str,timeout=30)
     return response
 
-def invoke_yolo(np_data: np.ndarray):
-    '''
-    invoke yolo function through json data
-    '''
-    endpoint_url = functions['yolo']
-    type_rq = 'batch_inference/'
-    shape = np_data.shape
-    data = {
-    "data": np_data.tolist(),
-    "shape": shape
-    }   
-    start = time.perf_counter()
-    response = requests.post(endpoint_url+type_rq, json=data)
-    end = time.perf_counter()
-    print("Time taken: ", end-start)
-    return response.json()
-
-def invoke_yolo_single(image_path: str):
+def invoke_yolo_single(np_data : np.ndarray):
     '''
     invoke yolo function through image path
     '''
     endpoint_url = functions['yolo']
-    type_rq = 'img_object_detection_to_img/'
-    files = {'file': open(image_path, 'rb')}
+    type_rq = 'single_image/'
+    files = []
+    for index, img in enumerate(np_data):
+        ret, img_encode = cv2.imencode('.jpg', img)
+        f4 = BytesIO(img_encode ) # 这样可以直接转换，无需再转 img_encode.tostring()
+        files.append(('files', ('image'+str(index)+'.jpg', f4.getvalue(), 'image/jpeg')))
     start = time.perf_counter()
     response = requests.post(endpoint_url+type_rq, files=files)
     end = time.perf_counter()
     time_taken = end-start
-    img = Image.open(BytesIO(response.content)) 
-    return time_taken
+    return response.json(),time_taken
 
 def invoke_yolo_batch_v1(np_data : np.ndarray):
     '''
@@ -134,7 +119,7 @@ if __name__ == "__main__":
     image = cv2.imread(image)
     image_numpy = np.array(image)
     new_image = np.expand_dims(image_numpy, axis=0)
-    response,time_taken = invoke_yolo_batch_v2(new_image)
+    response,time_taken = invoke_yolo_single(new_image)
     response_list = response.split(' ')
     service_time = float(response_list[1][:-1])
     inference_time = float(response_list[3][:-1])

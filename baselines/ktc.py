@@ -16,7 +16,7 @@ source_file_path = '/Users/livion/Documents/test_videos/' + scene_name + '/'
 save_csv_file_path = '/Users/livion/Documents/GitHub/Sources/buffer/data/ktc/'
 compare_source_path = '/Users/livion/Documents/test_videos/' + scene_partition_name + '/'
 ## prepare data
-fields = ['Timestamp', 'File Name', 'File Size(Byte)','Canvas Size', 'Batch Size', 'Image Number', 'Canvas Efficiency', \
+fields = ['Timestamp', 'File Name', 'File Size(Byte)','Canvas Size', 'Batch Size', 'Image Number', 'Canvas Efficiency', 'Bin Packing Time(ms)', \
           'Prepocess Time(ms)','Inference Time (ms)', 'Transmission Time (ms)', 'Latency (ms)', 'Idle Cost (CNY)', 'Trigger Cost(CNY)']
 data_frame = pd.DataFrame(columns=fields)
 csv_file_path = save_csv_file_path + record_file_name +'.csv'
@@ -70,15 +70,16 @@ for key,value in minibatch.items():
     cost = Ali_function_cost(Time=service_time, Mem=4, CPU=2, GPU=6)
     total_cost += cost + idle_cost
     latency = transmission_time + service_time
-#fields = ['Timestamp', 'File Name', 'File Size(Byte)','Canvas Size', 'Batch Size', 'Image Number', 'Canvas Efficiency', \
+#fields = ['Timestamp', 'File Name', 'File Size(Byte)','Canvas Size', 'Batch Size', 'Image Number', 'Canvas Efficiency', 'Bin Packing Time(ms)'\
 #          'Prepocess Time(ms)','Inference Time (ms)', 'Transmission Time (ms)', 'Latency (ms)', 'Idle Cost (CNY)', 'Trigger Cost(CNY)']
     data_frame = pd.DataFrame([[start_time, file, total_file_size,canva_size, len(canvas),len(image_path_list),\
-                                round(canvas_efficency,5), round(prepocess_time*1000,5), round(inference_time*1000,5), \
-                                round(transmission_time*1000,5),round(latency*1000,5),idle_cost, cost]], columns=fields)
+                                round(canvas_efficency,5), round(bin_pack_time*1000,5), round(prepocess_time*1000,5), \
+                                round(inference_time*1000,5),round(transmission_time*1000,5),round(latency*1000,5),\
+                                idle_cost, cost]], columns=fields)
     data_frame.to_csv(csv_file_path, index=False, mode='a', header=False)
     print('File: ', file, 'Inference Time: ', round(service_time,5),'Transmission Time:',transmission_time,'Latency:',latency, 'Cost', cost)
     queue.clear()
-    time.sleep(1)
+    time.sleep(0.8)
 
 print('Total Cost: ', total_cost)
 
