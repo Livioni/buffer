@@ -6,6 +6,7 @@ from utils.binpack import BinPack
 import utils.greedypacker as greedypacker
 from utils.invoker import invoke_yolo_batch_v1
 from baselines.cost_function import Ali_function_cost, Ali_idle_cost
+from baselines.tools import read_response
 
 class Image(object):
     '''
@@ -252,8 +253,8 @@ class Table(object):
             logging.basicConfig(filename='/Users/livion/Documents/GitHub/Sources/buffer/logs/logs/'+record_file_name + '.log',level=logging.INFO,format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
         # init csv
         if self.csv_record:
-            fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Canvas efficiency', 'Remaining/Over time',\
-                       'QoS','QoS per frame','QoS per image','Cost(CNY)']
+            fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Canvas efficiency', 'Remaining/Over time', \
+                      'Prepocess Time(ms)','Inference Time (ms)','Latency (ms)','Latency per frame (ms)','Latency per image (ms)','Cost(CNY)']
             self.data_frame = pandas.DataFrame(columns=fields)
             self.csv_file_path = '/Users/livion/Documents/GitHub/Sources/buffer/logs/csv/'+record_file_name+'.csv'
             self.data_frame.to_csv(self.csv_file_path, index=False)
@@ -330,22 +331,25 @@ class Table(object):
         current_result, ddl, table, efficiency, remaining_time = self.record_first()
         start_time = time.time()
         response,_ = invoke_yolo_batch_v1(current_result)
-        time_taken = float(response[19:27])
-        finish_time = start_time + time_taken
+        service_time, inference_time, prepocess_time = read_response(response)
+        finish_time = start_time + service_time
         if self.logs:
-            self.__logs(finish_time,time_taken,current_result,ddl,table,efficiency,remaining_time,start_time)
+            self.__logs(finish_time,service_time,current_result,ddl,table,efficiency,remaining_time,start_time)
         if self.csv_record:
-            self.__csv_record(finish_time, time_taken,current_result,ddl,table,efficiency,remaining_time,start_time)
+            self.__csv_record(finish_time, service_time, current_result, ddl, table, efficiency, remaining_time, start_time,\
+                              inference_time, prepocess_time)
         return
 
     def __csv_record(self, finish_time : float, time_taken : float, current_result : np.ndarray, \
-                     ddl : float, table : list, efficiency : float, remaining_time : float, start_time : float):
-        #fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Canvas efficiency', 'Remaining/Over time', 'QoS','QoS per frame','QoS per image','Cost(CNY)']
+                     ddl : float, table : list, efficiency : float, remaining_time : float, start_time : float,\
+                     inference_time : float, prepocess_time : float):
+        #fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Canvas efficiency', 'Remaining/Over time', \
+        #          'Prepocess Time(ms)','Inference_time','QoS','QoS per frame','QoS per image','Cost(CNY)']
         whether_violated = 'No' if finish_time > ddl else 'Yes'
         remaining_over_time = ddl-finish_time
         cost = Ali_function_cost(time_taken,Mem=4,CPU=2,GPU=5)
         logs = [start_time, whether_violated, len(current_result), len(table), round(efficiency,4), round(remaining_over_time,4), \
-                round(time_taken,4),round(time_taken/len(current_result),4),round(time_taken/len(table),4),cost]
+                round(inference_time*1000,4),round(prepocess_time*1000,4), round(time_taken,4),round(time_taken/len(current_result),4),round(time_taken/len(table),4),cost]
         self.data_frame.loc[len(self.data_frame)]= logs 
         self.data_frame.to_csv(self.csv_file_path, index=False)
         return

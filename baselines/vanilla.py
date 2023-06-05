@@ -11,7 +11,7 @@ scene_name = 'scene_01_full'
 network_bandwidth = 10 # 10Mbps
 upload_byte_per_second = network_bandwidth * 1000 * 1000 / 8
 ## define file name and source file path
-record_file_name = '4090Ti_vanilla_' + scene_name + '_' + datetime.now().strftime("%Y%m%d-%H%M%S") 
+record_file_name = '2080Ti_vanilla_' + scene_name + '_' + datetime.now().strftime("%Y%m%d-%H%M%S") 
 source_file_path = '/Volumes/Livion/Pandadataset/panda/images/' + scene_name + '/'
 save_csv_file_path = '/Users/livion/Documents/GitHub/Sources/buffer/data/vanilla/'
 ## prepare data
@@ -42,7 +42,7 @@ for file in files:
                                 round(inference_time*1000,5),round(latency*1000,5), idle_cost, cost, network_bandwidth]], columns=fields)
     data_frame.to_csv(csv_file_path, index=False, mode='a', header=False)
     print('File: ', file, 'Inference Time: ', inference_time, 'Transmission Time:', transmission_time, 'Total time', latency, 'Cost: ', cost)
-    time.sleep(0.8)
+    # time.sleep(0.8)
 print('Total Cost: ', total_cost)
 
 

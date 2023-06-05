@@ -3,7 +3,8 @@ sys.path.append('/Users/livion/Documents/GitHub/Sources/buffer')
 from buffer import Table,Image
 
 scene_name = 'partitions_01'
-network_bandwidth = 10000 #bytes/s
+network_bandwidth = 10 # 10Mbps
+upload_byte_per_second = network_bandwidth * 1000 * 1000 / 8
 switch = False
 ## define file name and source file path
 source_file_path = '/Users/livion/Documents/test_videos/' + scene_name + '/'
@@ -29,13 +30,13 @@ table2 = Table(1024,1024,0.08,logs=False)
 start_time = time.perf_counter()
 
 for index, files in file_per_frame.items():
-    SLO = 0.55
+    SLO = 2.6
     for image in files:
         if image == '.DS_Store':
             continue
         img = cv2.imread(source_file_path + image)
         file_size = os.path.getsize(source_file_path + image)
-        delay_time = file_size / (network_bandwidth * 1000)             
+        delay_time = file_size / upload_byte_per_second            
         image = Image(img,time.time(),SLO)
         time.sleep(delay_time)
         SLO -= delay_time
@@ -47,7 +48,7 @@ for index, files in file_per_frame.items():
             if table2.push(image) == False:
                 table1.push(image)
                 switch = False
-    wait_time = 0.1 - file_per_frame_size[index] / (network_bandwidth * 1000)
+    wait_time = 2.6 - file_per_frame_size[index] / upload_byte_per_second
     print('wait time: ',wait_time)
     time.sleep(wait_time)
 
