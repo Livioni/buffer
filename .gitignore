@@ -9,3 +9,4 @@ video_info
 .code-workspace
 test
 logs/*
+*.pyc

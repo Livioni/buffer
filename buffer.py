@@ -384,21 +384,4 @@ if __name__ == "__main__":
     new_image = Image(image_numpy,time.time(),SLO)
     time.sleep(delay_time)
     SLO -= delay_time
-    new_image = Image(image_numpy,time.time(),SLO)
-    table.push(new_image)
-    time.sleep(delay_time)
-    SLO -= delay_time
-    new_image = Image(image_numpy,time.time(),SLO)
-    table.push(new_image)    
-    time.sleep(delay_time)
-    SLO -= delay_time
-    new_image = Image(image_numpy,time.time(),SLO)
-    table.push(new_image)
-    time.sleep(delay_time)
-    SLO -= delay_time
-    new_image = Image(image_numpy,time.time(),SLO)
-    table.push(new_image)
-    time.sleep(delay_time)
-    SLO -= delay_time
-    new_image = Image(image_numpy,time.time(),SLO)
-    table.push(new_image)
+
