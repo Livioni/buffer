@@ -5,9 +5,9 @@ from io import BytesIO
 functions = {
     # 'keypoint' : 'http://10.1.81.24:32283',
     'keypoint' : 'http://10.1.81.24:5000',
-    'yolo' : 'http://10.1.81.183:8001/', #ray
+    # 'yolo' : 'http://10.1.81.183:8001/', #ray
     # 'yolo' : 'http://10.106.5.35:8001/',   #asd
-    # 'yolo':'http://yolov-inference-yolovx-idcixdzubx.cn-hangzhou.fcapp.run/', #ali cloud
+    'yolo':'http://yolov-inference-yolovx-idcixdzubx.cn-hangzhou.fcapp.run/', #ali cloud
     'table' : 'http://127.0.0.1:8002/'
 }
 

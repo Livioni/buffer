@@ -11,3 +11,4 @@ test
 logs/*
 *.pyc
 motivation
+data

@@ -11,13 +11,13 @@ network_bandwidth = 10 # 10Mbps
 upload_byte_per_second = network_bandwidth * 1000 * 1000 / 8
 ## define file name and source file path
 scene_partition_name = 'scene_'+ scene_name[-2:] +'_part'
-record_file_name = 'No_batch_' + scene_name + '_' + datetime.now().strftime("%Y%m%d-%H%M%S") 
+record_file_name = 'A10No_batch_' + scene_name + '_' + datetime.now().strftime("%Y%m%d-%H%M%S") 
 source_file_path = '/Users/livion/Documents/test_videos/' + scene_name + '/'
 save_csv_file_path = '/Users/livion/Documents/GitHub/Sources/buffer/data/no_batch/'
 compare_source_path = '/Users/livion/Documents/test_videos/' + scene_partition_name + '/'
 ## prepare data
 fields = ['Timestamp', 'File Name', 'File Size(Byte)', 'Prepocess Time(ms)','Inference Time (ms)', \
-          'Transmission Time (ms)', 'Latency (ms)', 'Idle Cost (CNY)', 'Trigger Cost(CNY)']
+          'Transmission Time (ms)', 'Latency (ms)', 'Idle Cost (CNY)', 'Trigger Cost(CNY)', 'Bandwidth(Mbps)']
 data_frame = pd.DataFrame(columns=fields)
 csv_file_path = save_csv_file_path + record_file_name +'.csv'
 data_frame.to_csv(csv_file_path, index=False)
@@ -44,10 +44,9 @@ for index, file in enumerate(files):
 #fields = ['Timestamp', 'File Name', 'File Size(Byte)', 'Prepocess Time(ms)','Inference Time (ms)', \
 #          'Transmission Time (ms)', 'Latency (ms)', 'Idle Cost (CNY)', 'Trigger Cost(CNY)']
     data_frame = pd.DataFrame([[index, file, file_size, round(prepocess_time*1000,5), round(inference_time*1000,5), \
-                                round(transmission_time*1000,5),round(latency*1000,5),idle_cost, cost]], columns=fields)
+                                round(transmission_time*1000,5),round(latency*1000,5),idle_cost, cost, network_bandwidth]], columns=fields)
     data_frame.to_csv(csv_file_path, index=False, mode='a', header=False)
     print('File: ', file, 'Inference Time: ', round(service_time,5),'Transmission Time:',transmission_time,'Latency:',latency, 'Cost', cost)
-    time.sleep(0.5)
 
 print('Total Cost: ', total_cost)
 
