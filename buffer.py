@@ -375,13 +375,27 @@ if __name__ == "__main__":
     import os
     SLO = 0.55
     queue = Queue(size=100, height=1024, width=1024)
-    image_path = '/Users/livion/Documents/test_videos/partitions_01/101_0.jpg'
-    file_size = os.path.getsize(image_path)
-    image = cv2.imread(image_path)
-    image_numpy = np.array(image)
-    table = Table(1024,1024,0.12,logs=True,csv_record=False)
-    delay_time = file_size / (10000 * 1000)
-    new_image = Image(image_numpy,time.time(),SLO)
-    time.sleep(delay_time)
-    SLO -= delay_time
+    image_path1 = '/Users/livion/Documents/test_videos/partitions_01/101_0.jpg'
+    image_path2 = '/Users/livion/Documents/test_videos/partitions_01/101_1.jpg'
+    image_path3 = '/Users/livion/Documents/test_videos/partitions_01/101_2.jpg'
+    image_path4 = '/Users/livion/Documents/test_videos/partitions_01/101_3.jpg'
+    image_path5 = '/Users/livion/Documents/test_videos/partitions_01/101_5.jpg'
+    image1 = cv2.imread(image_path1)
+    image2 = cv2.imread(image_path2)
+    image3 = cv2.imread(image_path3)
+    image4 = cv2.imread(image_path4)
+    image5 = cv2.imread(image_path5)
+    image_numpy1 = np.array(image1)
+    image_numpy2 = np.array(image2)
+    image_numpy3 = np.array(image3)
+    image_numpy4 = np.array(image4)
+    image_numpy5 = np.array(image5)
+    new_image1 = Image(image_numpy1,time.time(),SLO)
+    new_image2 = Image(image_numpy2,time.time(),SLO)
+    new_image3 = Image(image_numpy3,time.time(),SLO)
+    new_image4 = Image(image_numpy4,time.time(),SLO)
+    new_image5 = Image(image_numpy5,time.time(),SLO)
+    queue.insert(new_image1,new_image2,new_image3,new_image4,new_image5)
+    queue.greedy_packer_solve(visualize=True)
+
 

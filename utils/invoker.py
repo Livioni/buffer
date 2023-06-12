@@ -5,9 +5,9 @@ from io import BytesIO
 functions = {
     # 'keypoint' : 'http://10.1.81.24:32283',
     'keypoint' : 'http://10.1.81.24:5000',
-    # 'yolo' : 'http://10.1.81.183:8001/', #ray
-    # 'yolo' : 'http://10.106.5.35:8000/',   #asd
-    'yolo':'http://yolov-inference-yolovx-idcixdzubx.cn-hangzhou.fcapp.run/', #ali cloud
+    'yolo' : 'http://10.1.81.183:8001/', #ray
+    # 'yolo' : 'http://10.106.5.35:8001/',   #asd
+    # 'yolo':'http://yolov-inference-yolovx-idcixdzubx.cn-hangzhou.fcapp.run/', #ali cloud
     'table' : 'http://127.0.0.1:8002/'
 }
 
@@ -47,6 +47,7 @@ def invoke_yolo_single(np_data : np.ndarray):
     end = time.perf_counter()
     time_taken = end-start
     return response.json(),time_taken
+    
 
 def invoke_yolo_batch_v1(np_data : np.ndarray):
     '''
@@ -71,6 +72,23 @@ def invoke_yolo_batch_v2(np_data : np.ndarray):
     '''
     endpoint_url = functions['yolo']
     type_rq = 'full/'
+    files = []
+    for index, img in enumerate(np_data):
+        ret, img_encode = cv2.imencode('.jpg', img)
+        f4 = BytesIO(img_encode ) # 这样可以直接转换，无需再转 img_encode.tostring()
+        files.append(('files', ('image'+str(index)+'.jpg', f4.getvalue(), 'image/jpeg')))
+    start = time.perf_counter()
+    response = requests.post(endpoint_url+type_rq, files=files)
+    end = time.perf_counter()
+    time_taken = end-start
+    return response.json(),time_taken
+
+def invoke_yolo_batch_v3(np_data : np.ndarray):
+    '''
+    invoke yolo function through a batch of images with np.ndarray format
+    '''
+    endpoint_url = functions['yolo']
+    type_rq = 'motivation/'
     files = []
     for index, img in enumerate(np_data):
         ret, img_encode = cv2.imencode('.jpg', img)
