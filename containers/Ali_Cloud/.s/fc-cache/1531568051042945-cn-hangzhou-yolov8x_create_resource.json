@@ -1,0 +1,8 @@
+{
+  "functionNames": [
+    "yolov8x/Yolov8_inference_copy1",
+    "yolov8x/Yolov8_inference_ktc",
+    "yolov8x/Yolov8_inference_no_batch",
+    "yolov8x/Yolov8_inference"
+  ]
+}

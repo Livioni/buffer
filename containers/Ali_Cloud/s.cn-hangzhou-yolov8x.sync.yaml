@@ -1,0 +1,244 @@
+edition: 1.0.0
+name: compoent-test
+access: default
+services:
+  cn-hangzhou-yolov8x-Yolov8_inference_copy1:
+    component: devsapp/fc
+    props:
+      region: cn-hangzhou
+      service:
+        role: acs:ram::1531568051042945:role/aliyunfcdefaultrole
+        logConfig:
+          project: aliyun-fc-cn-hangzhou-75e7a2bc-1fc6-54a5-8c4c-0f1f984dfb96
+          logstore: function-log
+          enableRequestMetrics: true
+          enableInstanceMetrics: true
+          logBeginRule: DefaultRegex
+        internetAccess: true
+        ossMountConfig:
+          mountPoints: []
+        name: yolov8x
+      function:
+        description: This is default function description by fc-deploy component
+        runtime: custom-container
+        handler: index.handler
+        timeout: 60
+        memorySize: 4096
+        gpuMemorySize: 8192
+        cpu: 2
+        diskSize: 512
+        environmentVariables: {}
+        instanceConcurrency: 1
+        customContainerConfig:
+          accelerationType: Default
+          image: registry-vpc.cn-hangzhou.aliyuncs.com/livion/livion_images:v3
+        caPort: 8001
+        instanceType: fc.gpu.ampere.1
+        name: Yolov8_inference_copy1
+        asyncConfiguration:
+          statefulInvocation: true
+      triggers:
+        - name: defaultTrigger
+          description: ''
+          type: http
+          qualifier: LATEST
+          config:
+            methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            authType: anonymous
+            disableURLInternet: false
+  cn-hangzhou-yolov8x-Yolov8_inference_ktc:
+    component: devsapp/fc
+    props:
+      region: cn-hangzhou
+      service:
+        role: acs:ram::1531568051042945:role/aliyunfcdefaultrole
+        logConfig:
+          project: aliyun-fc-cn-hangzhou-75e7a2bc-1fc6-54a5-8c4c-0f1f984dfb96
+          logstore: function-log
+          enableRequestMetrics: true
+          enableInstanceMetrics: true
+          logBeginRule: DefaultRegex
+        internetAccess: true
+        ossMountConfig:
+          mountPoints: []
+        name: yolov8x
+      function:
+        description: This is default function description by fc-deploy component
+        runtime: custom-container
+        handler: index.handler
+        timeout: 60
+        memorySize: 4096
+        gpuMemorySize: 8192
+        cpu: 2
+        diskSize: 512
+        environmentVariables: {}
+        instanceConcurrency: 1
+        customContainerConfig:
+          accelerationType: Default
+          image: registry-vpc.cn-hangzhou.aliyuncs.com/livion/livion_images:v3
+        caPort: 8001
+        instanceType: fc.gpu.ampere.1
+        name: Yolov8_inference_ktc
+        asyncConfiguration:
+          statefulInvocation: true
+      triggers:
+        - name: defaultTrigger
+          description: ''
+          type: http
+          qualifier: LATEST
+          config:
+            methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            authType: anonymous
+            disableURLInternet: false
+  cn-hangzhou-yolov8x-Yolov8_inference_no_batch:
+    component: devsapp/fc
+    props:
+      region: cn-hangzhou
+      service:
+        role: acs:ram::1531568051042945:role/aliyunfcdefaultrole
+        logConfig:
+          project: aliyun-fc-cn-hangzhou-75e7a2bc-1fc6-54a5-8c4c-0f1f984dfb96
+          logstore: function-log
+          enableRequestMetrics: true
+          enableInstanceMetrics: true
+          logBeginRule: DefaultRegex
+        internetAccess: true
+        ossMountConfig:
+          mountPoints: []
+        name: yolov8x
+      function:
+        description: This is default function description by fc-deploy component
+        runtime: custom-container
+        handler: index.handler
+        timeout: 60
+        memorySize: 4096
+        gpuMemorySize: 8192
+        cpu: 2
+        diskSize: 512
+        environmentVariables: {}
+        instanceConcurrency: 1
+        customContainerConfig:
+          accelerationType: Default
+          image: registry-vpc.cn-hangzhou.aliyuncs.com/livion/livion_images:v3
+        caPort: 8001
+        instanceType: fc.gpu.ampere.1
+        name: Yolov8_inference_no_batch
+        asyncConfiguration:
+          statefulInvocation: true
+      triggers:
+        - name: defaultTrigger
+          description: ''
+          type: http
+          qualifier: LATEST
+          config:
+            methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            authType: anonymous
+            disableURLInternet: false
+            cn-hangzhou-yolov8x-Yolov8_inference_no_batch:
+    component: devsapp/fc
+    props:
+      region: cn-hangzhou
+      service:
+        role: acs:ram::1531568051042945:role/aliyunfcdefaultrole
+        logConfig:
+          project: aliyun-fc-cn-hangzhou-75e7a2bc-1fc6-54a5-8c4c-0f1f984dfb96
+          logstore: function-log
+          enableRequestMetrics: true
+          enableInstanceMetrics: true
+          logBeginRule: DefaultRegex
+        internetAccess: true
+        ossMountConfig:
+          mountPoints: []
+        name: yolov8x
+      function:
+        description: This is default function description by fc-deploy component
+        runtime: custom-container
+        handler: index.handler
+        timeout: 60
+        memorySize: 4096
+        gpuMemorySize: 8192
+        cpu: 2
+        diskSize: 512
+        environmentVariables: {}
+        instanceConcurrency: 1
+        customContainerConfig:
+          accelerationType: Default
+          image: registry-vpc.cn-hangzhou.aliyuncs.com/livion/livion_images:v3
+        caPort: 8001
+        instanceType: fc.gpu.ampere.1
+        name: Yolov8_inference_no_batch
+        asyncConfiguration:
+          statefulInvocation: true
+      triggers:
+        - name: defaultTrigger
+          description: ''
+          type: http
+          qualifier: LATEST
+          config:
+            methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            authType: anonymous
+            disableURLInternet: false
+  cn-hangzhou-yolov8x-Yolov8_inference_vanilla:
+    component: devsapp/fc
+    props:
+      region: cn-hangzhou
+      service:
+        role: acs:ram::1531568051042945:role/aliyunfcdefaultrole
+        logConfig:
+          project: aliyun-fc-cn-hangzhou-75e7a2bc-1fc6-54a5-8c4c-0f1f984dfb96
+          logstore: function-log
+          enableRequestMetrics: true
+          enableInstanceMetrics: true
+          logBeginRule: DefaultRegex
+        internetAccess: true
+        ossMountConfig:
+          mountPoints: []
+        name: yolov8x
+      function:
+        description: This is default function description by fc-deploy component
+        runtime: custom-container
+        handler: index.handler
+        timeout: 60
+        memorySize: 4096
+        gpuMemorySize: 8192
+        cpu: 2
+        diskSize: 512
+        environmentVariables: {}
+        instanceConcurrency: 1
+        customContainerConfig:
+          accelerationType: Default
+          image: registry-vpc.cn-hangzhou.aliyuncs.com/livion/livion_images:v3
+        caPort: 8001
+        instanceType: fc.gpu.ampere.1
+        name: Yolov8_inference_inference_vanilla
+        asyncConfiguration:
+          statefulInvocation: true
+      triggers:
+        - name: defaultTrigger
+          description: ''
+          type: http
+          qualifier: LATEST
+          config:
+            methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            authType: anonymous
+            disableURLInternet: false

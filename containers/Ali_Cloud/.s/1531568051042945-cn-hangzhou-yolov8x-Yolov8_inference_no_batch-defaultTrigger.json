@@ -1,0 +1,28 @@
+{
+  "statefulConfig": {
+    "triggerName": "defaultTrigger",
+    "description": "",
+    "triggerId": "75a6f1f6-5d73-4ecd-bb28-aee3d302b74c",
+    "sourceArn": null,
+    "triggerType": "http",
+    "invocationRole": null,
+    "qualifier": "LATEST",
+    "urlInternet": "https://yolov-ino-batch-yolovx-oypryljcta.cn-hangzhou.fcapp.run",
+    "urlIntranet": "https://yolov-ino-batch-yolovx-oypryljcta.cn-hangzhou-vpc.fcapp.run",
+    "triggerConfig": {
+      "methods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "authType": "anonymous",
+      "disableURLInternet": false
+    },
+    "createdTime": "2023-06-12T13:45:43Z",
+    "lastModifiedTime": "2023-06-12T13:45:43Z",
+    "status": null,
+    "targetArn": null,
+    "name": "defaultTrigger"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "statefulConfig": {
+    "functionId": "da9778b3-2827-4051-907e-55f872d0bd5f",
+    "functionName": "Yolov8_inference",
+    "description": "This is default function description by fc-deploy component",
+    "runtime": "custom-container",
+    "handler": "index.handler",
+    "timeout": 60,
+    "initializer": "",
+    "initializationTimeout": 3,
+    "codeSize": 0,
+    "codeChecksum": "",
+    "memorySize": 4096,
+    "gpuMemorySize": 6144,
+    "cpu": 2,
+    "diskSize": 512,
+    "environmentVariables": {},
+    "createdTime": "2023-06-15T12:08:30Z",
+    "lastModifiedTime": "2023-06-15T12:08:30Z",
+    "instanceConcurrency": 1,
+    "instanceSoftConcurrency": null,
+    "customContainerConfig": {
+      "accelerationInfo": {
+        "status": "Ready"
+      },
+      "accelerationType": "Default",
+      "args": null,
+      "command": null,
+      "image": "registry-vpc.cn-hangzhou.aliyuncs.com/livion/livion_images:v3",
+      "imageAcclConfig": null,
+      "instanceID": null,
+      "serverlessImage": null,
+      "webServerMode": true
+    },
+    "caPort": 8001,
+    "instanceType": "fc.gpu.ampere.1",
+    "layers": null,
+    "layersArnV2": null,
+    "instanceLifecycleConfig": {
+      "preFreeze": {
+        "handler": "",
+        "timeout": 3
+      },
+      "preStop": {
+        "handler": "",
+        "timeout": 3
+      }
+    },
+    "customDNS": null,
+    "customRuntimeConfig": null,
+    "customHealthCheckConfig": null,
+    "name": "Yolov8_inference",
+    "asyncConfiguration": {
+      "destinationConfig": {
+        "onSuccess": null,
+        "onFailure": null
+      },
+      "maxAsyncEventAgeInSeconds": null,
+      "statefulInvocation": true,
+      "maxAsyncRetryAttempts": null
+    }
+  }
+}
