@@ -7,7 +7,7 @@ from utils.invoker import invoke_yolo_batch_v1
 from cost_function import Ali_function_cost, Ali_idle_cost
 from buffer import Queue,Image
 
-scene_name = 'partitions_08'
+scene_name = 'partitions_01'
 network_bandwidth = 10 # 10Mbps
 upload_byte_per_second = network_bandwidth * 1000 * 1000 / 8
 

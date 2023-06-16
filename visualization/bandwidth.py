@@ -5,7 +5,6 @@ import pandas as pd
 import numpy as np
 import sys,matplotlib
 sys.path.append('/Users/livion/Documents/GitHub/Sources/buffer') 
-from baselines.cost_function import Ali_function_cost_usd
 plt.style.use("seaborn-v0_8-darkgrid")
 
 matplotlib.rcParams['font.sans-serif'] = "Times New Roman"
@@ -35,33 +34,23 @@ for index,scene_name in enumerate(all_scene_name):
 
     frame_cnt = [134,134,134,48,33,122,80,134,134,134] 
     patches_cnt = [1216,1150,1234,610,460,1040,799,1365,1323,1299] 
-    column_name = 'Average Latency'
+    column_name = 'Average File Size'
 
     # Read a specific column from the dataframe
-    avg_cost_ktc = ktc[column_name].values
-    avg_cost_no_batch = no_batch[column_name].values
-    avg_cost_partition = partition[column_name].values
-    avg_cost_vanilla = vanilla[column_name].values
+    avg_band_ktc = ktc[column_name].values
+    avg_band_no_batch = no_batch[column_name].values
+    avg_band_partition = partition[column_name].values
+    avg_band_vanilla = vanilla[column_name].values
 
-    cost_ktc = avg_cost_ktc * frame_cnt[index]
-    cost_no_batch = avg_cost_no_batch * patches_cnt[index]
-    cost_partition = avg_cost_partition * frame_cnt[index]
-    cost_vanilla = avg_cost_vanilla * frame_cnt[index]
+    band_ktc = avg_band_ktc * frame_cnt[index]
+    band_no_batch = avg_band_no_batch * patches_cnt[index]
+    band_partition = avg_band_partition * frame_cnt[index]
+    band_vanilla = avg_band_vanilla * frame_cnt[index]
 
-    for cost in [cost_ktc,cost_no_batch,cost_partition,cost_vanilla]:
-        for ind,time in enumerate(cost):
-            money = Ali_function_cost_usd(time/1000, Mem=4, CPU=2, GPU=6) 
-            cost[ind] = money
-
-    ktc_10[index] = np.around(np.mean(cost_ktc),3)
-    no_batch_10[index] = np.around(np.mean(cost_no_batch),3)
-    partition_10[index] = np.around(np.mean(cost_partition),3)
-    vanilla_10[index] = np.around(np.mean(cost_vanilla),3)
-
-    ktc_std[index] = np.around(np.std(cost_ktc),3)
-    no_batch_std[index] = np.around(np.std(cost_no_batch),3)
-    partition_std[index] = np.around(np.std(cost_partition),3)
-    vanilla_std[index] = np.around(np.std(cost_vanilla),3)
+    ktc_10[index] = np.around(np.mean(band_ktc),3)/10e7
+    no_batch_10[index] = np.around(np.mean(band_no_batch),3)/10e7
+    partition_10[index] = np.around(np.mean(band_partition),3)/10e7
+    vanilla_10[index] = np.around(np.mean(band_vanilla),3)/10e7
 
 
 penguin_means = {
@@ -81,16 +70,16 @@ errors = [ktc_std,partition_std,vanilla_std,no_batch_std]
 
 for attribute, measurement in penguin_means.items():
     offset = width * multiplier
-    rects = ax.bar(x + offset, measurement,width, yerr = errors[multiplier], label=attribute, capsize=4,linewidth = 1.5,\
+    rects = ax.bar(x + offset, measurement,width, label=attribute, capsize=4,linewidth = 1.5,\
                    edgecolor = 'k', color = colors[multiplier])
-    ax.bar_label(rects, padding=3,fontsize='16')
+    # ax.bar_label(rects, padding=3,fontsize='16')
     multiplier += 1
 
 # Add some text for labels, title and custom x-axis tick labels, etc.
-ax.set_ylabel('Function Cost $ (USD)',fontsize='20')
-ax.set_title('Cost of Different Methods on PANDA4k Dataset',fontsize='20')
+ax.set_ylabel('Normalized Bandwidth Consumpution',fontsize='20')
+ax.set_title('Bandwidth Consumpution of Different Methods on PANDA4k Dataset',fontsize='20')
 ax.set_xticks(x + width, scene_label)
 ax.legend(loc='upper left', ncols=4,fontsize='18')
 plt.tick_params(axis='both', which='major', labelsize=18)
-plt.savefig('figures/experiment1.pdf',format='pdf',bbox_inches='tight')
+plt.savefig('figures/experiment2.pdf',format='pdf',bbox_inches='tight')
 plt.show()

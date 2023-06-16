@@ -5,7 +5,7 @@ from io import BytesIO
 functions = {
     # 'keypoint' : 'http://10.1.81.24:32283',
     'keypoint' : 'http://10.1.81.24:5000',
-    # 'yolo' : 'http://10.1.81.183:8001/', #ray
+    'yolo' : 'http://10.1.81.183:8001/', #ray
     # 'yolo' : 'http://10.106.5.35:8001/',   #asd
     # 'yolo': 'http://yolov-ince-copy-yolovx-kdstuhkqhr.cn-hangzhou.fcapp.run/', #ali cloud part
     # 'yolo': 'http://yolov-ino-batch-yolovx-oypryljcta.cn-hangzhou.fcapp.run/', #ali cloud no batch

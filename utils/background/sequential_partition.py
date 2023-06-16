@@ -7,13 +7,10 @@ from buffer import Table, Image
 network_bandwidth = 1000 #kbps
 
 def read_yaml_all(yaml_path):
-    try:
-        # 打开文件
-        with open(yaml_path,"r",encoding="utf-8") as f:
-            data=yaml.load(f,Loader=yaml.FullLoader)
-            return data
-    except:
-        return None
+    with open(yaml_path,"r",encoding="utf-8") as f:
+        data=yaml.load(f,Loader=yaml.FullLoader)
+        return data
+
     
 class Box: 
     def __init__(self,x,y,w,h) -> None:
@@ -122,7 +119,7 @@ def bin_list_resize(bins : list):
     return new_bin_list
 
 if __name__ == "__main__":
-    configuration_path = '/Users/livion/Documents/GitHub/Sources/buffer/utils/background/configuration.yaml'
+    configuration_path = '/Users/livion/Documents/GitHub/Sources/buffer/utils/background/configuration_raw.yaml'
     configration = read_yaml_all(configuration_path)
     videos_list = []
     # table1 = Table(1000,1000,0.165)

@@ -124,7 +124,7 @@ def bin_list_resize(bins : list):
     return new_bin_list
     
 if __name__ == "__main__":
-    configuration_path = '/Users/livion/Documents/GitHub/Sources/buffer/utils/background/configuration.yaml'
+    configuration_path = 'utils/background/configuration_raw.yaml'
     configration = read_yaml_all(configuration_path)
     videos_list = []
     for num,value in configration.items():
@@ -195,10 +195,10 @@ if __name__ == "__main__":
                     os.mkdir(partitions_save_path)
                 for id,bin_area in enumerate(new_bin_list):
                     cv2.imwrite(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg', mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]])
-                    mat_format = mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]]
-                    file_size = os.path.getsize(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg')
-                    delay_time = file_size / (network_bandwidth * 1000)
-                    push_to_table(mat_format,delay_time,1.4)
+                    # mat_format = mask[bin_area.top_left[1]:bin_area.bottom_right[1],bin_area.top_left[0]:bin_area.bottom_right[0]]
+                    # file_size = os.path.getsize(partitions_save_path + '/' + str(index) + '_' + str(id) + '.jpg')
+                    # delay_time = file_size / (network_bandwidth * 1000)
+                    # push_to_table(mat_format,delay_time,1.4)
             # cv2.imshow('mask',mask)
             # cv2.imshow('frame',frame)
             index += 1

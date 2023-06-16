@@ -24,9 +24,9 @@ scenes = []
 
 for index,scene_name in enumerate(all_scene_name):
     if index == 9:
-        ktc = pd.read_csv('data/ktc/' + scene_name + '/' + 'ktc_partitions_10_' + str(index+1) + '.csv')
+        ktc = pd.read_csv('data/ktc_copy/' + scene_name + '/' + 'ktc_partitions_10_' + str(index+1) + '.csv')
     else:
-        ktc = pd.read_csv('data/ktc/' + scene_name + '/' + 'ktc_partitions_0' + str(index+1) +'_' + str(index+1) + '.csv')
+        ktc = pd.read_csv('data/ktc_copy/' + scene_name + '/' + 'ktc_partitions_0' + str(index+1) +'_' + str(index+1) + '.csv')
 
     column_name = 'Canvas Efficiency'
 
@@ -34,7 +34,7 @@ for index,scene_name in enumerate(all_scene_name):
     scenes.append(ktc[column_name].values)
 
 
-fig, ax = plt.subplots(figsize=(9, 7))
+fig, ax = plt.subplots(figsize=(9, 8))
 n_bins = 100
 labels = ['scene_01','scene_02','scene_03','scene_04','scene_05','scene_06',\
                   'scene_07','scene_08','scene_09','scene_10']
@@ -46,11 +46,12 @@ for index,x in enumerate(scenes):
 
 # tidy up the figure
 ax.grid(True)
-ax.legend(loc='upper left',fontsize='18')
-ax.set_title('ECDF of Bin Packing Efficiency in Different Scene',fontsize='20')
-ax.set_xlabel(r'Canvas Efficiency ($4\times4$ partitioning)',fontsize='18')
-ax.set_ylabel('Likelihood of occurrence',fontsize='18')
+ax.legend(loc='upper left',fontsize='20')
+ax.set_title('ECDF of Bin Packing Efficiency in Different Scene',fontsize='22')
+ax.set_xlabel(r'Canvas Efficiency ($4\times4,1024$)',fontsize='20')
+ax.set_ylabel('Likelihood of occurrence',fontsize='20')
 ax.set_ylim(0,1.01)
-plt.tick_params(axis='both', which='major', labelsize=18)
+plt.tick_params(axis='both', which='major', labelsize=20)
 plt.savefig('figures/cdf.pdf',format='pdf',bbox_inches='tight')
 plt.show()
+
