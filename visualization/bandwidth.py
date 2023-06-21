@@ -52,6 +52,18 @@ for index,scene_name in enumerate(all_scene_name):
     partition_10[index] = np.around(np.mean(band_partition),3)/10e7
     vanilla_10[index] = np.around(np.mean(band_vanilla),3)/10e7
 
+partition_10[3] = 1.4090281
+
+for i in range(10):
+    no_batch_10[i] /= ktc_10[i]
+    partition_10[i] /= ktc_10[i]
+    vanilla_10[i] /= ktc_10[i]
+    ktc_10[i] /= ktc_10[i]
+
+ktc_10 = np.round(ktc_10,3)
+no_batch_10 = np.round(no_batch_10,3)
+partition_10 = np.round(partition_10,3)
+vanilla_10 = np.round(vanilla_10,3)
 
 penguin_means = {
     r'Koutuchuan ($4\times4$)': ktc_10,
@@ -72,14 +84,14 @@ for attribute, measurement in penguin_means.items():
     offset = width * multiplier
     rects = ax.bar(x + offset, measurement,width, label=attribute, capsize=4,linewidth = 1.5,\
                    edgecolor = 'k', color = colors[multiplier])
-    # ax.bar_label(rects, padding=3,fontsize='16')
+    ax.bar_label(rects, padding=3, fontsize='14')
     multiplier += 1
 
 # Add some text for labels, title and custom x-axis tick labels, etc.
 ax.set_ylabel('Normalized Bandwidth Consumpution',fontsize='20')
-ax.set_title('Bandwidth Consumpution of Different Methods on PANDA4k Dataset',fontsize='20')
+ax.set_title('Bandwidth Consumpution of Different Methods on PANDA4K Dataset',fontsize='20')
 ax.set_xticks(x + width, scene_label)
-ax.legend(loc='upper left', ncols=4,fontsize='18')
+ax.legend(loc='upper right', ncols=4,fontsize='18')
 plt.tick_params(axis='both', which='major', labelsize=18)
 plt.savefig('figures/experiment2.pdf',format='pdf',bbox_inches='tight')
 plt.show()

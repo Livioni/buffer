@@ -88,7 +88,7 @@ for attribute, measurement in penguin_means.items():
 
 # Add some text for labels, title and custom x-axis tick labels, etc.
 ax.set_ylabel('Function Cost $ (USD)',fontsize='20')
-ax.set_title('Cost of Different Methods on PANDA4k Dataset',fontsize='20')
+ax.set_title('Cost of Different Methods on PANDA4K Dataset',fontsize='20')
 ax.set_xticks(x + width, scene_label)
 ax.legend(loc='upper left', ncols=4,fontsize='18')
 plt.tick_params(axis='both', which='major', labelsize=18)

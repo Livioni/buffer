@@ -5,8 +5,9 @@ from datetime import datetime
 from utils.binpack import BinPack
 import utils.greedypacker as greedypacker
 from utils.invoker import invoke_yolo_batch_v1
-from baselines.cost_function import Ali_function_cost, Ali_idle_cost
+from baselines.cost_function import Ali_function_cost_usd, Ali_idle_cost
 from baselines.tools import read_response
+from latecny_estimator import LatencyEstimator
 
 class Image(object):
     '''
@@ -15,13 +16,14 @@ class Image(object):
     2. created_time: the created time and, 
     3. SLO: the SLO (s)
     '''
-    def __init__(self, image : cv2.Mat, created_time : float, SLO : float = 0.4) -> None:
+    def __init__(self, image : cv2.Mat, created_time : float, DDL : float) -> None:
         self.image = image
         self.width = image.shape[1]
         self.height = image.shape[0]
         self.shape = (self.width, self.height)
         self.created_time = created_time
-        self.SLO = SLO
+        # self.SLO = SLO
+        self.DDL = DDL
 
 class Pool(object):
     '''
@@ -107,7 +109,7 @@ class Queue(Pool):
 
     def add(self, image: Image) -> None:
         created_time = image.created_time
-        ddl = created_time + image.SLO
+        ddl = image.DDL
         if self.create_time == None:
             self.create_time = created_time
         else:
@@ -231,10 +233,9 @@ class Table(object):
     4. Qos_per_batch: a conservative estimate of the inference of a canvas.
     5. DDL: the earliest image's deadline
     '''
-    def __init__(self, queue_height : int = 1000, queue_width : int = 1000, Qos_per_batch : float = 0.28, logs: bool=True, csv_record: bool = True) -> None:
+    def __init__(self, queue_height : int = 1000, queue_width : int = 1000, logs: bool=True, csv_record: bool = True) -> None:
         self.canvas = Queue(size=100, height=queue_height, width=queue_width)
         self.table = []
-        self.Qos_per_batch = Qos_per_batch
         self.slack_time = None
         self.create_time = None
         self.DDL = None
@@ -273,7 +274,10 @@ class Table(object):
             self.create_time = image.created_time
         else:
             self.create_time = min(self.create_time,image.created_time)
-        self.DDL = self.create_time + image.SLO
+        if self.DDL is None:
+            self.DDL = image.DDL
+        else:
+            self.DDL = min(self.DDL,image.DDL)
         self.slack_time= self.__calculate_slack_time(image)
         self.remaining_time = self.slack_time - time.time()
         if self.remaining_time > 0:
@@ -298,7 +302,7 @@ class Table(object):
         self.old_result = self.current_result
         self.canvas.add(image)
         self.current_result = self.canvas.greedy_packer_solve(visualize=False)
-        self.estimate_QoS = len(self.current_result) * self.Qos_per_batch
+        self.estimate_QoS = LatencyEstimator(self.canvas.width, len(self.canvas.current_result))
         return self.estimate_QoS
 
 
@@ -346,10 +350,10 @@ class Table(object):
         #fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Canvas efficiency', 'Remaining/Over time', \
         #          'Prepocess Time(ms)','Inference_time','QoS','QoS per frame','QoS per image','Cost(CNY)']
         whether_violated = 'No' if finish_time > ddl else 'Yes'
-        remaining_over_time = ddl-finish_time
-        cost = Ali_function_cost(time_taken,Mem=4,CPU=2,GPU=5)
+        remaining_over_time = ddl - finish_time
+        cost = Ali_function_cost_usd(time_taken,Mem=4,CPU=2,GPU=6)
         logs = [start_time, whether_violated, len(current_result), len(table), round(efficiency,4), round(remaining_over_time,4), \
-                round(inference_time*1000,4),round(prepocess_time*1000,4), round(time_taken,4),round(time_taken/len(current_result),4),round(time_taken/len(table),4),cost]
+                round(inference_time*1000,4),round(prepocess_time*1000,4), round(time_taken*1000,4),round(time_taken/len(current_result),4),round(time_taken/len(table),4),cost]
         self.data_frame.loc[len(self.data_frame)]= logs 
         self.data_frame.to_csv(self.csv_file_path, index=False)
         return

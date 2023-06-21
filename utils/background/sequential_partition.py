@@ -119,7 +119,7 @@ def bin_list_resize(bins : list):
     return new_bin_list
 
 if __name__ == "__main__":
-    configuration_path = '/Users/livion/Documents/GitHub/Sources/buffer/utils/background/configuration_raw.yaml'
+    configuration_path = '/Users/livion/Documents/GitHub/Sources/buffer/utils/background/configuration.yaml'
     configration = read_yaml_all(configuration_path)
     videos_list = []
     # table1 = Table(1000,1000,0.165)
