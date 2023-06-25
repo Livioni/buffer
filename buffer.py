@@ -262,7 +262,6 @@ class Table(object):
 
     def __repr__(self) -> str:
         return "Table: {}".format(self.table)
-
     def push(self, image : Image) -> bool:
         '''
         Push a Image to the table, the table will calculate the slack time and set a timer to invoker function.
@@ -285,12 +284,13 @@ class Table(object):
             self.timer.start()
             return True
         else:
-            self.table.pop()
-            self.canvas.drop(self.canvas.index-1)
-            logging.warning("Early infer due to the DDL is not satisfied")
-            self.current_result = self.old_result
-            t = threading.Thread(target=self.__trigger)
-            t.start()
+            if self.old_result is not None:
+                self.table.pop()
+                self.canvas.drop(self.canvas.index-1)
+                logging.warning("Early infer due to the DDL is not satisfied")
+                self.current_result = self.old_result
+                t = threading.Thread(target=self.__trigger)
+                t.start()
             return False
 
 
@@ -328,11 +328,11 @@ class Table(object):
         table = self.table
         efficiency = self.canvas.efficiency
         remaining_time = self.remaining_time
-        self.clean_up()
         return current_result, ddl, table, efficiency,remaining_time
     
     def __trigger(self):
         current_result, ddl, table, efficiency, remaining_time = self.record_first()
+        self.clean_up()
         start_time = time.time()
         response,_ = invoke_yolo_batch_v1(current_result)
         service_time, inference_time, prepocess_time = read_response(response)
@@ -347,8 +347,8 @@ class Table(object):
     def __csv_record(self, finish_time : float, time_taken : float, current_result : np.ndarray, \
                      ddl : float, table : list, efficiency : float, remaining_time : float, start_time : float,\
                      inference_time : float, prepocess_time : float):
-        #fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Canvas efficiency', 'Remaining/Over time', \
-        #          'Prepocess Time(ms)','Inference_time','QoS','QoS per frame','QoS per image','Cost(CNY)']
+        # fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Canvas efficiency', 'Remaining/Over time', \
+        #             'Prepocess Time(ms)','Inference Time (ms)','Latency (ms)','Latency per frame (ms)','Latency per image (ms)','Cost(CNY)']
         whether_violated = 'No' if finish_time > ddl else 'Yes'
         remaining_over_time = ddl - finish_time
         cost = Ali_function_cost_usd(time_taken,Mem=4,CPU=2,GPU=6)
