@@ -14,6 +14,11 @@ table = {
            0.388410434,0.4671203646,0.507089878,0.55965937,0.611210174]
 }
 
+# table = {
+#     1024: [0.110219428,0.171656122,0.20959718,0.290965798,0.349302976,
+#            0.398410434,0.4771203646,0.517089878,0.56965937,0.621210174]
+# }
+
 def LatencyEstimator(canvas_size: int=1024,batch_size: int = 1)-> float:
     assert batch_size <= 10 and batch_size >= 1
     latency = table[canvas_size][batch_size-1]

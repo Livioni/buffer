@@ -1,11 +1,10 @@
 import sys,time,os,cv2
 sys.path.append('/Users/livion/Documents/GitHub/Sources/buffer')
-from buffer import Table,Image
+from buffer import Fixed_Table,Image
 
 scene_name = 'partitions_01'
 network_bandwidth = 80 # 10Mbps
 upload_byte_per_second = network_bandwidth * 1000 * 1000 / 8
-switch = 0
 ## define file name and source file path
 source_file_path = '/Users/livion/Documents/4x4(带切割）/' + scene_name + '/'
 ## prepare the source file list
@@ -24,13 +23,11 @@ for file in files:
         file_per_frame_size[int(file[:3])] += os.path.getsize(source_file_path + file)
 
 # SLO-aware algorithm
-table1 = Table(1024,1024,csv_record=True,logs=False)
-time.sleep(1)
-table2 = Table(1024,1024,csv_record=True,logs=False)
-time.sleep(1)
-table3 = Table(1024,1024,csv_record=True,logs=False)
+batch_size = 10
+SLO = 0.6
+record_file_name = '1Batch=' + str(batch_size)+'_SLO=' + str(SLO) + 's.csv'
+table1 = Fixed_Table(record_file_name=record_file_name,batch_size=batch_size, csv_record=True)
 start_time = time.perf_counter()
-SLO = 0.7
 for index, files in file_per_frame.items():
     ddl = time.time() + SLO      
     for image in files:
@@ -41,25 +38,12 @@ for index, files in file_per_frame.items():
         delay_time = file_size / upload_byte_per_second   
         image = Image(img,time.time(),ddl)
         time.sleep(delay_time)
-        if switch == 0:
-            if table1.push(image) == False:
-                table2.push(image)
-                switch = 1
-        elif switch == 1:
-            if table2.push(image) == False:
-                table1.push(image)
-                switch = 2
-        elif switch == 2:
-            if table3.push(image) == False:
-                table1.push(image)
-                switch = 0
+        table1.push(image)
 
-
+table1.trigger()
+print(table1.inference_round)
 end_time = time.perf_counter()
 print('Total time: ',end_time-start_time)
-time.sleep(5)
-table1.show_info()
-table2.show_info()
-table3.show_info()
+time.sleep(3)
 
 

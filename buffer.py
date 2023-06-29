@@ -1,10 +1,10 @@
-import cv2,time,logging,threading,pandas
+import cv2,time,logging,threading,pandas,copy
 import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime
 from utils.binpack import BinPack
 import utils.greedypacker as greedypacker
-from utils.invoker import invoke_yolo_batch_v1
+from utils.invoker import invoke_yolo_batch_v1,invoke_yolo_batch_v3
 from baselines.cost_function import Ali_function_cost_usd, Ali_idle_cost
 from baselines.tools import read_response
 from latecny_estimator import LatencyEstimator
@@ -375,31 +375,99 @@ class Table(object):
         logging.info("The violated round is {}, Violate rate = {:.2f}".format(self.violated_round,self.violated_round/self.inference_round))
         return
 
+class Fixed_Table(object):
+    def __init__(self, record_file_name, batch_size: int = 8,  csv_record: bool = True) -> None:
+        self.table = []
+        self.batch_size = batch_size
+        self.create_time = None
+        self.DDL = None
+        self.total_image = 0
+        self.inference_round = 0
+        self.violated_round = 0
+        self.result = None
+        # record_file_name = 'Batch_size=' + str(batch_size)+'_' + datetime.now().strftime("%Y%m%d-%H%M%S")
+        self.csv_record = csv_record
+        # init csv
+        if self.csv_record:
+            fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Size','Remaining/Over time', \
+                      'Prepocess Time(ms)','Inference Time (ms)','Latency (ms)','Latency per frame (ms)','Latency per image (ms)','Cost(CNY)']
+            self.data_frame = pandas.DataFrame(columns=fields)
+            self.csv_file_path = '/Users/livion/Documents/GitHub/Sources/buffer/logs/csv/'+record_file_name+'.csv'
+            self.data_frame.to_csv(self.csv_file_path, index=False)
+    
+    def push(self, image : Image):
+        if self.create_time is None:
+            self.create_time = image.created_time
+        else:
+            self.create_time = min(self.create_time,image.created_time)
+        if self.DDL is None:
+            self.DDL = image.DDL
+        else:
+            self.DDL = min(self.DDL,image.DDL)
+        self.table.append(image)
+        if len(self.table) == self.batch_size:
+            tables = copy.deepcopy(self.table)
+            ddl = copy.deepcopy(self.DDL)
+            self.clean_up()
+            t = threading.Thread(target=self.__auto_trigger,args=(tables,ddl,))
+            t.start()
+        return
+    
+    def trigger(self):
+        if len(self.table) > 0:
+            self.__auto_trigger(self.table,self.DDL)
+        return
+    
+    def resize_table(self,tables):
+        image_width = max([image.width for image in tables])
+        image_height = max([image.height for image in tables])
+        result = np.zeros((self.batch_size, image_height, image_width, 3), dtype=np.uint8)
+        for index, image in enumerate(tables):
+            if image.width != image_width or image.height != image_height:
+                result[index] = cv2.resize(image.image, (image_width, image_height), interpolation = cv2.INTER_AREA)
+        return result
+
+    def record_first(self):
+        #clean and record all the self variable to avoid reusing
+        ddl = self.DDL
+        table = self.table
+        return ddl, table
+    
+    def clean_up(self):
+        self.total_image += len(self.table)
+        self.inference_round += 1
+        self.table = []
+        self.create_time = None
+        self.DDL = None
+        self.result = None
+        return 
+
+    def __auto_trigger(self,tables,ddl):
+        result = self.resize_table(tables)
+        start_time = time.time()
+        response,_ = invoke_yolo_batch_v3(result)
+        service_time, inference_time, prepocess_time = read_response(response)
+        finish_time = start_time + service_time
+        if self.csv_record:
+            self.__csv_record(finish_time=finish_time,time_taken=service_time,current_result=result,ddl=ddl,table=tables,\
+                              start_time=start_time,inference_time=inference_time,prepocess_time=prepocess_time)
+        return
+
+    def __csv_record(self, finish_time : float, time_taken : float, current_result : np.ndarray, \
+                     ddl : float, table : list,  start_time : float, inference_time : float, prepocess_time : float):
+        # fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Size', 'Remaining/Over time', \
+        #             'Prepocess Time(ms)','Inference Time (ms)','Latency (ms)','Latency per frame (ms)','Latency per image (ms)','Cost(CNY)']
+        whether_violated = 'No' if finish_time > ddl else 'Yes'
+        remaining_over_time = ddl - finish_time
+        size = str(current_result.shape[1]) + 'x' + str(current_result.shape[2])
+        cost = Ali_function_cost_usd(time_taken,Mem=4,CPU=2,GPU=6)
+        logs = [start_time, whether_violated, len(current_result), len(table), size, round(remaining_over_time,4), \
+                round(inference_time*1000,4),round(prepocess_time*1000,4), round(time_taken*1000,4), round(time_taken/len(current_result),4),round(time_taken/len(table),4),cost]
+        self.data_frame.loc[len(self.data_frame)+1]= logs 
+        self.data_frame.to_csv(self.csv_file_path, index=False)
+        return
+
 if __name__ == "__main__":
-    import os
-    SLO = 0.55
-    queue = Queue(size=100, height=1024, width=1024)
-    image_path1 = '/Users/livion/Documents/test_videos/partitions_01/101_0.jpg'
-    image_path2 = '/Users/livion/Documents/test_videos/partitions_01/101_1.jpg'
-    image_path3 = '/Users/livion/Documents/test_videos/partitions_01/101_2.jpg'
-    image_path4 = '/Users/livion/Documents/test_videos/partitions_01/101_3.jpg'
-    image_path5 = '/Users/livion/Documents/test_videos/partitions_01/101_5.jpg'
-    image1 = cv2.imread(image_path1)
-    image2 = cv2.imread(image_path2)
-    image3 = cv2.imread(image_path3)
-    image4 = cv2.imread(image_path4)
-    image5 = cv2.imread(image_path5)
-    image_numpy1 = np.array(image1)
-    image_numpy2 = np.array(image2)
-    image_numpy3 = np.array(image3)
-    image_numpy4 = np.array(image4)
-    image_numpy5 = np.array(image5)
-    new_image1 = Image(image_numpy1,time.time(),SLO)
-    new_image2 = Image(image_numpy2,time.time(),SLO)
-    new_image3 = Image(image_numpy3,time.time(),SLO)
-    new_image4 = Image(image_numpy4,time.time(),SLO)
-    new_image5 = Image(image_numpy5,time.time(),SLO)
-    queue.insert(new_image1,new_image2,new_image3,new_image4,new_image5)
-    queue.greedy_packer_solve(visualize=True)
+    pass
 
 
