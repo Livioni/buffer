@@ -34,6 +34,10 @@ p2_max = [0.033687458,0.032127716,0.032852908,0.034374358,0.032774213]
 p2_min = [0.030310395,0.029768728,0.028644734,0.033405382,0.030303062]
 slo_violation_p2 = [9.917,3.333,0.826,0.000,0.000]
 
+p3 = [0.037712753,0.037032846,0.038510806,0.037393617,0.03745247]
+p3_max = [0.038352047,0.037778673,0.039141318,0.038306363,0.038170961]
+p3_min = [0.037334501,0.035923015,0.038019537,0.036180731,0.036906156]
+slo_violation_p3 = [57.850,33.884,10.744,1.653,0.000]
 
 
 fig, axes = plt.subplots(2, 3,figsize=(16,10))
@@ -56,14 +60,14 @@ ax1.set_title('Bandwidth = 20Mbps',fontsize='26')
 ax1.tick_params(axis='both', which='major', labelsize=24)
 ax1.legend(loc='upper left', ncols=1, fontsize='22')
 
-ax1.set_ylim(0.013,0.035)
+ax1.set_ylim(0.013,0.04)
 ax4.plot(x1, slo_violation_1, '.-',linewidth=3,markersize=15,color=color_koutuchun,label='Koutuchuan')
 ax4.plot(x1, slo_violation_p1, '.-',linewidth=3,markersize=15,color=color_padding,label='Fixed Batch 10')
 ax4.axhline(5, ls='--',color='k', lw=2, alpha=0.5)
 ax4.tick_params(axis='both', which='major', labelsize=24)
 ax4.legend(loc='upper left', fontsize='22')
 ax4.set_ylabel('SLO Violation (%)',fontsize='24')
-ax4.set_ylim(0,25)
+ax4.set_ylim(0,60)
 
 ##############################ax2###########################################
 ax2.plot(x2, y2, '.-',linewidth=3,markersize=15,color=color_koutuchun)
@@ -73,25 +77,28 @@ ax2.fill_between(x2, p2_min, p2_max, alpha=0.5,interpolate=True,color=color_padd
 ax2.set_xlabel('SLO(s)',fontsize='26')
 ax2.set_title('Bandwidth = 40Mbps',fontsize='26')
 ax2.tick_params(axis='both', which='major', labelsize=24)
-ax2.set_ylim(0.013,0.035)
+ax2.set_ylim(0.013,0.04)
 ax5.plot(x2, slo_violation_2, '.-',linewidth=3,markersize=15,color=color_koutuchun)
 ax5.plot(x2, slo_violation_p2, '.-',linewidth=3,markersize=15,color = color_padding)
 ax5.axhline(5, ls='--',color='k', lw=2, alpha=0.5)
 ax5.set_xlabel('SLO(s)',fontsize='24')
 ax5.tick_params(axis='both', which='major', labelsize=24)
-ax5.set_ylim(0,25)
+ax5.set_ylim(0,60)
 ##############################ax3###########################################
 ax3.plot(x3, y3, '.-',linewidth=3,markersize=15,color=color_koutuchun)
 ax3.fill_between(x3, y3_min, y3_max, alpha=0.5,interpolate=True,color=color_koutuchun)
+ax3.plot(x3, p3, '.-',linewidth=3,markersize=15,color=color_padding)
+ax3.fill_between(x3, p3_min, p3_max, alpha=0.5,interpolate=True,color=color_padding)
 # ax3.set_xlabel('SLO',fontsize='16')
 # ax3.set_ylabel('Average Cost ($)',fontsize='16')
 ax3.set_title('Bandwidth = 80Mbps',fontsize='26')
 ax3.tick_params(axis='both', which='major', labelsize=24)
-ax3.set_ylim(0.013,0.035)
+ax3.set_ylim(0.013,0.04)
 ax6.plot(x3, slo_violation_3, '.-',linewidth=3,markersize=15,color=color_koutuchun)
+ax6.plot(x3, slo_violation_p3, '.-',linewidth=3,markersize=15,color=color_padding)
 ax6.tick_params(axis='both', which='major', labelsize=24)
 ax6.axhline(5, ls='--',color='k', lw=2, alpha=0.5)
-ax6.set_ylim(0,25)
+ax6.set_ylim(0,60)
 fig.tight_layout()
 plt.savefig('figures/main_1.pdf',format='pdf')
 plt.show()

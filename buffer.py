@@ -463,7 +463,7 @@ class Fixed_Table(object):
         cost = Ali_function_cost_usd(time_taken,Mem=4,CPU=2,GPU=6)
         logs = [start_time, whether_violated, len(current_result), len(table), size, round(remaining_over_time,4), \
                 round(inference_time*1000,4),round(prepocess_time*1000,4), round(time_taken*1000,4), round(time_taken/len(current_result),4),round(time_taken/len(table),4),cost]
-        self.data_frame.loc[len(self.data_frame)+1]= logs 
+        self.data_frame.loc[len(self.data_frame)]= logs 
         self.data_frame.to_csv(self.csv_file_path, index=False)
         return
 

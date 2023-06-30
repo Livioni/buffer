@@ -68,7 +68,7 @@ penguin_means = {
     r'Koutuchuan ($4\times4$)': ktc_10,
     'Patches': partition_10,
     'Full Frame': vanilla_10,
-    'No Batch': no_batch_10,
+    'ELF': no_batch_10,
 }
 
 x = np.linspace(1,55,10)  # the label locations

@@ -3,7 +3,7 @@ sys.path.append('/Users/livion/Documents/GitHub/Sources/buffer')
 from buffer import Fixed_Table,Image
 
 scene_name = 'partitions_01'
-network_bandwidth = 80 # 10Mbps
+network_bandwidth = 80 # 10Mbps6
 upload_byte_per_second = network_bandwidth * 1000 * 1000 / 8
 ## define file name and source file path
 source_file_path = '/Users/livion/Documents/4x4(带切割）/' + scene_name + '/'
@@ -24,10 +24,14 @@ for file in files:
 
 # SLO-aware algorithm
 batch_size = 10
-SLO = 0.6
-record_file_name = '1Batch=' + str(batch_size)+'_SLO=' + str(SLO) + 's.csv'
-table1 = Fixed_Table(record_file_name=record_file_name,batch_size=batch_size, csv_record=True)
+SLO = 1
+record_file_name1 = '3Batch=' + str(batch_size)+'_SLO=' + str(SLO) + 's_1'
+record_file_name2 = '3Batch=' + str(batch_size)+'_SLO=' + str(SLO) + 's_2'
+table1 = Fixed_Table(record_file_name=record_file_name1,batch_size=batch_size, csv_record=True)
+table2 = Fixed_Table(record_file_name=record_file_name2,batch_size=batch_size, csv_record=True)
 start_time = time.perf_counter()
+batch_cnt = 0
+switch = False
 for index, files in file_per_frame.items():
     ddl = time.time() + SLO      
     for image in files:
@@ -38,12 +42,36 @@ for index, files in file_per_frame.items():
         delay_time = file_size / upload_byte_per_second   
         image = Image(img,time.time(),ddl)
         time.sleep(delay_time)
-        table1.push(image)
+        if switch == False:
+            table1.push(image)
+        else: 
+            table2.push(image)
+        batch_cnt += 1
+        if batch_cnt == 8:
+            switch = ~switch
+            batch_cnt = 0
 
 table1.trigger()
+table2.trigger()
 print(table1.inference_round)
+print(table2.inference_round)
 end_time = time.perf_counter()
 print('Total time: ',end_time-start_time)
 time.sleep(3)
+import pandas as pd
+
+# 读取两个CSV文件
+df1 = pd.read_csv('logs/csv/'+record_file_name1+'.csv')
+df2 = pd.read_csv('logs/csv/'+record_file_name2+'.csv')
+
+# 合并两个数据帧
+df = pd.concat([df1, df2])
+
+# 按第一列排序，假设第一列的名称为 'column1'
+# df = df.sort_values(by='Timestamp')
+
+# 保存到新的CSV文件
+df.to_csv('logs/Batch=' + str(batch_size)+ '_SLO=' + str(SLO) + 's_1.csv', index=True)
+
 
 

@@ -171,7 +171,7 @@ latency = [np.mean(latency1),np.mean(latency2),np.mean(latency3)]
 std = [np.std(latency1),np.std(latency2),np.std(latency3)]
 weight_counts = {
     "Transmission Time ": np.array([34.7689404, 17.3844702, 8.6922351]),
-    "Funtion Execution Time ": latency,
+    "Function Execution Time ": latency,
     
 }
 colors = [(253/255,185/255,107/255), (254/255, 162/255, 158/255), (114/255,170/255,207/255) ,'#2AB34A']
