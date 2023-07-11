@@ -66,7 +66,7 @@ partition_10 = np.round(partition_10,3)
 vanilla_10 = np.round(vanilla_10,3)
 
 penguin_means = {
-    r'Koutuchuan ($4\times4$)': ktc_10,
+    r'Tangram ($4\times4$)': ktc_10,
     'Patches': partition_10,
     'Full Frame': vanilla_10,
     'ELF': no_batch_10,

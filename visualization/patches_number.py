@@ -50,7 +50,7 @@ for index,scene_name in enumerate(all_scene_name):
         ax1.tick_params(axis='both', which='major', labelsize=16)
         ax1.grid(True)
         ax1.legend(loc='upper right', ncols=2,fontsize='18')
-        ax1.set_title('Patches Per Frame of Koutucuan in Different Scene',fontsize='22')
+        ax1.set_title('Patches Per Frame of Tangram in Different Scene',fontsize='22')
     else:
         ax2.plot(ktc_patches[index], label=all_scene_name[index],color = colors[index],linewidth=2)
         ax2.set_xlabel('Frame Index',fontsize='20')

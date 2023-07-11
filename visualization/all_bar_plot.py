@@ -65,7 +65,7 @@ for index,scene_name in enumerate(all_scene_name):
 
 
 penguin_means = {
-    r'Koutuchuan ($4\times4$)': ktc_10,
+    r'Tangram ($4\times4$)': ktc_10,
     'Patches': partition_10,
     'Full Frame': vanilla_10,
     'ELF': no_batch_10,

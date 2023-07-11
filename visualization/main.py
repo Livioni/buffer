@@ -50,7 +50,7 @@ ax6 = axes[1,2]
 color_koutuchun = [253/255,181/255,102/255]
 color_padding = [1,153/255,149/255]
 ##############################ax1###########################################
-ax1.plot(x1, y1, '.-',linewidth=3,markersize=15,color=color_koutuchun,label='Koutuchuan')
+ax1.plot(x1, y1, '.-',linewidth=3,markersize=15,color=color_koutuchun,label='Tangram')
 ax1.fill_between(x1, y1_min, y1_max, alpha=0.5,interpolate=True,color=color_koutuchun)
 ax1.plot(x1, p1, '.-',linewidth=3,markersize=15,color=color_padding,label='Fixed Batch 10')
 ax1.fill_between(x1, p1_min, p1_max, alpha=0.5,interpolate=True,color=color_padding)
@@ -61,7 +61,7 @@ ax1.tick_params(axis='both', which='major', labelsize=24)
 ax1.legend(loc='upper left', ncols=1, fontsize='22')
 
 ax1.set_ylim(0.013,0.04)
-ax4.plot(x1, slo_violation_1, '.-',linewidth=3,markersize=15,color=color_koutuchun,label='Koutuchuan')
+ax4.plot(x1, slo_violation_1, '.-',linewidth=3,markersize=15,color=color_koutuchun,label='Tangram')
 ax4.plot(x1, slo_violation_p1, '.-',linewidth=3,markersize=15,color=color_padding,label='Fixed Batch 10')
 ax4.axhline(5, ls='--',color='k', lw=2, alpha=0.5)
 ax4.tick_params(axis='both', which='major', labelsize=24)

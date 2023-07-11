@@ -161,7 +161,7 @@ if __name__ == "__main__":
             bin_list = bin_list_create(canvas_size=(2160,3840),lay_out=bin_lay_out)
             # draw bin on the frame
             # for bin in bin_list:
-                # cv2.rectangle(frame,bin.top_left,bin.bottom_right,(0,0,255),2)
+            #     cv2.rectangle(frame,bin.top_left,bin.bottom_right,(0,0,255),2)
             for con in contours:
                 perimeter = cv2.arcLength(con,True)
                 if perimeter > threshold:
@@ -179,7 +179,7 @@ if __name__ == "__main__":
             new_bin_list = bin_list_resize(bin_list)
             for bin in new_bin_list:
                 mask[bin.top_left[1]:bin.bottom_right[1],bin.top_left[0]:bin.bottom_right[0]] = frame[bin.top_left[1]:bin.bottom_right[1],bin.top_left[0]:bin.bottom_right[0]]
-                # cv2.rectangle(frame,bin.top_left,bin.bottom_right,(0,255,0),3)
+                cv2.rectangle(mask,bin.top_left,bin.bottom_right,(0,255,0),3)
             print("frame " + str(index) + " done")
             if index < 10:
                 save_name = 'SEQ_'+ prefix + '_00' + str(index)  + '.jpg'
