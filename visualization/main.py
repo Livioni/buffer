@@ -54,6 +54,21 @@ elf80_min = [0.02072772,0.020449237,0.020364332,0.021033777,0.020547722]
 elf80_max = [0.02182615,0.021610325,0.02219744,0.021490713,0.021547199]
 elf80_violation = [19.079,6.743,0.905,0.164,0.000]
 
+timeout_20 = [0.027428741,0.027318106,0.026538343,0.025981169,0.026481021]
+timeout_20_min = [0.02664355,0.026582636,0.025197491,0.025893787,0.025076099]
+timeout_20_max = [0.028957497,0.027818989,0.027635942,0.026121839,0.027972868]
+timeout_20_violation = [5.099,6.250,5.016,4.194,3.289]
+
+timeout_40 = [0.0321844,0.031081387,0.032388997,0.033701734,0.031520125]
+timeout_40_min = [0.031221153,0.030262893,0.030636753,0.032856103,0.030132363]
+timeout_40_max = [0.033860017,0.032377243,0.033979034,0.034470302,0.032730266]
+timeout_40_violation = [8.964,3.289,3.372,2.467,1.974]
+
+timeout_80 = [0.043312016,0.04475319,0.041423359,0.041881694,0.04289152]
+timeout_80_min = [0.042126456,0.04408831,0.040982329,0.041276506,0.042340394]
+timeout_80_max = [0.044228937,0.045204706,0.041666735,0.04296134,0.043560312]
+timeout_80_violation = [30.428,12.089,4.112,2.714,3.125]
+
 
 fig, axes = plt.subplots(2, 3,figsize=(16,10))
 ax1 = axes[0,0]
@@ -65,6 +80,7 @@ ax6 = axes[1,2]
 color_koutuchun = [253/255,181/255,102/255]
 color_padding = [1,153/255,149/255]
 color_elf = '#2AB34A'
+color_timeout = [114/255,170/255,207/255]
 ##############################ax1###########################################
 ax1.plot(x1, y1, '.-',linewidth=3,markersize=15,color=color_koutuchun,label='Tangram')
 ax1.fill_between(x1, y1_min, y1_max, alpha=0.5,interpolate=True,color=color_koutuchun)
@@ -72,6 +88,8 @@ ax1.plot(x1, p1, '.-',linewidth=3,markersize=15,color=color_padding,label='Fixed
 ax1.fill_between(x1, p1_min, p1_max, alpha=0.5,interpolate=True,color=color_padding)
 ax1.plot(x1, elf20, '.-',linewidth=3,markersize=15,color=color_elf,label='ELF')
 ax1.fill_between(x1, elf20_min, elf20_max, alpha=0.5,interpolate=True,color=color_elf)
+ax1.plot(x1, timeout_20, '.-',linewidth=3,markersize=15,color=color_timeout,label='Timeout')
+ax1.fill_between(x1, timeout_20_min, timeout_20_max, alpha=0.5,interpolate=True,color=color_timeout)
 # ax1.set_xlabel('SLO',fontsize='16')
 ax1.set_ylabel('Average Cost ($)',fontsize='26')
 ax1.set_title('Bandwidth = 20Mbps',fontsize='26')
@@ -82,6 +100,7 @@ ax1.set_ylim(0.013,0.04)
 ax4.plot(x1, slo_violation_1, '.-',linewidth=3,markersize=15,color=color_koutuchun,label='Tangram')
 ax4.plot(x1, slo_violation_p1, '.-',linewidth=3,markersize=15,color=color_padding,label='Fixed Batch 10')
 ax4.plot(x1, elf20_violation, '.-',linewidth=3,markersize=15,color=color_elf,label='ELF')
+ax4.plot(x1, timeout_20_violation, '.-',linewidth=3,markersize=15,color=color_timeout,label='Timeout')
 ax4.axhline(5, ls='--',color='k', lw=2, alpha=0.5)
 ax4.tick_params(axis='both', which='major', labelsize=24)
 ax4.legend(loc='upper left', fontsize='22')
@@ -95,6 +114,8 @@ ax2.plot(x2, p2, '.-',linewidth=3,markersize=15,color=color_padding)
 ax2.fill_between(x2, p2_min, p2_max, alpha=0.5,interpolate=True,color=color_padding)
 ax2.plot(x2, elf40, '.-',linewidth=3,markersize=15,color=color_elf)
 ax2.fill_between(x2, elf40_min, elf40_max, alpha=0.5,interpolate=True,color=color_elf)
+ax2.plot(x2, timeout_40, '.-',linewidth=3,markersize=15,color=color_timeout)
+ax2.fill_between(x2, timeout_40_min, timeout_40_max, alpha=0.5,interpolate=True,color=color_timeout)
 ax2.set_xlabel('SLO(s)',fontsize='26')
 ax2.set_title('Bandwidth = 40Mbps',fontsize='26')
 ax2.tick_params(axis='both', which='major', labelsize=24)
@@ -102,6 +123,7 @@ ax2.set_ylim(0.013,0.04)
 ax5.plot(x2, slo_violation_2, '.-',linewidth=3,markersize=15,color=color_koutuchun)
 ax5.plot(x2, slo_violation_p2, '.-',linewidth=3,markersize=15,color = color_padding)
 ax5.plot(x2, elf40_violation, '.-',linewidth=3,markersize=15,color=color_elf)
+ax5.plot(x2, timeout_40_violation, '.-',linewidth=3,markersize=15,color=color_timeout)
 ax5.axhline(5, ls='--',color='k', lw=2, alpha=0.5)
 ax5.set_xlabel('SLO(s)',fontsize='24')
 ax5.tick_params(axis='both', which='major', labelsize=24)
@@ -113,14 +135,17 @@ ax3.plot(x3, p3, '.-',linewidth=3,markersize=15,color=color_padding)
 ax3.fill_between(x3, p3_min, p3_max, alpha=0.5,interpolate=True,color=color_padding)
 ax3.plot(x3, elf80, '.-',linewidth=3,markersize=15,color=color_elf)
 ax3.fill_between(x3, elf80_min, elf80_max, alpha=0.5,interpolate=True,color=color_elf)
+ax3.plot(x3, timeout_80, '.-',linewidth=3,markersize=15,color=color_timeout)
+ax3.fill_between(x3, timeout_80_min, timeout_80_max, alpha=0.5,interpolate=True,color=color_timeout)
 # ax3.set_xlabel('SLO',fontsize='16')
 # ax3.set_ylabel('Average Cost ($)',fontsize='16')
 ax3.set_title('Bandwidth = 80Mbps',fontsize='26')
 ax3.tick_params(axis='both', which='major', labelsize=24)
-ax3.set_ylim(0.013,0.04)
+ax3.set_ylim(0.013,0.046)
 ax6.plot(x3, slo_violation_3, '.-',linewidth=3,markersize=15,color=color_koutuchun)
 ax6.plot(x3, slo_violation_p3, '.-',linewidth=3,markersize=15,color=color_padding)
 ax6.plot(x3, elf80_violation, '.-',linewidth=3,markersize=15,color=color_elf)
+ax6.plot(x3, timeout_80_violation, '.-',linewidth=3,markersize=15,color=color_timeout)
 ax6.tick_params(axis='both', which='major', labelsize=24)
 ax6.axhline(5, ls='--',color='k', lw=2, alpha=0.5)
 ax6.set_ylim(0,60)

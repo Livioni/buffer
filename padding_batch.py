@@ -6,7 +6,7 @@ scene_name = 'partitions_01'
 network_bandwidth = 80 # 10Mbps6
 upload_byte_per_second = network_bandwidth * 1000 * 1000 / 8
 ## define file name and source file path
-source_file_path = '/Users/livion/Documents/4x4(带切割）/' + scene_name + '/'
+source_file_path = '/Users/livion/Documents/4x4不带切割/' + scene_name + '/'
 ## prepare the source file list
 files = os.listdir(source_file_path)
 files.sort()

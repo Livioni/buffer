@@ -375,6 +375,7 @@ class Table(object):
         logging.info("The violated round is {}, Violate rate = {:.2f}".format(self.violated_round,self.violated_round/self.inference_round))
         return
 
+#fixed batch size baseline algorithm implementaion
 class Fixed_Table(object):
     def __init__(self, record_file_name, batch_size: int = 8,  csv_record: bool = True) -> None:
         self.table = []
@@ -464,6 +465,99 @@ class Fixed_Table(object):
         logs = [start_time, whether_violated, len(current_result), len(table), size, round(remaining_over_time,4), \
                 round(inference_time*1000,4),round(prepocess_time*1000,4), round(time_taken*1000,4), round(time_taken/len(current_result),4),round(time_taken/len(table),4),cost]
         self.data_frame.loc[len(self.data_frame)]= logs 
+        self.data_frame.to_csv(self.csv_file_path, index=False)
+        return
+
+#time out baseline algorithm implementaion
+class Timeout(object):
+    def __init__(self, record_file_name, time_out: float = 0.3,  csv_record: bool = True) -> None:
+        self.table = []
+        self.time_out = time_out
+        self.create_time = None
+        self.DDL = None
+        self.total_image = 0
+        self.inference_round = 0
+        self.violated_round = 0
+        self.result = None
+        self.time_out = time_out
+        self.csv_record = csv_record
+        # init csv
+        if self.csv_record:
+            fields = ['Timestamp', 'SLO', 'Batch Size', 'Shape1', 'Shape2','Prepocess Time(ms)','Inference Time (ms)','Latency (ms)','Cost(USD)']
+            self.data_frame = pandas.DataFrame(columns=fields)
+            self.csv_file_path = '/Users/livion/Documents/GitHub/Sources/buffer/logs/csv/'+record_file_name+'.csv'
+            self.data_frame.to_csv(self.csv_file_path, index=False)
+        self.run_periodically()
+
+    def run_periodically(self):
+        threading.Timer(self.time_out, self.run_periodically).start()  # 每60秒重新启动函数
+        self.invoke()  # 执行你的函数
+
+    def resize_table(self,tables):
+        tables = copy.deepcopy(tables)
+        image_width = max([image.width for image in tables])
+        image_height = max([image.height for image in tables])
+        if len(tables) * image_width * image_height > 7000000:
+            return len(tables),False
+        else:
+            result = np.zeros((len(tables), image_height, image_width, 3), dtype=np.uint8)
+            for index, image in enumerate(tables):
+                if image.width != image_width or image.height != image_height:
+                    result[index] = cv2.resize(image.image, (image_width, image_height), interpolation = cv2.INTER_AREA)
+            return result,True
+    
+    def push(self, image : Image):
+        if self.create_time is None:
+            self.create_time = image.created_time
+        else:
+            self.create_time = min(self.create_time,image.created_time)
+        if self.DDL is None:
+            self.DDL = image.DDL
+        else:
+            self.DDL = min(self.DDL,image.DDL)
+        self.table.append(image)
+        return
+    
+    def clean_up(self):
+        self.total_image += len(self.table)
+        self.inference_round += 1
+        self.table = []
+        self.create_time = None
+        self.DDL = None
+        self.result = None
+        return 
+    
+    def invoke(self):
+        if len(self.table) > 0:
+            table = copy.deepcopy(self.table)
+            ddl = copy.deepcopy(self.DDL)
+            self.clean_up()
+            result,flag = self.resize_table(table)
+            if flag == True:
+                start_time = time.time()
+                response,_ = invoke_yolo_batch_v3(result)
+                service_time, inference_time, prepocess_time = read_response(response)
+                finish_time = start_time + service_time
+                if self.csv_record:
+                    self.__csv_record(finish_time=finish_time,time_taken=service_time,current_result=result,ddl=ddl,\
+                                    start_time=start_time,inference_time=inference_time,prepocess_time=prepocess_time)    
+                return
+            else:
+                logs = ['here', 'NO', result, 0,0, 0, 0,0,0]
+                self.data_frame.loc[len(self.data_frame)]= logs 
+                self.data_frame.to_csv(self.csv_file_path, index=False)
+
+
+    def __csv_record(self, finish_time : float, time_taken : float, current_result : np.ndarray, \
+                     ddl : float,  start_time : float, inference_time : float, prepocess_time : float):
+        # fields = ['Timestamp', 'SLO', 'Batch size', 'Size', 'Prepocess Time(ms)','Inference Time (ms)','Latency (ms)','Cost(USD)']
+        whether_violated = 'No' if finish_time > ddl else 'Yes'
+        size1 = str(current_result.shape[1]) 
+        size2 = str(current_result.shape[2])
+        cost = Ali_function_cost_usd(time_taken,Mem=4,CPU=2,GPU=6)
+        logs = [start_time, whether_violated, len(current_result), size1,size2, round(prepocess_time*1000,4), \
+                round(inference_time*1000,4),round(time_taken*1000,4),cost]
+        self.data_frame.loc[len(self.data_frame)*2]= logs 
         self.data_frame.to_csv(self.csv_file_path, index=False)
         return
 
