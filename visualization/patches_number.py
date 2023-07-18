@@ -17,7 +17,6 @@ scene_label = ['scene_01 (#134)','scene_02 (#134)','scene_03 (#134)','scene_04 (
                   'scene_07 (#80)','scene_08 (#134)','scene_09 (#134)','scene_10 (#134)'] #,
 scene_number = len(all_scene_name)
 
-
 ktc_patches = []
 
 for index,scene_name in enumerate(all_scene_name):
@@ -34,30 +33,27 @@ for index,scene_name in enumerate(all_scene_name):
     ktc_patches.append(ktc[column_name].values)
 
 
-fig, (ax1, ax2) = plt.subplots(2, 1,figsize=(9,8))
+fig, (ax1, ax2) = plt.subplots(2, 1,figsize=(10,9))
 # make a little extra space between the subplots
 fig.subplots_adjust(hspace=0.2)
 colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
 
-
-
-
 for index,scene_name in enumerate(all_scene_name):
     if index <= 4:
-        ax1.plot(ktc_patches[index], label=all_scene_name[index],color = colors[index],linewidth=2)   
-        ax1.set_xlabel('Frame Index',fontsize='20')
-        ax1.set_ylabel('Number of Patches',fontsize='20')
-        ax1.tick_params(axis='both', which='major', labelsize=16)
+        ax1.plot(ktc_patches[index], label=all_scene_name[index],color = colors[index],linewidth=2.5)   
+        ax1.set_xlabel('Frame Index',fontsize='24')
+        ax1.set_ylabel('Number of Patches',fontsize='26')
+        ax1.tick_params(axis='both', which='major', labelsize=18)
         ax1.grid(True)
-        ax1.legend(loc='upper right', ncols=2,fontsize='18')
-        ax1.set_title('Patches Per Frame of Tangram in Different Scene',fontsize='22')
+        ax1.legend(loc='upper right', ncols=2,fontsize='22')
+        ax1.set_title('Patches Per Frame of Tangram in Different Scene',fontsize='26')
     else:
-        ax2.plot(ktc_patches[index], label=all_scene_name[index],color = colors[index],linewidth=2)
-        ax2.set_xlabel('Frame Index',fontsize='20')
-        ax2.set_ylabel('Number of Patches',fontsize='20')
-        ax2.tick_params(axis='both', which='major', labelsize=16)
+        ax2.plot(ktc_patches[index], label=all_scene_name[index],color = colors[index],linewidth=2.5)
+        ax2.set_xlabel('Frame Index',fontsize='24')
+        ax2.set_ylabel('Number of Patches',fontsize='26')
+        ax2.tick_params(axis='both', which='major', labelsize=18)
         ax2.grid(True)
-        ax2.legend(loc='upper center', ncols=3,fontsize='18')
+        ax2.legend(loc='upper center', ncols=3,fontsize='22')
 
 
 plt.savefig('figures/patches.pdf',format='pdf',bbox_inches='tight')

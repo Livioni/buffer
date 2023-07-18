@@ -45,12 +45,12 @@ for df in [df1,df4,df5,df6,df7]:
 for index,x in enumerate(data1):
     sns.ecdfplot(data=x,ax=axes[0][0],label=labels1[index],linewidth=3)
 axes[0][0].grid(True)
-axes[0][0].legend(loc='upper left',fontsize='20')
-axes[0][0].set_title('Bandwidth=20Mbps',fontsize='20')
-axes[0][0].set_xlabel('(a)',fontsize='20')
-axes[0][0].set_ylabel('Likelihood',fontsize='20')
+axes[0][0].legend(loc='upper left',fontsize='22')
+axes[0][0].set_title('Bandwidth=20Mbps',fontsize='22')
+axes[0][0].set_xlabel('(a)',fontsize='22')
+axes[0][0].set_ylabel('Likelihood',fontsize='22')
 axes[0][0].set_ylim(0,1.01)
-axes[0][0].tick_params(axis='both', which='major', labelsize=18)
+axes[0][0].tick_params(axis='both', which='major', labelsize=20)
 ###################fig2####################
 labels2 = ['0.8(s)','0.9(s)','1.0(s)','1.1(s)','1.2(s)']
 for df in [df8,df9,df2,df10,df11]:
@@ -58,12 +58,12 @@ for df in [df8,df9,df2,df10,df11]:
 for index,x in enumerate(data2):
     sns.ecdfplot(data=x,ax=axes[0][1],label=labels2[index],linewidth=3)
 axes[0][1].grid(True)
-axes[0][1].legend(loc='upper left',fontsize='20')
+axes[0][1].legend(loc='upper left',fontsize='22')
 axes[0][1].set_title('Bandwidth=40Mbps',fontsize='22')
-axes[0][1].set_xlabel('(b)',fontsize='20')
-axes[0][1].set_ylabel('Likelihood',fontsize='20')
+axes[0][1].set_xlabel('(b)',fontsize='22')
+axes[0][1].set_ylabel('Likelihood',fontsize='22')
 axes[0][1].set_ylim(0,1.01)
-axes[0][1].tick_params(axis='both', which='major', labelsize=18)
+axes[0][1].tick_params(axis='both', which='major', labelsize=20)
 ###################fig3####################
 labels3 = ['0.6(s)','0.7(s)','0.8(s)','0.9(s)','1.0(s)']
 for df in [df12,df13,df14,df15,df3]:
@@ -71,12 +71,12 @@ for df in [df12,df13,df14,df15,df3]:
 for index,x in enumerate(data3):
     sns.ecdfplot(data=x,ax=axes[1][0],label=labels3[index],linewidth=3)
 axes[1][0].grid(True)
-axes[1][0].legend(loc='upper left',fontsize='20')
-axes[1][0].set_title('Bandwidth=80Mbps',fontsize='20')
-axes[1][0].set_xlabel('(c)',fontsize='20')
-axes[1][0].set_ylabel('Likelihood',fontsize='20')
+axes[1][0].legend(loc='upper left',fontsize='22')
+axes[1][0].set_title('Bandwidth=80Mbps',fontsize='22')
+axes[1][0].set_xlabel('(c)',fontsize='22')
+axes[1][0].set_ylabel('Likelihood',fontsize='22')
 axes[1][0].set_ylim(0,1.01)
-axes[1][0].tick_params(axis='both', which='major', labelsize=18)
+axes[1][0].tick_params(axis='both', which='major', labelsize=20)
 ###################fig4####################
 n_bins = 100
 labels4 = ['20Mbps','40Mbps','80Mbps']
@@ -90,12 +90,12 @@ for index,x in enumerate(data4):
 
 # tidy up the figure
 axes[1][1].grid(True)
-axes[1][1].legend(loc='upper left',fontsize='20')
-axes[1][1].set_title('SLO=1(s)',fontsize='20')
-axes[1][1].set_xlabel('(d)',fontsize='20')
-axes[1][1].set_ylabel('Likelihood',fontsize='20')
+axes[1][1].legend(loc='upper left',fontsize='22')
+axes[1][1].set_title('SLO=1(s)',fontsize='22')
+axes[1][1].set_xlabel('(d)',fontsize='22')
+axes[1][1].set_ylabel('Likelihood',fontsize='22')
 axes[1][1].set_ylim(0,1.01)
-axes[1][1].tick_params(axis='both', which='major', labelsize=18)
+axes[1][1].tick_params(axis='both', which='major', labelsize=20)
 ########################################
 fig.tight_layout()
 plt.savefig('figures/cdf1.pdf',format='pdf',bbox_inches='tight')

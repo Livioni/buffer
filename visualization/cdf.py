@@ -46,12 +46,12 @@ for index,x in enumerate(scenes):
 
 # tidy up the figure
 ax.grid(True)
-ax.legend(loc='upper left',fontsize='20')
-ax.set_title('ECDF of Bin Packing Efficiency in Different Scene',fontsize='22')
-ax.set_xlabel(r'Canvas Efficiency ($4\times4,1024$)',fontsize='20')
-ax.set_ylabel('Likelihood of occurrence',fontsize='20')
+ax.legend(loc='upper left',fontsize='21')
+ax.set_title('ECDF of Bin Packing Efficiency in Different Scene',fontsize='24')
+ax.set_xlabel(r'Canvas Efficiency ($4\times4,1024$)',fontsize='24')
+ax.set_ylabel('Likelihood of Occurrence',fontsize='24')
 ax.set_ylim(0,1.01)
-plt.tick_params(axis='both', which='major', labelsize=20)
+plt.tick_params(axis='both', which='major', labelsize=22)
 plt.savefig('figures/cdf.pdf',format='pdf',bbox_inches='tight')
 plt.show()
 

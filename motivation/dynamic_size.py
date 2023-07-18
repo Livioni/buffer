@@ -106,9 +106,9 @@ if __name__ == '__main__':
         ax.set_xlim(0,300)
         ax.set_ylim(0,400)
         ax.set_xticks([0,50,100,150,200,250])
-        ax.set_xlabel('RoI Width (pixel)',fontsize=20)
-        ax.set_ylabel('RoI Height (pixel)', fontsize=20)
-        ax.tick_params(axis='both', which='major', labelsize=18)
+        ax.set_xlabel('RoI Width (pixel)',fontsize=22)
+        ax.set_ylabel('RoI Height (pixel)', fontsize=22)
+        ax.tick_params(axis='both', which='major', labelsize=20)
 
         # now determine nice limits by hand:
         binwidth = 4
@@ -117,9 +117,9 @@ if __name__ == '__main__':
 
         bins = np.arange(-lim, lim + binwidth, binwidth)
         ax_histx.hist(x, bins=bins, orientation='vertical',density=True)
-        ax_histx.tick_params(axis='both', which='major', labelsize=18)
+        ax_histx.tick_params(axis='both', which='major', labelsize=20)
         ax_histy.hist(y, bins=bins, orientation='horizontal',density=True)
-        ax_histy.tick_params(axis='both', which='major', labelsize=18)
+        ax_histy.tick_params(axis='both', which='major', labelsize=20)
         
 
     fig = plt.figure(figsize=(8, 8))
@@ -135,7 +135,6 @@ if __name__ == '__main__':
     ax_histy = fig.add_subplot(gs[1, 1], sharey=ax)
 
     scatter_hist(scene_01_width, scene_01_height, ax, ax_histx, ax_histy)
-
     plt.savefig('figures/motivation3.pdf',format='pdf',bbox_inches='tight')
     plt.show()
 

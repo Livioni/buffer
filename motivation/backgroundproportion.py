@@ -88,13 +88,13 @@ if __name__ == '__main__':
     # linestyles = ['-.','-.','-.','-.','-.','-.','-.','-.','-.','-.']
     fig, ax1 = plt.subplots(1, 1,figsize=(12,5))
     for index,area in enumerate(proportion_dict.values()):
-        ax1.plot(range(1,len(area)+1), area, linestyle=linestyles[index], marker = '.',markersize='5', linewidth=2,label = labels[index])
+        ax1.plot(range(1,len(area)+1), area, linestyle=linestyles[index], marker = '.',markersize='5.5', linewidth=2,label = labels[index])
         ax1.grid()
     
     ax1.legend(labels,ncols=5,bbox_to_anchor=(1.0, 1.3), loc='upper right',fontsize=18)
-    ax1.set_ylabel('Region of Interest Proportion',fontsize='22')
-    ax1.set_xlabel('Frame Index',fontsize='22')
-    ax1.set_xlim(-1,235)
+    ax1.set_ylabel('Region of Interest Proportion',fontsize='24')
+    ax1.set_xlabel('Frame Index',fontsize='24')
+    ax1.set_xlim(-1,240)
     ax1.tick_params(axis='both', which='major', labelsize=20)
     plt.tight_layout()
     plt.savefig('figures/motivation1.pdf',format='pdf',bbox_inches='tight')
@@ -106,13 +106,13 @@ if __name__ == '__main__':
         sns.ecdfplot(data=x,ax=ax2,label=labels[index],linewidth=3)
 
     ax2.grid(True)
-    ax2.set_ylabel('ECDF',fontsize='22')
-    ax2.set_xlabel('Region of Interest Proportion',fontsize='22')
-    ax2.tick_params(axis='both', which='major', labelsize=20)
+    ax2.set_ylabel('ECDF',fontsize='24')
+    ax2.set_xlabel('Region of Interest Proportion',fontsize='24')
+    ax2.tick_params(axis='both', which='major', labelsize=22)
 
     plt.tight_layout()
     plt.savefig('figures/motivation2.pdf',format='pdf',bbox_inches='tight')
-    # plt.show()
+    plt.show()
 
 
 

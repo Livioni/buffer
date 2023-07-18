@@ -184,10 +184,10 @@ for boolean, weight_count in weight_counts.items():
     bottom += weight_count
     i+=1
 
-axes[1][0].set_xlabel("(c) Latency Breakdown", fontsize=17)
-axes[1][0].set_ylabel("Latency (s)",fontsize=17)
-axes[1][0].legend(loc="upper right",fontsize=17)
-axes[1][0].tick_params(axis='both', which='major', labelsize=17)
+axes[1][0].set_xlabel("(c) Latency Breakdown", fontsize=18)
+axes[1][0].set_ylabel("Latency (s)",fontsize=22)
+axes[1][0].legend(loc="upper right",fontsize=20)
+axes[1][0].tick_params(axis='both', which='major', labelsize=18)
 axes[1][0].set_ylim(0, 80)
 
 x = np.linspace(0,2,3)  # the label locations
@@ -204,10 +204,10 @@ for index,i in enumerate(x):
     add_label(parts, labels[index])
 
 # axes[0][0].legend(*zip(*labels), loc='upper left',fontsize=15)
-axes[0][0].set_xlabel('(a) Function Execution Latency Per-batch Distribution', fontsize=17)
-axes[0][0].set_ylabel('Latency (s)', fontsize=17)
+axes[0][0].set_xlabel('(a) Function Execution Latency Per-batch Distribution', fontsize=18)
+axes[0][0].set_ylabel('Latency (s)', fontsize=22)
 axes[0][0].set_xticks([0,1,2],labels=["20Mbps,1.0s","40Mbps,1.0s","80Mbps,1.0s"])
-axes[0][0].tick_params(axis='both', which='major', labelsize=17)
+axes[0][0].tick_params(axis='both', which='major', labelsize=18)
 
 
 hist1 = df1['Images Number'].values.tolist()
@@ -242,11 +242,11 @@ axes[0][1].plot(y2, bins, '--',color = '#F98B15',linewidth=2)
 axes[0][1].plot(y3, bins, '--',color = '#7BB305',linewidth=2)
 
 
-axes[0][1].set_xlabel('(b) Patches Number Per-batch Distribution ', fontsize=17)
-axes[0][1].set_ylabel('Patches Number', fontsize=17)
-axes[0][1].tick_params(axis='both', which='major', labelsize=16)
+axes[0][1].set_xlabel('(b) Patches Number Per-batch Distribution ', fontsize=18)
+axes[0][1].set_ylabel('Patches Number', fontsize=20)
+axes[0][1].tick_params(axis='both', which='major', labelsize=20)
 axes[0][1].set_yticks(np.linspace(40,0,5,endpoint=True))
-axes[0][1].legend(loc="upper right",fontsize=15)
+axes[0][1].legend(loc="upper right",fontsize=16)
 axes[0][1].xaxis.set_major_formatter(PercentFormatter(xmax=1))
 
 
@@ -275,9 +275,9 @@ for i in range(len(vegetables)):
     for j in range(len(farmers)):
         text = axes[1][1].text(j, i, harvest_norm[i, j],ha="center", va="center",)
 
-axes[1][1].set_xlabel("(d) Patches that the canvases contains.",fontsize=17)
-axes[1][1].set_ylabel('Canvases Number', fontsize=17)
-axes[1][1].tick_params(axis='both', which='major', labelsize=17)
+axes[1][1].set_xlabel("(d) Patches that the canvases contains.",fontsize=18)
+axes[1][1].set_ylabel('Canvases Number', fontsize=20)
+axes[1][1].tick_params(axis='both', which='major', labelsize=20)
 # plt.setp(axes[1][1].get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
 
 im, cbar = heatmap(harvest_norm, vegetables, farmers, ax=axes[1][1],

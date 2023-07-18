@@ -50,24 +50,24 @@ qos_normalized = min_max_normalization(qos)
 # xs,qos_normalized = smooth_xy(x, qos_normalized)
 
 fig, ax = plt.subplots(figsize=(8, 7))
-plt.plot(x, cost_normalized, c=(253/255,185/255,107/255),label='Cost Per-Frame',linewidth = 2, \
-            clip_on=False, marker='o', markersize=7 ,markeredgecolor=(249/255, 172/255, 19/255),markeredgewidth=2)
+plt.plot(x, cost_normalized, c=(253/255,185/255,107/255),label='Cost Per-Frame',linewidth = 4, \
+            clip_on=False, marker='o', markersize=8.5 ,markeredgecolor=(249/255, 172/255, 19/255),markeredgewidth=2)
 
-plt.plot(x, qos_normalized,c=(254/255, 162/255, 158/255),label='Latency',linewidth = 2,\
-            clip_on=False, marker='s', markersize=7 ,markeredgecolor=(254/255, 77/255, 79/255),markeredgewidth=2)
+plt.plot(x, qos_normalized,c=(254/255, 162/255, 158/255),label='Latency',linewidth = 4,\
+            clip_on=False, marker='s', markersize=8.5 ,markeredgecolor=(254/255, 77/255, 79/255),markeredgewidth=2)
 
-plt.plot(x, y_normalized, c=(114/255,170/255,207/255),label='Throughput',linewidth = 2,\
-            clip_on=False, marker='^', markersize=7 ,markeredgecolor=(88/255,125/255,247/255),markeredgewidth=2)
+plt.plot(x, y_normalized, c=(114/255,170/255,207/255),label='Throughput',linewidth = 4,\
+            clip_on=False, marker='^', markersize=8.5 ,markeredgecolor=(88/255,125/255,247/255),markeredgewidth=2)
 
 #add x text
-ax.set_title('Effect of Batch Size on Cost, Throughput, and Latency',fontsize='20')
-ax.set_xlabel('Batch Size',fontsize='20')
-ax.set_ylabel('Normalized Value',fontsize='20')
-ax.legend(fontsize='18')
+ax.set_title('Effect of Batch Size on Cost, Throughput, and Latency',fontsize='24')
+ax.set_xlabel('Batch Size',fontsize='24')
+ax.set_ylabel('Normalized Value',fontsize='24')
+ax.legend(loc=(0.5,0.2), fontsize='20')
 ax.grid(True)
 # 修改横坐标的刻度
 xticks(np.linspace(1,16,16,endpoint=True))
 yticks(np.linspace(0,1,11,endpoint=True))
-plt.tick_params(axis='both', which='major', labelsize=18)
-plt.savefig('figures/batch_size_tempo.pdf',format='pdf',bbox_inches='tight')
+plt.tick_params(axis='both', which='major', labelsize=20)
+plt.savefig('figures/batch_size_4090.pdf',format='pdf',bbox_inches='tight')
 plt.show()
