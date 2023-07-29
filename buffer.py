@@ -262,6 +262,7 @@ class Table(object):
 
     def __repr__(self) -> str:
         return "Table: {}".format(self.table)
+    
     def push(self, image : Image) -> bool:
         '''
         Push a Image to the table, the table will calculate the slack time and set a timer to invoker function.
@@ -293,7 +294,6 @@ class Table(object):
                 t.start()
             return False
 
-
     def __calculate_slack_time(self,image : Image):
         estimate_QoS = self.__estimate_Qos(image)
         return self.DDL - estimate_QoS
@@ -304,7 +304,6 @@ class Table(object):
         self.current_result = self.canvas.greedy_packer_solve(visualize=False)
         self.estimate_QoS = LatencyEstimator(self.canvas.width, len(self.canvas.current_result))
         return self.estimate_QoS
-
 
     def clean_up(self):
         self.canvas.clear()
@@ -376,7 +375,7 @@ class Table(object):
         return
 
 #fixed batch size baseline algorithm implementaion
-class Fixed_Table(object):
+class Clipper(object):
     def __init__(self, record_file_name, batch_size: int = 8,  csv_record: bool = True) -> None:
         self.table = []
         self.batch_size = batch_size
@@ -396,6 +395,18 @@ class Fixed_Table(object):
             self.csv_file_path = '/Users/livion/Documents/GitHub/Sources/buffer/logs/csv/'+record_file_name+'.csv'
             self.data_frame.to_csv(self.csv_file_path, index=False)
     
+    def add_batch_size(self):
+        if self.batch_size >= 9:
+            pass
+        else:
+            self.batch_size += 1
+        return
+    
+    def drop_batch_size(self):
+        self.batch_size *= 0.8
+        self.batch_size = int(self.batch_size)
+        return
+
     def push(self, image : Image):
         if self.create_time is None:
             self.create_time = image.created_time
@@ -406,11 +417,12 @@ class Fixed_Table(object):
         else:
             self.DDL = min(self.DDL,image.DDL)
         self.table.append(image)
-        if len(self.table) == self.batch_size:
+        if len(self.table) >= self.batch_size:
             tables = copy.deepcopy(self.table)
             ddl = copy.deepcopy(self.DDL)
+            batch_size = copy.deepcopy(self.batch_size)
             self.clean_up()
-            t = threading.Thread(target=self.__auto_trigger,args=(tables,ddl,))
+            t = threading.Thread(target=self.__auto_trigger,args=(tables,ddl,batch_size))
             t.start()
         return
     
@@ -419,10 +431,10 @@ class Fixed_Table(object):
             self.__auto_trigger(self.table,self.DDL)
         return
     
-    def resize_table(self,tables):
+    def resize_table(self,tables,batch_size):
         image_width = max([image.width for image in tables])
         image_height = max([image.height for image in tables])
-        result = np.zeros((self.batch_size, image_height, image_width, 3), dtype=np.uint8)
+        result = np.zeros((batch_size, image_height, image_width, 3), dtype=np.uint8)
         for index, image in enumerate(tables):
             if image.width != image_width or image.height != image_height:
                 result[index] = cv2.resize(image.image, (image_width, image_height), interpolation = cv2.INTER_AREA)
@@ -430,11 +442,12 @@ class Fixed_Table(object):
 
     def record_first(self):
         #clean and record all the self variable to avoid reusing
-        ddl = self.DDL
-        table = self.table
+        ddl = copy.deepcopy(self.DDL)
+        table = copy.deepcopy(self.table)
         return ddl, table
     
     def clean_up(self):
+        self.table = []
         self.total_image += len(self.table)
         self.inference_round += 1
         self.table = []
@@ -443,8 +456,131 @@ class Fixed_Table(object):
         self.result = None
         return 
 
-    def __auto_trigger(self,tables,ddl):
-        result = self.resize_table(tables)
+    def __auto_trigger(self,tables,ddl,batch_size):
+        result = self.resize_table(tables,batch_size)
+        start_time = time.time()
+        response,_ = invoke_yolo_batch_v3(result)
+        service_time, inference_time, prepocess_time = read_response(response)
+        finish_time = start_time + service_time
+        if self.csv_record:
+            self.__csv_record(finish_time=finish_time,time_taken=service_time,current_result=result,ddl=ddl,table=tables,\
+                              start_time=start_time,inference_time=inference_time,prepocess_time=prepocess_time)
+        return
+
+    def __csv_record(self, finish_time : float, time_taken : float, current_result : np.ndarray, \
+                     ddl : float, table : list,  start_time : float, inference_time : float, prepocess_time : float):
+        # fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Size', 'Remaining/Over time', \
+        #             'Prepocess Time(ms)','Inference Time (ms)','Latency (ms)','Latency per frame (ms)','Latency per image (ms)','Cost(CNY)']
+        whether_violated = 'No' if finish_time > ddl else 'Yes'
+        if whether_violated == 'Yes':
+            self.add_batch_size()
+        else:
+            self.drop_batch_size()
+        remaining_over_time = ddl - finish_time
+        size = str(current_result.shape[1]) + 'x' + str(current_result.shape[2])
+        cost = Ali_function_cost_usd(time_taken,Mem=4,CPU=2,GPU=6)
+        logs = [start_time, whether_violated, len(current_result), len(table), size, round(remaining_over_time,4), \
+                round(inference_time*1000,4),round(prepocess_time*1000,4), round(time_taken*1000,4), round(time_taken/len(current_result),4),round(time_taken/len(table),4),cost]
+        self.data_frame.loc[len(self.data_frame)]= logs 
+        self.data_frame.to_csv(self.csv_file_path, index=False)
+        return
+
+#fixed batch size baseline algorithm implementaion
+class Mark(object):
+    def __init__(self, record_file_name, batch_size: int = 8,  csv_record: bool = True) -> None:
+        self.table = []
+        self.batch_size = batch_size
+        self.create_time = None
+        self.DDL = None
+        self.total_image = 0
+        self.inference_round = 0
+        self.violated_round = 0
+        self.result = None
+        # record_file_name = 'Batch_size=' + str(batch_size)+'_' + datetime.now().strftime("%Y%m%d-%H%M%S")
+        self.csv_record = csv_record
+        # init csv
+        if self.csv_record:
+            fields = ['Timestamp', 'SLO', 'Batch Size', 'Images Number', 'Size','Remaining/Over time', \
+                      'Prepocess Time(ms)','Inference Time (ms)','Latency (ms)','Latency per frame (ms)','Latency per image (ms)','Cost(CNY)']
+            self.data_frame = pandas.DataFrame(columns=fields)
+            self.csv_file_path = '/Users/livion/Documents/GitHub/Sources/buffer/logs/csv/'+record_file_name+'.csv'
+            self.data_frame.to_csv(self.csv_file_path, index=False)
+    
+
+    def push(self, image : Image):
+        if self.create_time is None:
+            self.create_time = image.created_time
+        else:
+            self.create_time = min(self.create_time,image.created_time)
+        if self.DDL is None:
+            self.DDL = image.DDL
+        else:
+            self.DDL = min(self.DDL,image.DDL)
+        self.table.append(image)
+        tables = copy.deepcopy(self.table)
+        ddl = copy.deepcopy(self.DDL)
+        batch_size = copy.deepcopy(self.batch_size)
+        if len(self.table) == 1:
+            self.task = threading.Timer(0.1,self.__time_trigger)
+            self.task.start()
+        if len(self.table) >= self.batch_size:
+            t = threading.Thread(target=self.__auto_trigger,args=(tables,ddl,batch_size))
+            t.start()
+        return
+    
+    def trigger(self):
+        if len(self.table) > 0:
+            self.__auto_trigger(self.table,self.DDL)
+        return
+    
+    def resize_table(self,tables,batch_size):
+        image_width = max([image.width for image in tables])
+        image_height = max([image.height for image in tables])
+        result = np.zeros((batch_size, image_height, image_width, 3), dtype=np.uint8)
+        for index, image in enumerate(tables):
+            if image.width != image_width or image.height != image_height:
+                result[index] = cv2.resize(image.image, (image_width, image_height), interpolation = cv2.INTER_AREA)
+        return result
+
+    def record_first(self):
+        #clean and record all the self variable to avoid reusing
+        ddl = copy.deepcopy(self.DDL)
+        table = copy.deepcopy(self.table)
+        return ddl, table
+    
+    def clean_up(self):
+        self.table = []
+        self.total_image += len(self.table)
+        self.inference_round += 1
+        self.table = []
+        self.create_time = None
+        self.DDL = None
+        self.result = None
+        return 
+
+    def __time_trigger(self):
+        if len(self.table) > 0:
+            table = copy.deepcopy(self.table)
+            ddl = copy.deepcopy(self.DDL)
+            self.clean_up()
+            result = self.resize_table(table,len(table))
+            start_time = time.time()
+            response,_ = invoke_yolo_batch_v3(result)
+            service_time, inference_time, prepocess_time = read_response(response)
+            finish_time = start_time + service_time
+            if self.csv_record:
+                self.__csv_record(finish_time=finish_time,time_taken=service_time,current_result=result,ddl=ddl,table=table,\
+                                start_time=start_time,inference_time=inference_time,prepocess_time=prepocess_time)    
+            return
+        return
+        
+    def __auto_trigger(self,tables,ddl,batch_size):
+        if self.task is not None:
+            self.task.cancel()
+        if len(tables) == 0:
+            return
+        self.clean_up()
+        result = self.resize_table(tables,batch_size)
         start_time = time.time()
         response,_ = invoke_yolo_batch_v3(result)
         service_time, inference_time, prepocess_time = read_response(response)

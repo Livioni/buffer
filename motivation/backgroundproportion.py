@@ -106,7 +106,7 @@ if __name__ == '__main__':
         sns.ecdfplot(data=x,ax=ax2,label=labels[index],linewidth=3)
 
     ax2.grid(True)
-    ax2.set_ylabel('ECDF',fontsize='24')
+    ax2.set_ylabel('CDF',fontsize='24')
     ax2.set_xlabel('Region of Interest Proportion',fontsize='24')
     ax2.tick_params(axis='both', which='major', labelsize=22)
 

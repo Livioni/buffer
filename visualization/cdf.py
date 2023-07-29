@@ -47,7 +47,7 @@ for index,x in enumerate(scenes):
 # tidy up the figure
 ax.grid(True)
 ax.legend(loc='upper left',fontsize='21')
-ax.set_title('ECDF of Bin Packing Efficiency in Different Scene',fontsize='24')
+ax.set_title('CDF of Bin Packing Efficiency in Different Scene',fontsize='24')
 ax.set_xlabel(r'Canvas Efficiency ($4\times4,1024$)',fontsize='24')
 ax.set_ylabel('Likelihood of Occurrence',fontsize='24')
 ax.set_ylim(0,1.01)

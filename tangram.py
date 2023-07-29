@@ -3,11 +3,11 @@ sys.path.append('/Users/livion/Documents/GitHub/Sources/buffer')
 from buffer import Table,Image
 
 scene_name = 'partitions_01'
-network_bandwidth = 80 # 10Mbps
+network_bandwidth = 60 # 10Mbps
 upload_byte_per_second = network_bandwidth * 1000 * 1000 / 8
 switch = 0
 ## define file name and source file path
-source_file_path = '/Users/livion/Documents/4x4(带切割）/' + scene_name + '/'
+source_file_path = '/Volumes/Livion/4x4(带切割）/' + scene_name + '/'
 ## prepare the source file list
 files = os.listdir(source_file_path)
 files.sort()
@@ -30,7 +30,7 @@ table2 = Table(1024,1024,csv_record=True,logs=False)
 time.sleep(1)
 table3 = Table(1024,1024,csv_record=True,logs=False)
 start_time = time.perf_counter()
-SLO = 0.7
+SLO = 0.6
 for index, files in file_per_frame.items():
     ddl = time.time() + SLO      
     for image in files:

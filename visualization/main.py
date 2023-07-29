@@ -27,17 +27,17 @@ slo_violation_3 = [4.902,2.564,3.030,3.389,4.255]
 p1 = [0.029902468,0.030135898,0.028736093,0.029315424,0.02950509]
 p1_max = [0.031558387,0.031342071,0.029368755,0.030981787,0.030241878]
 p1_min = [0.026789615,0.028705702,0.027497851,0.027697149,0.028187484]
-slo_violation_p1 = [16.393,9.836,2.459,0.000,0.000]
+slo_violation_p1 = [5.016,1.480,1.480,0.000,0.000]
 
 p2 = [0.031717045,0.030974161,0.030057918,0.033461611,0.031684848]
 p2_max = [0.033687458,0.032127716,0.032852908,0.034374358,0.032774213]
 p2_min = [0.030310395,0.029768728,0.028644734,0.033405382,0.030303062]
-slo_violation_p2 = [9.917,3.333,0.826,0.000,0.000]
+slo_violation_p2 = [4.441,1.480,0.730,0.000,0.000]
 
 p3 = [0.037712753,0.037032846,0.038510806,0.037393617,0.03745247]
 p3_max = [0.038352047,0.037778673,0.039141318,0.038306363,0.038170961]
 p3_min = [0.037334501,0.035923015,0.038019537,0.036180731,0.036906156]
-slo_violation_p3 = [57.850,33.884,10.744,1.653,0.000]
+slo_violation_p3 = [15.214,6.497,3.701,0.000,0.000]
 
 elf20 = [0.021316865,0.021193354,0.020878363,0.020984068,0.020304336]
 elf20_min = [0.021042562,0.0209810,0.020654686,0.020015867,0.019836311]
@@ -67,7 +67,7 @@ timeout_40_violation = [8.964,3.289,3.372,2.467,1.974]
 timeout_80 = [0.043312016,0.04475319,0.041423359,0.041881694,0.04289152]
 timeout_80_min = [0.042126456,0.04408831,0.040982329,0.041276506,0.042340394]
 timeout_80_max = [0.044228937,0.045204706,0.041666735,0.04296134,0.043560312]
-timeout_80_violation = [30.428,12.089,4.112,2.714,3.125]
+timeout_80_violation = [22.780,12.089,4.112,2.714,3.125]
 
 
 fig, axes = plt.subplots(2, 3,figsize=(16,10))
@@ -84,11 +84,11 @@ color_timeout = [114/255,170/255,207/255]
 ##############################ax1###########################################
 ax1.plot(x1, y1, '.-',linewidth=4,markersize=15,color=color_koutuchun,label='Tangram')
 ax1.fill_between(x1, y1_min, y1_max, alpha=0.3,interpolate=True,color=color_koutuchun)
-ax1.plot(x1, p1, '.-',linewidth=4,markersize=15,color=color_padding,label='Fixed Batch 10')
+ax1.plot(x1, p1, '.-',linewidth=4,markersize=15,color=color_padding,label='Clipper')
 ax1.fill_between(x1, p1_min, p1_max, alpha=0.3,interpolate=True,color=color_padding)
 ax1.plot(x1, elf20, '.-',linewidth=4,markersize=15,color=color_elf,label='ELF')
 ax1.fill_between(x1, elf20_min, elf20_max, alpha=0.3,interpolate=True,color=color_elf)
-ax1.plot(x1, timeout_20, '.-',linewidth=4,markersize=15,color=color_timeout,label='Timeout')
+ax1.plot(x1, timeout_20, '.-',linewidth=4,markersize=15,color=color_timeout,label='MArk')
 ax1.fill_between(x1, timeout_20_min, timeout_20_max, alpha=0.3,interpolate=True,color=color_timeout)
 # ax1.set_xlabel('SLO',fontsize='16')
 ax1.set_ylabel('Average Cost ($)',fontsize='28')
@@ -98,14 +98,14 @@ ax1.tick_params(axis='both', which='major', labelsize=26)
 
 ax1.set_ylim(0.013,0.04)
 ax4.plot(x1, slo_violation_1, '.-',linewidth=4,markersize=15,color=color_koutuchun,label='Tangram')
-ax4.plot(x1, slo_violation_p1, '.-',linewidth=4,markersize=15,color=color_padding,label='Fixed Batch 10')
+ax4.plot(x1, slo_violation_p1, '.-',linewidth=4,markersize=15,color=color_padding,label='Clipper')
 ax4.plot(x1, elf20_violation, '.-',linewidth=4,markersize=15,color=color_elf,label='ELF')
-ax4.plot(x1, timeout_20_violation, '.-',linewidth=4,markersize=15,color=color_timeout,label='Timeout')
+ax4.plot(x1, timeout_20_violation, '.-',linewidth=4,markersize=15,color=color_timeout,label='MArk')
 ax4.axhline(5, ls='--',color='k', lw=2, alpha=0.3)
 ax4.tick_params(axis='both', which='major', labelsize=24)
 ax4.legend(loc='upper left', fontsize='24')
 ax4.set_ylabel('SLO Violation (%)',fontsize='28')
-ax4.set_ylim(0,60)
+ax4.set_ylim(0,30)
 
 ##############################ax2###########################################
 ax2.plot(x2, y2, '.-',linewidth=4,markersize=15,color=color_koutuchun)
@@ -127,7 +127,7 @@ ax5.plot(x2, timeout_40_violation, '.-',linewidth=4,markersize=15,color=color_ti
 ax5.axhline(5, ls='--',color='k', lw=2, alpha=0.3)
 ax5.set_xlabel('SLO (s)',fontsize='28')
 ax5.tick_params(axis='both', which='major', labelsize=24)
-ax5.set_ylim(0,60)
+ax5.set_ylim(0,30)
 ##############################ax3###########################################
 ax3.plot(x3, y3, '.-',linewidth=4,markersize=15,color=color_koutuchun)
 ax3.fill_between(x3, y3_min, y3_max, alpha=0.3,interpolate=True,color=color_koutuchun)
@@ -148,7 +148,7 @@ ax6.plot(x3, elf80_violation, '.-',linewidth=4,markersize=15,color=color_elf)
 ax6.plot(x3, timeout_80_violation, '.-',linewidth=4,markersize=15,color=color_timeout)
 ax6.tick_params(axis='both', which='major', labelsize=24)
 ax6.axhline(5, ls='--',color='k', lw=2, alpha=0.3)
-ax6.set_ylim(0,60)
+ax6.set_ylim(0,30)
 fig.tight_layout()
 plt.savefig('figures/main.pdf',format='pdf')
 plt.show()
